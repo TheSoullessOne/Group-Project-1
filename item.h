@@ -5,7 +5,7 @@ class item
   public:
     // Constructors
     item();
-    item(string*, double*, date*);
+    item(string*, double*, date);
 
   private:
     string* names;
