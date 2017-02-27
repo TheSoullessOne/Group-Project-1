@@ -3,7 +3,7 @@
 class executive: public member
 {
   public:
-    executive():member();
+    executive(): member() {}
 
   private:
     double rebate;
