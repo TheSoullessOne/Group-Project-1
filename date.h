@@ -33,4 +33,4 @@ class date
     int day;
     int month;
     int year;
-} // End class date
+}; // End class date

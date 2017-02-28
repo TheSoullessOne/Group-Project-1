@@ -7,4 +7,4 @@ class executive: public member
 
   private:
     double rebate;
-} // End class executive
+}; // End class executive

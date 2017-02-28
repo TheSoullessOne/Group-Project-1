@@ -41,9 +41,9 @@ class member
     type = ty;
     }
     void setExpiry(int d, int m, int y){
-    date::setDay(d);
-    date::setMonth(m);
-    date::setYear(y);
+    expiry.setDay(d);
+    expiry.setMonth(m);
+    expiry.setYear(y);
     }
     void setTotal(double to){
     total = to;
@@ -75,4 +75,4 @@ class member
                          // Executive Member: $95.00
     item*  receipt;      // Will attempt to keep track of members' purchases
                          /*** Satisfies Pointer Requirement ***/
-} // End class member
+}; // End class member

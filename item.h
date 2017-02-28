@@ -11,4 +11,4 @@ class item
     string* names;
     double* prices;       // names & prices are intended to be parallel arrays
     date    shopping_day;
-}
+};
