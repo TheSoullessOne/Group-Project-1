@@ -27,7 +27,11 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
 <<<<<<< HEAD
+<<<<<<< HEAD
     buildll.cpp
+=======
+    membershipstatusrebate.cpp
+>>>>>>> 14450dcdbb905e14d55ca2314f3cab8ef9cddfcc
 =======
     mainmenu.cpp \
     submenu.cpp \
