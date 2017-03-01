@@ -25,7 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    functions.cpp
+    functions.cpp \
+    mainmenu.cpp \
+    submenu.cpp \
+    finalmenu.cpp
 
 HEADERS  += mainwindow.h \
     date.h \
