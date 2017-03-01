@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    UpdateDataFromFile("day1.txt");
+//    UpdateDataFromFile("day1.txt");
 
     return a.exec();
 }
