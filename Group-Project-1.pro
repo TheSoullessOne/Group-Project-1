@@ -25,13 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    functions.cpp
+    functions.cpp \
+    buildll.cpp
 
 HEADERS  += mainwindow.h \
     date.h \
     executive.h \
     header.h \
     item.h \
-    member.h
+    member.h \
+    linkedlist.h
 
 FORMS    += mainwindow.ui
