@@ -12,6 +12,9 @@ const double SALES_TAX   =  7.25;
 #include "item.h"
 #include "member.h"
 #include "executive.h"
+#include "mainwindow.h"
+#include <QApplication>
+
 
 void UpdateDataFromFile(QString fileName);
 
