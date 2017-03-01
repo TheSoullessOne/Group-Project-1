@@ -26,7 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
+<<<<<<< HEAD
     membershipstatusrebate.cpp
+=======
+    mainmenu.cpp \
+    submenu.cpp \
+    finalmenu.cpp
+>>>>>>> 69e57ac48e994ab5d8438c3335693712c8b9c65f
 
 HEADERS  += mainwindow.h \
     date.h \
