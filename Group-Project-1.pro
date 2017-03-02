@@ -35,6 +35,8 @@ HEADERS  += mainwindow.h \
     executive.h \
     header.h \
     item.h \
-    member.h
+    member.h \
+    addrecwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addRecWindow.ui

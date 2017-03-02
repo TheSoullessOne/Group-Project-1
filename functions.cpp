@@ -8,15 +8,15 @@
 #include <QDebug>
 
 void UpdateDataFromFile(QString fileName)   {
-    double total = 0;
-    double test;
+//    double total = 0;
+//    double test;
     QFile inputFile(fileName);
 
     QTextStream fin(&inputFile);
 
-    fin.read(test);
+//    fin.read(test);
 
-    total += test;
+//    total += test;
 
-    qDebug() << test;
+//    qDebug() << test;
 }
