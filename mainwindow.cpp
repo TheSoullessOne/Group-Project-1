@@ -1,5 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
+#include <iomanip>
+#include <QDebug>
+#include <algorithm>
+#include <vector>
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,6 +19,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+<<<<<<< HEAD
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
@@ -45,4 +52,31 @@ void MainWindow::on_readInFile_clicked()
 {
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
+=======
+
+void MainWindow::on_pushButton_clicked()
+{
+    // copy_if example
+
+    bool is_positive(int i);
+
+    vector<int> memberSearch = {};//add infor for members. This vector holds all the members
+    vector<int> expiringMember (memberSearch.size());
+
+    // copy only expiring members
+    auto it = copy_if (memberSearch.begin(), memberSearch.end(), expiringMember.begin(),  is_positive);
+    expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
+
+    cout << "Expiring members contains:";   // need to replace cout eventually
+    for (int& x: expiringMember)
+    {
+     cout << ' ' << x;
+     cout << '\n';
+    }
+}
+
+bool is_positive(int i)
+{
+    return !(i<0);
+>>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
 }
