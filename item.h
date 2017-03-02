@@ -1,3 +1,5 @@
+#ifndef ITEM_H_
+#define ITEM_H_
 #include "header.h"
 
 class item
@@ -12,3 +14,5 @@ class item
     double* prices;       // names & prices are intended to be parallel arrays
     date    shopping_day;
 };
+
+#endif

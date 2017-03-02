@@ -1,4 +1,5 @@
 #include "header.h"
+#include "member.h"
 
 member* buildll(head &top)
 {

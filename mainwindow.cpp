@@ -19,7 +19,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-<<<<<<< HEAD
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
@@ -52,7 +51,8 @@ void MainWindow::on_readInFile_clicked()
 {
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
-=======
+
+}
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -78,5 +78,4 @@ void MainWindow::on_pushButton_clicked()
 bool is_positive(int i)
 {
     return !(i<0);
->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
 }

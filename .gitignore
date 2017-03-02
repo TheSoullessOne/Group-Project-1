@@ -4,3 +4,7 @@
 .git
 build*
 *.autosave
+.qmake*
+Makefil*
+debu*
+object*
