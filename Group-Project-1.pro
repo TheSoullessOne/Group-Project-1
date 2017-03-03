@@ -28,7 +28,11 @@ SOURCES += main.cpp\
     functions.cpp \
 #<<<<<<< HEAD
 #<<<<<<< HEAD
-    buildll.cpp
+    buildll.cpp \
+    finalmenu.cpp \
+    mainmenu.cpp \
+    membershipstatusrebate.cpp \
+    submenu.cpp
 #=======
 #    membershipstatusrebate.cpp
 #>>>>>>> 14450dcdbb905e14d55ca2314f3cab8ef9cddfcc
@@ -44,11 +48,13 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
-<<<<<<< HEAD
-    addrecwindow.h
-=======
+#<<<<<<< HEAD \
+    addrecwindow.h \
     linkedlist.h
->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
+    addrecwindow.h
+#=======
+    linkedlist.h
+#>>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
 
 FORMS    += mainwindow.ui \
     addRecWindow.ui

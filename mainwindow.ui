@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-<<<<<<< HEAD
+<!--<<<<<<< HEAD-->
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -68,7 +68,7 @@
       </widget>
      </item>
     </layout>
-=======
+<!--=======-->
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -94,7 +94,7 @@
     <property name="resizeMode">
      <enum>QQuickWidget::SizeRootObjectToView</enum>
     </property>
->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
+<!-->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363-->
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

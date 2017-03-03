@@ -18,7 +18,7 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     void on_Adduser_clicked();
 
     void on_deleteRec_clicked();
@@ -29,8 +29,8 @@ private slots:
 
     void on_readInFile_clicked();
 
-=======
->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
+//=======
+//>>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
 private:
     Ui::MainWindow *ui;
 };

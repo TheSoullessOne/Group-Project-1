@@ -8,7 +8,7 @@ member* buildll(head &top)
   // Create new nav node
   pointer = new nav;
 
-  // Point at the top node
+  // Point at the head node
   pointer->list = &top;
 
   // Next points at nothing
@@ -26,7 +26,7 @@ member* buildll(head &top)
   // Last points at created nav node
   top.last = pointer;
 
-  // Top's first pointer points to the new node
+  // Head's first pointer points to the new node
   if(top.first == NULL)
   {
     top.first = pointer;
