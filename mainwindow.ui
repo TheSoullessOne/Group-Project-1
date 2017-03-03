@@ -7,14 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>665</width>
-    <height>388</height>
+    <height>456</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+<<<<<<< HEAD
 <!--<<<<<<< HEAD-->
+=======
+>>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -68,6 +71,7 @@
       </widget>
      </item>
     </layout>
+<<<<<<< HEAD
 <!--=======-->
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -95,6 +99,8 @@
      <enum>QQuickWidget::SizeRootObjectToView</enum>
     </property>
 <!-->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363-->
+=======
+>>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -103,7 +109,7 @@
      <x>0</x>
      <y>0</y>
      <width>665</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -118,13 +124,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

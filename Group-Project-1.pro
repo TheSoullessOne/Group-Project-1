@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
+<<<<<<< HEAD
 #<<<<<<< HEAD
 #<<<<<<< HEAD
     buildll.cpp \
@@ -41,6 +42,16 @@ SOURCES += main.cpp\
 #    submenu.cpp
 #    finalmenu.cpp
 #>>>>>>> 69e57ac48e994ab5d8438c3335693712c8b9c65f
+=======
+    membershipstatusrebate.cpp \
+    buildll.cpp \
+    finalmenu.cpp \
+    mainmenu.cpp \
+    submenu.cpp \
+    member.cpp \
+    date.cpp \
+    addrecwindow.cpp
+>>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
 
 HEADERS  += mainwindow.h \
     date.h \
@@ -48,6 +59,7 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
+<<<<<<< HEAD
 #<<<<<<< HEAD \
     addrecwindow.h \
     linkedlist.h
@@ -55,6 +67,9 @@ HEADERS  += mainwindow.h \
 #=======
     linkedlist.h
 #>>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
+=======
+    addrecwindow.h
+>>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
 
 FORMS    += mainwindow.ui \
     addRecWindow.ui

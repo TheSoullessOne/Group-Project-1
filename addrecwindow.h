@@ -19,7 +19,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    Ui:addRecWindow *ui;
+    Ui::addRecWindow *ui;
 };
 
 #endif // ADDRECWINDOW_H

@@ -1,7 +1,11 @@
+#ifndef LINKEDLIST_H_
+#define LINKEDLIST_H_
 #include "header.h"
+#include "member.h"
 
 // Trick the Compiler
 typedef struct head head;
+typedef struct nav nav;
 
 // Navigation Node (LL)
 struct nav
@@ -25,3 +29,6 @@ struct head
  * Returns the address for the member node to be filled out
  * *********************************************************/
 member* buildll(head &top);
+
+
+#endif

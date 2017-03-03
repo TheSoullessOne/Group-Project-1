@@ -18,5 +18,7 @@ const double SALES_TAX   =  7.25;
 
 void UpdateDataFromFile(QString fileName);
 
+void memberRebate();
+
 
 #endif
