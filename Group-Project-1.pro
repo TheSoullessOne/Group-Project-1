@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,20 +26,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
-<<<<<<< HEAD \
-    memberrebatefunc.cpp
-    membershipstatusrebate.cpp
-=======
+    membershipstatusrebate.cpp \
+    buildll.cpp \
+    finalmenu.cpp \
     mainmenu.cpp \
     submenu.cpp \
-    finalmenu.cpp
->>>>>>> 69e57ac48e994ab5d8438c3335693712c8b9c65f
+    member.cpp \
+    date.cpp \
+    addrecwindow.cpp
 
 HEADERS  += mainwindow.h \
     date.h \
     executive.h \
     header.h \
     item.h \
-    member.h
+    member.h \
+    addrecwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    addRecWindow.ui

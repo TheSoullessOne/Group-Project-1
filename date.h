@@ -1,4 +1,6 @@
-git#include "header.h"
+#ifndef DATE_H
+#define DATE_H
+#include "header.h"
 
 class date
 {
@@ -34,3 +36,6 @@ class date
     int month;
     int year;
 }; // End class date
+
+
+#endif

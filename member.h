@@ -1,11 +1,16 @@
+#ifndef MEMBER_H_
+#define MEMBER_H_
 #include "header.h"
+#include "date.h"
+#include "item.h"
+
 
 class member
 {
   public:
     // Constructors
     member();
-    member(string, int, bool, date, double, double, item*);
+    member(string, int, bool, int, int, int, double, double, item*);
 
     // Gets
     string getName() const{
@@ -76,3 +81,5 @@ class member
     item*  receipt;      // Will attempt to keep track of members' purchases
                          /*** Satisfies Pointer Requirement ***/
 }; // End class member
+
+#endif
