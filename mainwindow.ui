@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
-    <height>456</height>
+    <width>763</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,18 +15,23 @@
   </property>
   <widget class="QWidget" name="centralWidget">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!--<<<<<<< HEAD-->
 =======
 >>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
    <widget class="QWidget" name="verticalLayoutWidget">
+=======
+   <widget class="QStackedWidget" name="pages">
+>>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>0</y>
-      <width>160</width>
-      <height>170</height>
+      <width>661</width>
+      <height>421</height>
      </rect>
     </property>
+<<<<<<< HEAD
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="Adduser">
@@ -101,6 +106,297 @@
 <!-->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363-->
 =======
 >>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
+=======
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="menu">
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>160</width>
+        <height>170</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="Adduser">
+         <property name="text">
+          <string>ADD</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deleteRec">
+         <property name="text">
+          <string>DELETE </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="reportsSearch">
+         <property name="text">
+          <string>REPORTS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="readInFile">
+         <property name="text">
+          <string>READ FILE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="upgrade">
+         <property name="text">
+          <string>UPGRADE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>search?</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ADD_MENU">
+     <widget class="QPushButton" name="add_user">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ADD USER</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_purchase">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>121</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ADD PURCHASE</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_addmen">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>110</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="DELETE">
+     <widget class="QPushButton" name="delete_user">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>50</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DELETE USER</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="delete_item">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>80</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DELETE ITEM</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_delete">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>140</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="REPORTS">
+     <widget class="QPushButton" name="purchases_rep">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Purchases</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="sales_rep">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>120</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Sales Report</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="quantity_rep">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>160</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Quantity </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rebate_rep">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>200</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rebate</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="expiring_rep">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>240</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Expiring</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_reports">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>300</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="READ_FILE">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>70</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>120</y>
+        <width>341</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_readfile">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>240</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="UPGRADE">
+     <widget class="QPushButton" name="backButton_upgrade">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>340</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="SEARCH">
+     <widget class="QPushButton" name="backButton_search">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+>>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -108,7 +404,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>665</width>
+     <width>763</width>
      <height>21</height>
     </rect>
    </property>

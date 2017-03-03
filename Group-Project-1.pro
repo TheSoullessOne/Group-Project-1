@@ -58,9 +58,13 @@ SOURCES += main.cpp\
     mainmenu.cpp \
     submenu.cpp \
     member.cpp \
+<<<<<<< HEAD
     date.cpp \
     addrecwindow.cpp
 >>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
+=======
+    date.cpp
+>>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
 
 HEADERS  += mainwindow.h \
     date.h \
@@ -68,6 +72,7 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
+<<<<<<< HEAD
 <<<<<<< HEAD \
     addrecwindow.h \
     linkedlist.h
@@ -89,3 +94,8 @@ DISTFILES += \
     User Stories.docx \
     Group-Project-1.pro.user \
     .gitignore
+=======
+    mainmenu.h
+
+FORMS    += mainwindow.ui
+>>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
