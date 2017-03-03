@@ -26,7 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    addrecwindow.cpp \
+    buildll.cpp \
+    date.cpp \
+    finalmenu.cpp \
+    mainmenu.cpp \
+    member.cpp \
+    memberrebatefunc.cpp \
+    membershipstatusrebate.cpp \
+    submenu.cpp
 #<<<<<<< HEAD
 #<<<<<<< HEAD
     buildll.cpp \
@@ -59,7 +68,9 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
-<<<<<<< HEAD
+<<<<<<< HEAD \
+    addrecwindow.h \
+    linkedlist.h
 #<<<<<<< HEAD \
     addrecwindow.h \
     linkedlist.h
@@ -73,3 +84,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     addRecWindow.ui
+
+DISTFILES += \
+    User Stories.docx \
+    Group-Project-1.pro.user \
+    .gitignore
