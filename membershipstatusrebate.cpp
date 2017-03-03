@@ -7,6 +7,7 @@
 #include <QChar>
 #include <QDebug>
 
+//pass in id - string
 void membershipStatus( ){
 
 
