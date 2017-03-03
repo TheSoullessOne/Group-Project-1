@@ -22,6 +22,7 @@ MainWindow::~MainWindow()
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
+    ui->pages->setCurrentIndex(1);
     //Here we call the function that makes new members
     //Take you to another menu to see what kind of member
 }
@@ -29,6 +30,7 @@ void MainWindow::on_Adduser_clicked()
 //Function to delete a user or item
 void MainWindow::on_deleteRec_clicked()
 {
+    ui->pages->setCurrentIndex(2);
     //Link to another menu that will determine what the user
     //wants to delete, whether an item or list
 }
@@ -36,12 +38,14 @@ void MainWindow::on_deleteRec_clicked()
 //Function to upgrade a user
 void MainWindow::on_upgrade_clicked()
 {
+      ui->pages->setCurrentIndex(6);
     //Link the function that determines whether a user can upgrade
 }
 
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
+      ui->pages->setCurrentIndex(3);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -49,15 +53,16 @@ void MainWindow::on_reportsSearch_clicked()
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
+      ui->pages->setCurrentIndex(4);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_search_clicked()
 {
     // copy_if example
-
+  ui->pages->setCurrentIndex(6);
     bool is_positive(int i);
 
     vector<int> memberSearch = {};//add infor for members. This vector holds all the members
@@ -78,4 +83,35 @@ void MainWindow::on_pushButton_clicked()
 bool is_positive(int i)
 {
     return !(i<0);
+}
+
+
+void MainWindow::on_backButton_addmen_clicked()
+{
+ ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_backButton_delete_clicked()
+{
+     ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_backButton_reports_clicked()
+{
+     ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_backButton_readfile_clicked()
+{
+     ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_backButton_upgrade_clicked()
+{
+     ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_backButton_search_clicked()
+{
+     ui->pages->setCurrentIndex(0);
 }

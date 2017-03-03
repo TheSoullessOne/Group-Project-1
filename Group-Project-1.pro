@@ -32,8 +32,7 @@ SOURCES += main.cpp\
     mainmenu.cpp \
     submenu.cpp \
     member.cpp \
-    date.cpp \
-    addrecwindow.cpp
+    date.cpp
 
 HEADERS  += mainwindow.h \
     date.h \
@@ -41,7 +40,6 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
-    addrecwindow.h
+    mainmenu.h
 
-FORMS    += mainwindow.ui \
-    addRecWindow.ui
+FORMS    += mainwindow.ui
