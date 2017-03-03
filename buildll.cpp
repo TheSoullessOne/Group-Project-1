@@ -1,5 +1,6 @@
 #include "header.h"
 #include "member.h"
+#include "linkedlist.h"
 
 member* buildll(head &top)
 {

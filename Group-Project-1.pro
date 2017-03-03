@@ -40,6 +40,7 @@ HEADERS  += mainwindow.h \
     header.h \
     item.h \
     member.h \
-    mainmenu.h
+    mainmenu.h \
+    linkedlist.h
 
 FORMS    += mainwindow.ui

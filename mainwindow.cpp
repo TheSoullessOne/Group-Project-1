@@ -59,32 +59,55 @@ void MainWindow::on_readInFile_clicked()
 
 }
 
+void MainWindow::on_backButton_6_clicked()
+{
+
+}
+
 void MainWindow::on_search_clicked()
 {
     // copy_if example
-  ui->pages->setCurrentIndex(6);
-    bool is_positive(int i);
+    ui->pages->setCurrentIndex(6);
 
-    vector<int> memberSearch = {};//add infor for members. This vector holds all the members
-    vector<int> expiringMember (memberSearch.size());
 
+    //this vector will contain all of the members
+    vector<member> memberSearch = {};//add infor for members. This vector holds all the members
+    //this vector will contain all of the expired members it is set to be the same size as the member search vector
+    vector<member> expiringMember (memberSearch.size());
+    //this is the expiring month that we will be getting from the user
+    int expiringMonth;
+
+    //auto is for letting the compiler figure out the type. it saves typing, and in case you are going to change the return type.
+    //instead of typing vector<member>::iterator auto does it for you
+    //it means iterator and we use this in order to resize the expiringMember
     // copy only expiring members
-    auto it = copy_if (memberSearch.begin(), memberSearch.end(), expiringMember.begin(),  is_positive);
+    //this vector reads from beginning to end and enters the struct checkExperation in order to read it into expiringMember.
+    auto it = copy_if (memberSearch.begin(), memberSearch.end(),
+                       expiringMember.begin(), checkExperation(expiringMonth));
     expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
 
     cout << "Expiring members contains:";   // need to replace cout eventually
-    for (int& x: expiringMember)
+    //for loop is for showing the contains of expiringMember
+    //this for loop looks confusin but all it is doing is looping over the vector.
+    for (member x: expiringMember)
     {
-     cout << ' ' << x;
-     cout << '\n';
+     cout << ' ' << x.getName() << endl;
+    }
+
+    //this for loop is made in order to tell the member the renewal fee.
+    for(int i=0; i < expiringMember.size(); i++ )
+    {
+        if(expiringMember[i].getType() == false)
+        {
+          cout <<expiringMember[i].getName() << " your renewal cost is $85.00";
+        }
+        else
+        {
+          cout <<expiringMember[i].getName() << " your renewal cost is $95.00";
+        }
+
     }
 }
-
-bool is_positive(int i)
-{
-    return !(i<0);
-}
-
 
 void MainWindow::on_backButton_addmen_clicked()
 {

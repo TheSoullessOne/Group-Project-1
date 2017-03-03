@@ -2,6 +2,25 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "member.h"
+#include "date.h"
+
+//This struct is a functor which is a struct that has the function call operator
+struct checkExperation
+{
+    int theMonth;
+    //this is the struct constuctor. it construct the struct and blew my mind. literaly.
+    checkExperation(int theMonth){this->theMonth = theMonth;}
+    //this is the function call operator that turns the struct into a funtion. this also blew my MIND!!!
+    //operator() is what overloads the function call operator in order to be able to turn the struct into a function.
+    bool operator()(member m)
+    {
+    //this is going into the member class retriving the date then going into the date class and retriving the month.
+    //then it is comparing month from date class to theMonth in the struct returning a true or false.
+        return m.getExpiry().getMonth() == theMonth;
+    }
+};
+
 
 namespace Ui {
 class MainWindow;
