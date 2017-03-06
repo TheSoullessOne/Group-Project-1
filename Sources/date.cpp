@@ -1,5 +1,4 @@
-#include "header.h"
-#include "date.h"
+#include "Headers\date.h"
 
 // Default contructor sets the date to 0, 0, 0000
 date::date()    {

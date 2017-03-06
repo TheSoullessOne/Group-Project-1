@@ -1,10 +1,11 @@
-#include "mainwindow.h"
+#include "Headers\mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <iomanip>
 #include <QDebug>
 #include <algorithm>
-#include <vector>
+#include <QVector>
+#include <fstream>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -91,7 +92,7 @@ void MainWindow::on_search_clicked()
     //this for loop looks confusin but all it is doing is looping over the vector.
     for (member x: expiringMember)
     {
-     cout << ' ' << x.getName() << endl;
+     qDebug() << ' ' << x.getName() << endl;
     }
 
     //this for loop is made in order to tell the member the renewal fee.
@@ -99,11 +100,11 @@ void MainWindow::on_search_clicked()
     {
         if(expiringMember[i].getType() == false)
         {
-          cout <<expiringMember[i].getName() << " your renewal cost is $85.00";
+          qDebug() <<expiringMember[i].getName() << " your renewal cost is $85.00";
         }
         else
         {
-          cout <<expiringMember[i].getName() << " your renewal cost is $95.00";
+          qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
         }
 
     }

@@ -1,6 +1,6 @@
 #ifndef EXECUTIVE_H_
 #define EXECUTIVE_H_
-#include "header.h"
+#include "member.h"
 
 class executive: public member
 {

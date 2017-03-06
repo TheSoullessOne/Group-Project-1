@@ -1,13 +1,12 @@
-#include "mainwindow.h"
+#include "Headers\mainwindow.h"
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
 #include <QString>
-#include "header.h"
 #include <QChar>
 #include <QDebug>
 
-//pass in id - string
+//pass in id - QString
 void membershipStatus( ){
 
 

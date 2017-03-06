@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "member.h"
-#include "date.h"
+#include "executive.h"
 
 //This struct is a functor which is a struct that has the function call operator
 struct checkExperation
