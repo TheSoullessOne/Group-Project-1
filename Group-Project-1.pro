@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     mainmenu.cpp \
     submenu.cpp \
     member.cpp \
-    date.cpp
+    date.cpp \
+    vectors.cpp
 
 HEADERS  += mainwindow.h \
     date.h \
