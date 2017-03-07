@@ -132,6 +132,7 @@ void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
     QString tempRank;
     QString tempName;
     int tempId = 0;
+    int index = 0;
     executive *tempExec;
     member *tempMem;
 
@@ -146,17 +147,19 @@ void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
     if(tempRank == "Executive") {
         tempExec = new executive;                   // Creates new exec
         myMembers.execVec.push_back(tempExec);      // Pushes it to the back of the vector
-        myMembers.execVec[0]->setName(tempName);    // Sets the name of that obj
-        myMembers.execVec[0]->setNum(tempId);       // Sets the id of that obj
-        myMembers.execVec[0]->setAnnual(95);        // Sets the annual due to 95
-        myMembers.execVec[0]->setRebate(0);         // Sets rebate to 0 just for it to start
+        index = myMembers.execVec.size() - 1;
+        myMembers.execVec[index]->setName(tempName);    // Sets the name of that obj
+        myMembers.execVec[index]->setNum(tempId);       // Sets the id of that obj
+        myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
+        myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
     }
     else    {
         tempMem = new member;                       // Creates new member
         myMembers.memberVec.push_back(tempMem);     // Pushes it to the back of the vector
-        myMembers.memberVec[0]->setName(tempName);  // Sets the member's name
-        myMembers.memberVec[0]->setNum(tempId);     // Sets the member's ID
-        myMembers.memberVec[0]->setAnnual(85);      // Sets the annual dues to 85
+        index = myMembers.memberVec.size() - 1;
+        myMembers.memberVec[index]->setName(tempName);  // Sets the member's name
+        myMembers.memberVec[index]->setNum(tempId);     // Sets the member's ID
+        myMembers.memberVec[index]->setAnnual(85);      // Sets the annual dues to 85
     }
 
 
