@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "Headers\mainwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-//    UpdateDataFromFile("day1.txt");
 
     return a.exec();
 }

@@ -1,6 +1,5 @@
 #ifndef DATE_H
 #define DATE_H
-#include "header.h"
 
 class date
 {

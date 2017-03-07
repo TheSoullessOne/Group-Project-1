@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
+<<<<<<< HEAD
 SOURCES += main.cpp\
         mainwindow.cpp \
     functions.cpp \
@@ -99,3 +100,27 @@ DISTFILES += \
 
 FORMS    += mainwindow.ui
 >>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
+=======
+SOURCES += Sources\main.cpp\
+    Sources\mainwindow.cpp \
+    Sources\functions.cpp \
+    Sources\membershipstatusrebate.cpp \
+    Sources\buildll.cpp \
+    Sources\finalmenu.cpp \
+    Sources\mainmenu.cpp \
+    Sources\submenu.cpp \
+    Sources\member.cpp \
+    Sources\date.cpp \
+    Sources\vectors.cpp
+
+HEADERS  += Headers\mainwindow.h \
+    Headers\date.h \
+    Headers\executive.h \
+    Headers\header.h \
+    Headers\item.h \
+    Headers\member.h \
+    Headers\mainmenu.h \
+    Headers\linkedlist.h
+
+FORMS    += Forms\mainwindow.ui
+>>>>>>> d937bd0fb638a297cfd833ef4b3a0d1dc3bd8dfc
