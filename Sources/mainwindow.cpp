@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <QVector>
 #include <fstream>
+#include <QFile>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -108,6 +109,51 @@ void MainWindow::on_search_clicked()
         }
 
     }
+}
+
+void UpdateDataFromFile(QString fileName, memberStruct myMembers)   {
+    ifstream fin;
+
+    fin.open(fileName.toStdString().c_str());
+
+
+
+    fin.close();
+}
+
+void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
+    QString tempRank;
+    QString tempName;
+    int tempId = 0;
+    executive *tempExec;
+    member *tempMem;
+
+    QFile inputFile(fileName.toStdString().c_str());
+
+    QTextStream fin(&inputFile);
+
+    tempName = fin.readLine();
+
+    fin.readLine(tempId);
+
+    tempRank = fin.readLine();
+
+    if(tempRank == "Executive") {
+        tempExec = new executive;
+        myMembers.execVec.push_back(tempExec);
+        myMembers.execVec[0]->setName(tempName);
+        myMembers.execVec[0]->setNum(tempId);
+        myMembers.execVec[0]->setRebate(0);
+
+    }
+    else    {
+        tempMem = new member;
+        myMembers.memberVec.push_back(tempMem);
+        myMembers.memberVec[0]->setName(tempName);
+        myMembers.memberVec[0]->setNum(tempId);
+    }
+
+
 }
 
 void MainWindow::on_backButton_addmen_clicked()

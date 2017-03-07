@@ -3,6 +3,13 @@
 
 #include <QMainWindow>
 #include "executive.h"
+#include <QVector>
+using namespace std;
+
+struct memberStruct {
+    QVector<member*>    memberVec;
+    QVector<executive*> execVec;
+};
 
 //This struct is a functor which is a struct that has the function call operator
 struct checkExperation
@@ -20,6 +27,9 @@ struct checkExperation
     }
 };
 
+void UpdateDataFromFile(QString, memberStruct&);
+
+void UpdateMembersFromFile(QString, memberStruct&);
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +69,7 @@ private slots:
     void on_backButton_upgrade_clicked();
 
     void on_backButton_search_clicked();
+
 
 private:
     Ui::MainWindow *ui;
