@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <QDebug>
 #include <algorithm>
-#include <QVector>
 #include <fstream>
 #include <QFile>
 using namespace std;
@@ -59,6 +58,7 @@ void MainWindow::on_readInFile_clicked()
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
+//    UpdateDataFromFile()
 }
 
 void MainWindow::on_backButton_6_clicked()
@@ -110,7 +110,7 @@ void MainWindow::on_search_clicked()
     }
 }
 
-void UpdateDataFromFile(QString fileName, memberStruct myMembers)   {
+void MainWindow::UpdateDataFromFile(QString fileName)   {
     QString tempDate;
     QString itemName;
     int tempId = 0;     // SEARCH FUNCTION
@@ -128,7 +128,7 @@ void UpdateDataFromFile(QString fileName, memberStruct myMembers)   {
     fin.readLine(itemQuan);
 }
 
-void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
+void MainWindow::UpdateMembersFromFile(QString fileName)    {
     QString tempRank;
     QString tempName;
     int tempId = 0;
@@ -145,17 +145,18 @@ void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
     tempRank = fin.readLine();
 
     if(tempRank == "Executive") {
-        tempExec = new executive;                   // Creates new exec
-        myMembers.execVec.push_back(tempExec);      // Pushes it to the back of the vector
+        tempExec = new executive;                       // Creates new exec
+        myMembers.execVec.push_back(tempExec);          // Pushes it to the back of the vector
         index = myMembers.execVec.size() - 1;
         myMembers.execVec[index]->setName(tempName);    // Sets the name of that obj
         myMembers.execVec[index]->setNum(tempId);       // Sets the id of that obj
         myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
         myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
     }
-    else    {
-        tempMem = new member;                       // Creates new member
-        myMembers.memberVec.push_back(tempMem);     // Pushes it to the back of the vector
+    else
+    {
+        tempMem = new member;                           // Creates new member
+        myMembers.memberVec.push_back(tempMem);         // Pushes it to the back of the vector
         index = myMembers.memberVec.size() - 1;
         myMembers.memberVec[index]->setName(tempName);  // Sets the member's name
         myMembers.memberVec[index]->setNum(tempId);     // Sets the member's ID
