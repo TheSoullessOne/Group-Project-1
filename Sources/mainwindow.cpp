@@ -107,18 +107,25 @@ void MainWindow::on_search_clicked()
         {
           qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
         }
-
     }
 }
 
 void UpdateDataFromFile(QString fileName, memberStruct myMembers)   {
-    ifstream fin;
+    QString tempDate;
+    QString itemName;
+    int tempId = 0;     // SEARCH FUNCTION
+    double itemPrice = 0;
+    int itemQuan = 0;
 
-    fin.open(fileName.toStdString().c_str());
+    QFile inputFile(fileName.toStdString().c_str());
 
+    QTextStream fin(&inputFile);
 
-
-    fin.close();
+    tempDate = fin.readLine();
+    fin.readLine(tempId);
+    itemName = fin.readLine();
+    fin.readLine(itemPrice);
+    fin.readLine(itemQuan);
 }
 
 void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
@@ -133,9 +140,7 @@ void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
     QTextStream fin(&inputFile);
 
     tempName = fin.readLine();
-
     fin.readLine(tempId);
-
     tempRank = fin.readLine();
 
     if(tempRank == "Executive") {
@@ -143,14 +148,15 @@ void UpdateMembersFromFile(QString fileName, memberStruct myMembers)    {
         myMembers.execVec.push_back(tempExec);
         myMembers.execVec[0]->setName(tempName);
         myMembers.execVec[0]->setNum(tempId);
+        myMembers.execVec[0]->setAnnual(95);
         myMembers.execVec[0]->setRebate(0);
-
     }
     else    {
         tempMem = new member;
         myMembers.memberVec.push_back(tempMem);
         myMembers.memberVec[0]->setName(tempName);
         myMembers.memberVec[0]->setNum(tempId);
+        myMembers.memberVec[0]->setAnnual(85);
     }
 
 
