@@ -1,16 +1,16 @@
 #ifndef ITEM_H_
 #define ITEM_H_
-#include "header.h"
+#include <QString>
 
 class item
 {
   public:
     // Constructors
     item();
-    item(string*, double*, date);
+    item(QString*, double*, date);
 
   private:
-    string* names;
+    QString* names;
     double* prices;       // names & prices are intended to be parallel arrays
     date    shopping_day;
 };
