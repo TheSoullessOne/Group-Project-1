@@ -17,12 +17,12 @@ void membershipStatus(QString id){
 
 
     if(executive_yes = true){
-    //annual executive membership is $95
-    //this will be added to their rebate
+        //annual executive membership is $95
+        //this will be added to their rebate
     }
     else if(executive_yes = false){
-    //annual regular membership is $85
-    //there is no rebate
+        //annual regular membership is $85
+        //there is no rebate
     }
 
 }

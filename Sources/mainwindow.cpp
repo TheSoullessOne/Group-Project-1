@@ -235,7 +235,7 @@ void MainWindow::on_lineEdit_returnPressed()
 }
 
 
-void MainWindow::SaveToFile()   {
+void MainWindow::SaveToFile(QString)   {
     QFile outputFile("Texts\test.txt");
     if(outputFile.open(QFile::WriteOnly))   {
 
