@@ -44,6 +44,8 @@ public:
 
     bool UpdateMembersFromFile(QString);
 
+    void SaveToFile(QString);
+
 private slots:
     void on_search_clicked();
 
@@ -70,7 +72,6 @@ private slots:
     void on_backButton_upgrade_clicked();
 
     void on_backButton_search_clicked();
-
 
     void on_lineEdit_returnPressed();
 

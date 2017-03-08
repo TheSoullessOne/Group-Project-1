@@ -126,7 +126,9 @@ void MainWindow::UpdateDataFromFile(QString fileName)   {
 }
 
 bool MainWindow::UpdateMembersFromFile(QString fileName)    {
+    // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
+    // Opens the file if it exists and makes it read Only
     if(inputFile.open(QFile::ReadOnly)) {
 
         QString tempRank;
@@ -137,16 +139,19 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
         executive *tempExec;
         member *tempMem;
 
+        // My textStream variables "fstream"
         QTextStream fin(&inputFile);
 
         // While !eof
         while(!fin.atEnd())  {
 
+            // Reads in the 4 lines that belong to 1 member
             tempName = fin.readLine();
             tempId = fin.readLine().toInt();
             tempRank = fin.readLine();
             tempDate = fin.readLine();
 
+            // Creates exec mem, and initializes
             if(tempRank == "Executive") {
                 tempExec = new executive;                       // Creates new exec
                 myMembers.execVec.push_back(tempExec);          // Pushes it to the back of the vector
@@ -159,7 +164,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                 myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
                 myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
             }
-            else
+            else    // creates member mem and initializes
             {
                 tempMem = new member;                           // Creates new member
                 myMembers.memberVec.push_back(tempMem);         // Pushes it to the back of the vector
@@ -219,9 +224,6 @@ void MainWindow::on_lineEdit_returnPressed()
     if(UpdateMembersFromFile(fileName))  {
         //Change the page, let user know it worked
         qDebug()    << "success";
-        qDebug() << myMembers.execVec[4]->getName();
-        qDebug() << myMembers.execVec[4]->getNum();
-        qDebug() << myMembers.execVec[4]->getExpiry().printDate();
     }
     else
     {
@@ -230,15 +232,12 @@ void MainWindow::on_lineEdit_returnPressed()
     }
 
 
+}
 
 
-    /*if()    {
+void MainWindow::SaveToFile()   {
+    QFile outputFile("Texts\test.txt");
+    if(outputFile.open(QFile::WriteOnly))   {
 
     }
-    else
-    {
-
-    }*/
-
-
 }
