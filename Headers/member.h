@@ -1,6 +1,5 @@
 #ifndef MEMBER_H_
 #define MEMBER_H_
-#include "header.h"
 #include "date.h"
 #include "item.h"
 
@@ -10,10 +9,10 @@ class member
   public:
     // Constructors
     member();
-    member(string, int, bool, int, int, int, double, double, item*);
+    member(QString, int, bool, int, int, int, double, double, item*);
 
     // Gets
-    string getName() const{
+    QString getName() const{
     return name;
     }
     int getNum() const{
@@ -36,7 +35,7 @@ class member
     }
 
     // Sets
-    void setName(string na){
+    void setName(QString na){
     name = na;
     }
     void setNum(int nu){
@@ -68,7 +67,7 @@ class member
 
 
   private:
-    string name;
+    QString name;
     int    num;          // Membership #
     bool   type;         // Membership Type:
                          // False = Regular Member

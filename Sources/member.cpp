@@ -1,5 +1,4 @@
-#include "header.h"
-#include "member.h"
+#include "Headers\member.h"
 
 // Default Constructor Sets everything to NULL or 0
 member::member()    {
@@ -15,7 +14,7 @@ member::member()    {
 }
 
 // Specific constructor
-member::member(string tempName,
+member::member(QString tempName,
                int tempNum,
                bool tempType,
                int tempDay,
