@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="menu">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -271,17 +271,7 @@
        <string>BACK</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="enterFileName">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>180</y>
-        <width>411</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QPushButton" name="backButton_readfile">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -305,6 +295,29 @@
       </property>
       <property name="text">
        <string>READ IN FILE DIFFERENT WAY</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>140</y>
+        <width>211</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>140</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enter file name here:</string>
       </property>
      </widget>
     </widget>

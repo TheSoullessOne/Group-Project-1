@@ -1,6 +1,5 @@
-//#include "mainwindow.h"
-//#include <QApplication>
-//#include "header.h"
+#include "Headers\mainwindow.h"
+#include <QApplication>
 
 //int main(int argc, char *argv[])
 //{
@@ -12,6 +11,7 @@
 //    // out how vectors and files work. -Eric
 ////    InitializeVectors();
 ////    UpdateDataFromFile("day1.txt");
+
 
 //    return a.exec();
 //}

@@ -16,7 +16,7 @@ void UpdateDataFromFile(QString fileName);
 
 void UpdateMembersFromFile(QString fileName);
 
-void memberRebate();
+void memberRebate(QString id);
 
 
 #endif

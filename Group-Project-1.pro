@@ -25,9 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += Sources\main.cpp\
     Sources\mainwindow.cpp \
-    Sources\functions.cpp \
     Sources\membershipstatusrebate.cpp \
-    Sources\buildll.cpp \
     Sources\finalmenu.cpp \
     Sources\mainmenu.cpp \
     Sources\submenu.cpp \
@@ -41,7 +39,6 @@ HEADERS  += Headers\mainwindow.h \
     Headers\header.h \
     Headers\item.h \
     Headers\member.h \
-    Headers\mainmenu.h \
-    Headers\linkedlist.h
+    Headers\mainmenu.h
 
 FORMS    += Forms\mainwindow.ui

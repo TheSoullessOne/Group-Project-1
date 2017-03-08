@@ -27,10 +27,6 @@ struct checkExperation
     }
 };
 
-void UpdateDataFromFile(QString, memberStruct&);
-
-void UpdateMembersFromFile(QString, memberStruct&);
-
 namespace Ui {
 class MainWindow;
 }
@@ -42,6 +38,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+
+    void UpdateDataFromFile(QString);
+
+    bool UpdateMembersFromFile(QString);
+
+    void SaveToFile(QString);
 
 private slots:
     void on_search_clicked();
@@ -70,6 +73,7 @@ private slots:
 
     void on_backButton_search_clicked();
 
+    void on_lineEdit_returnPressed();
 
     void on_readInButton_clicked();
 
@@ -93,6 +97,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    memberStruct myMembers;
 };
 
 #endif // MAINWINDOW_H
