@@ -295,8 +295,6 @@ void MainWindow::on_add_purchase_clicked()
 
 void MainWindow::on_enterPassword_returnPressed()
 {
-    qDebug() << myMembers.execVec.size();
-    qDebug() << myMembers.memberVec.size();
     QString username = ui->enterUserName->text();
     int tempId = username.toInt();
     QString password = ui->enterPassword->text();
