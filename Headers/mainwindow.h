@@ -112,6 +112,8 @@ private slots:
 
     void on_Search_back_button_clicked();
 
+    void on_read_file_line_edit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;

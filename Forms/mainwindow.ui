@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -40,7 +40,7 @@
        <item>
         <widget class="QLabel" name="userNameLabel">
          <property name="text">
-          <string>Enter username</string>
+          <string>Enter user ID</string>
          </property>
         </widget>
        </item>
@@ -359,7 +359,7 @@
        <string>BACK</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="Reports_label">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -400,7 +400,7 @@
        <string>BACK</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="read_file_line_edit">
       <property name="geometry">
        <rect>
         <x>230</x>
@@ -410,7 +410,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="Read_file_label">
       <property name="geometry">
        <rect>
         <x>120</x>

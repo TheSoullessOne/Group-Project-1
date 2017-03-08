@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    SaveToFile("Texts\\warehouse shoppers.txt");
 }
 
 //Function to add a new user
@@ -214,31 +215,30 @@ void MainWindow::on_backButton_search_clicked()
 
 void MainWindow::on_lineEdit_returnPressed()
 {
-    QString fileName = ui->lineEdit->text();
-
-    if(!fileName.endsWith(".txt"))
-        fileName += ".txt";
-
-    fileName = "Texts\\" + fileName;
-
-    if(UpdateMembersFromFile(fileName))  {
-        //Change the page, let user know it worked
-        qDebug()    << "success";
-    }
-    else
-    {
-        // Error message prompt for input again
-        qDebug()    << "Failure.";
-    }
-
 
 }
 
 
-void MainWindow::SaveToFile(QString)   {
-    QFile outputFile("Texts\test.txt");
+void MainWindow::SaveToFile(QString fileName)   {
+    QFile outputFile(fileName);
     if(outputFile.open(QFile::WriteOnly))   {
+        QTextStream fout(&outputFile);
 
+        for(int i = 0; i < myMembers.execVec.size(); ++i)   {
+            fout << myMembers.execVec[i]->getName() << endl;
+            fout << myMembers.execVec[i]->getNum() << endl;
+            fout << "Executive" << endl;
+            fout << myMembers.execVec[i]->getExpiry().printDate() << endl;
+        }
+        for(int j = 0; j < myMembers.memberVec.size(); ++j) {
+            fout << myMembers.memberVec[j]->getName() << endl;
+            fout << myMembers.memberVec[j]->getNum() << endl;
+            fout << "Regular" << endl;
+            fout << myMembers.memberVec[j]->getExpiry().printDate();
+            if(j != myMembers.memberVec.size() - 1) {
+                fout << endl;
+            }
+        }
     }
 }
 
@@ -372,4 +372,24 @@ void MainWindow::on_searchButtonBrians_clicked()
 void MainWindow::on_Search_back_button_clicked()
 {
     ui->pages->setCurrentIndex(1);
+}
+
+void MainWindow::on_read_file_line_edit_returnPressed()
+{
+    QString fileName = ui->read_file_line_edit->text();
+
+    if(!fileName.endsWith(".txt"))
+        fileName += ".txt";
+
+    fileName = "Texts\\" + fileName;
+
+    if(UpdateMembersFromFile(fileName))  {
+        //Change the page, let user know it worked
+        qDebug()    << "success";
+    }
+    else
+    {
+        // Error message prompt for input again
+        qDebug()    << "Failure.";
+    }
 }
