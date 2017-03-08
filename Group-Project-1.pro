@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += Sources\main.cpp\
     Sources\mainwindow.cpp \
-    Sources\functions.cpp \
     Sources\membershipstatusrebate.cpp \
     Sources\buildll.cpp \
     Sources\finalmenu.cpp \

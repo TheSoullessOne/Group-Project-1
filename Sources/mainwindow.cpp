@@ -1,10 +1,7 @@
 #include "Headers\mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
-#include <iomanip>
 #include <QDebug>
 #include <algorithm>
-#include <fstream>
 #include <QFile>
 using namespace std;
 
@@ -39,14 +36,14 @@ void MainWindow::on_deleteRec_clicked()
 //Function to upgrade a user
 void MainWindow::on_upgrade_clicked()
 {
-      ui->pages->setCurrentIndex(6);
+    ui->pages->setCurrentIndex(6);
     //Link the function that determines whether a user can upgrade
 }
 
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
-      ui->pages->setCurrentIndex(3);
+    ui->pages->setCurrentIndex(3);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -54,11 +51,11 @@ void MainWindow::on_reportsSearch_clicked()
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
-      ui->pages->setCurrentIndex(4);
+    ui->pages->setCurrentIndex(4);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
-//    UpdateDataFromFile()
+    //    UpdateDataFromFile()
 }
 
 void MainWindow::on_backButton_6_clicked()
@@ -88,12 +85,12 @@ void MainWindow::on_search_clicked()
                        expiringMember.begin(), checkExperation(expiringMonth));
     expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
 
-    cout << "Expiring members contains:";   // need to replace cout eventually
+    qDebug() << "Expiring members contains:";   // need to replace cout eventually
     //for loop is for showing the contains of expiringMember
     //this for loop looks confusin but all it is doing is looping over the vector.
     for (member x: expiringMember)
     {
-     qDebug() << ' ' << x.getName() << endl;
+        qDebug() << ' ' << x.getName() << endl;
     }
 
     //this for loop is made in order to tell the member the renewal fee.
@@ -101,11 +98,11 @@ void MainWindow::on_search_clicked()
     {
         if(expiringMember[i].getType() == false)
         {
-          qDebug() <<expiringMember[i].getName() << " your renewal cost is $85.00";
+            qDebug() <<expiringMember[i].getName() << " your renewal cost is $85.00";
         }
         else
         {
-          qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
+            qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
         }
     }
 }
@@ -128,70 +125,120 @@ void MainWindow::UpdateDataFromFile(QString fileName)   {
     fin.readLine(itemQuan);
 }
 
-void MainWindow::UpdateMembersFromFile(QString fileName)    {
-    QString tempRank;
-    QString tempName;
-    int tempId = 0;
-    int index = 0;
-    executive *tempExec;
-    member *tempMem;
-
+bool MainWindow::UpdateMembersFromFile(QString fileName)    {
     QFile inputFile(fileName.toStdString().c_str());
+    if(inputFile.open(QFile::ReadOnly)) {
 
-    QTextStream fin(&inputFile);
+        QString tempRank;
+        QString tempName;
+        QString tempDate;
+        int tempId;
+        int index;
+        executive *tempExec;
+        member *tempMem;
 
-    tempName = fin.readLine();
-    fin.readLine(tempId);
-    tempRank = fin.readLine();
+        QTextStream fin(&inputFile);
 
-    if(tempRank == "Executive") {
-        tempExec = new executive;                       // Creates new exec
-        myMembers.execVec.push_back(tempExec);          // Pushes it to the back of the vector
-        index = myMembers.execVec.size() - 1;
-        myMembers.execVec[index]->setName(tempName);    // Sets the name of that obj
-        myMembers.execVec[index]->setNum(tempId);       // Sets the id of that obj
-        myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
-        myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
+        // While !eof
+        while(!fin.atEnd())  {
+
+            tempName = fin.readLine();
+            tempId = fin.readLine().toInt();
+            tempRank = fin.readLine();
+            tempDate = fin.readLine();
+
+            if(tempRank == "Executive") {
+                tempExec = new executive;                       // Creates new exec
+                myMembers.execVec.push_back(tempExec);          // Pushes it to the back of the vector
+                index = myMembers.execVec.size() - 1;
+                myMembers.execVec[index]->setName(tempName);    // Sets the name of that obj
+                myMembers.execVec[index]->setNum(tempId);       // Sets the id of that obj
+                myMembers.execVec[index]->setExpiry(tempDate.mid(3,2).toInt(),
+                                                    tempDate.left(2).toInt(),
+                                                    tempDate.right(4).toInt());
+                myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
+                myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
+            }
+            else
+            {
+                tempMem = new member;                           // Creates new member
+                myMembers.memberVec.push_back(tempMem);         // Pushes it to the back of the vector
+                index = myMembers.memberVec.size() - 1;
+                myMembers.memberVec[index]->setName(tempName);  // Sets the member's name
+                myMembers.memberVec[index]->setNum(tempId);     // Sets the member's ID
+                myMembers.memberVec[index]->setExpiry(tempDate.mid(3,2).toInt(),
+                                                      tempDate.left(2).toInt(),
+                                                      tempDate.right(4).toInt());
+                myMembers.memberVec[index]->setAnnual(85);      // Sets the annual dues to 85
+            }
+        }
+        return true;
     }
-    else
-    {
-        tempMem = new member;                           // Creates new member
-        myMembers.memberVec.push_back(tempMem);         // Pushes it to the back of the vector
-        index = myMembers.memberVec.size() - 1;
-        myMembers.memberVec[index]->setName(tempName);  // Sets the member's name
-        myMembers.memberVec[index]->setNum(tempId);     // Sets the member's ID
-        myMembers.memberVec[index]->setAnnual(85);      // Sets the annual dues to 85
-    }
-
-
+    return false;
 }
 
 void MainWindow::on_backButton_addmen_clicked()
 {
- ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_backButton_delete_clicked()
 {
-     ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_backButton_reports_clicked()
 {
-     ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_backButton_readfile_clicked()
 {
-     ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_backButton_upgrade_clicked()
 {
-     ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_backButton_search_clicked()
 {
-     ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    QString fileName = ui->lineEdit->text();
+
+    if(!fileName.endsWith(".txt"))
+        fileName += ".txt";
+
+    fileName = "Texts\\" + fileName;
+
+    if(UpdateMembersFromFile(fileName))  {
+        //Change the page, let user know it worked
+        qDebug()    << "success";
+        qDebug() << myMembers.execVec[4]->getName();
+        qDebug() << myMembers.execVec[4]->getNum();
+        qDebug() << myMembers.execVec[4]->getExpiry().printDate();
+    }
+    else
+    {
+        // Error message prompt for input again
+        qDebug()    << "Failure.";
+    }
+
+
+
+
+    /*if()    {
+
+    }
+    else
+    {
+
+    }*/
+
+
 }
