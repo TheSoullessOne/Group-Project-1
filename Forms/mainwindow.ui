@@ -258,7 +258,7 @@
        <string>READ IN FILE </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="backButton_readfile_2">
+     <widget class="QPushButton" name="backButton_readfile">
       <property name="geometry">
        <rect>
         <x>530</x>
