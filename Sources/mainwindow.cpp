@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    UpdateMembersFromFile("Texts\\warehouse shoppers.txt");
 }
 
 MainWindow::~MainWindow()
@@ -55,7 +56,6 @@ void MainWindow::on_readInFile_clicked()
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
-    //    UpdateDataFromFile()
 }
 
 void MainWindow::on_backButton_6_clicked()
@@ -184,32 +184,32 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
 void MainWindow::on_backButton_addmen_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_delete_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_reports_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_readfile_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_upgrade_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_lineEdit_returnPressed()
@@ -290,4 +290,48 @@ void MainWindow::on_add_user_clicked()
 void MainWindow::on_add_purchase_clicked()
 {
     ui->pages->setCurrentIndex(8);
+}
+
+
+void MainWindow::on_enterPassword_returnPressed()
+{
+    qDebug() << myMembers.execVec.size();
+    qDebug() << myMembers.memberVec.size();
+    QString username = ui->enterUserName->text();
+    int tempId = username.toInt();
+    QString password = ui->enterPassword->text();
+    bool found = false;
+
+    for(int i = 0; i < myMembers.execVec.size(); ++i)   {
+        memberIds.push_back(myMembers.execVec[i]->getNum());
+    }
+    for(int j = 0; j < myMembers.memberVec.size(); ++j) {
+        memberIds.push_back(myMembers.memberVec[j]->getNum());
+    }
+
+    for(int i = 0; i < memberIds.size(); ++i)   {
+        if(tempId == memberIds[i])  {
+            found = true;
+        }
+    }
+
+    if(password != "member")  {
+        QMessageBox::critical(this, "Login Error", "Incorrect Password");
+    }
+    else if(found)
+    {
+        // Jump to member info page if password and id are correct
+        ui->pages->setCurrentIndex(1);
+    }
+}
+
+
+void MainWindow::on_back_to_login_clicked()
+{
+    ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_Admin_Login_Button_clicked()
+{
+    // go to admin login page to get to menu choices
 }

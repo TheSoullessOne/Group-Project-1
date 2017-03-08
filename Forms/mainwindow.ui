@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -70,6 +70,19 @@
       </property>
       <property name="text">
        <string>MAIN MENU</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Admin_Login_Button">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>270</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Admin Login</string>
       </property>
      </widget>
     </widget>
@@ -127,6 +140,19 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QPushButton" name="back_to_login">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>260</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back to login</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="ADD_MENU">

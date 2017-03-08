@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "executive.h"
 #include <QVector>
+#include <QMessageBox>
 using namespace std;
 
 struct memberStruct {
@@ -95,9 +96,18 @@ private slots:
 
     void on_add_purchase_clicked();
 
+    void on_enterPassword_returnPressed();
+
+//    void on_pushButton_clicked();
+
+    void on_back_to_login_clicked();
+
+    void on_Admin_Login_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
+    QVector<int> memberIds;
 };
 
 #endif // MAINWINDOW_H
