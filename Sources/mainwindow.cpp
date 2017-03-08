@@ -21,7 +21,7 @@ MainWindow::~MainWindow()
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(2);
     //Here we call the function that makes new members
     //Take you to another menu to see what kind of member
 }
@@ -29,7 +29,7 @@ void MainWindow::on_Adduser_clicked()
 //Function to delete a user or item
 void MainWindow::on_deleteRec_clicked()
 {
-    ui->pages->setCurrentIndex(2);
+    ui->pages->setCurrentIndex(3);
     //Link to another menu that will determine what the user
     //wants to delete, whether an item or list
 }
@@ -44,7 +44,7 @@ void MainWindow::on_upgrade_clicked()
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
-    ui->pages->setCurrentIndex(3);
+    ui->pages->setCurrentIndex(4);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -52,7 +52,7 @@ void MainWindow::on_reportsSearch_clicked()
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
-    ui->pages->setCurrentIndex(4);
+    ui->pages->setCurrentIndex(5);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
@@ -209,7 +209,7 @@ void MainWindow::on_backButton_upgrade_clicked()
 
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_lineEdit_returnPressed()
@@ -321,7 +321,7 @@ void MainWindow::on_enterPassword_returnPressed()
     else if(found)
     {
         // Jump to member info page if password and id are correct
-        ui->pages->setCurrentIndex(1);
+        ui->pages->setCurrentIndex(9);
     }
 }
 
@@ -334,4 +334,44 @@ void MainWindow::on_back_to_login_clicked()
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
+    ui->pages->setCurrentIndex(7);
+}
+
+void MainWindow::on_backButton_admin_login_clicked()
+{
+    ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_Admin_Password_line_edit_returnPressed()
+{
+    QString username = ui->Admin_Username_line_edit->text();
+    QString password = ui->Admin_Password_line_edit->text();
+
+    username = username.toLower();
+    password = password.toLower();
+
+    if(username == "admin"  &&
+       password == "password")  {
+        ui->pages->setCurrentIndex(1);
+    }
+    else
+    {
+        // Jump to member info page if password and id are correct
+        QMessageBox::critical(this, "Login Error", "Incorrect Password Or Username");
+    }
+}
+
+void MainWindow::on_Member_info_back_button_clicked()
+{
+    ui->pages->setCurrentIndex(0);
+}
+
+void MainWindow::on_searchButtonBrians_clicked()
+{
+    ui->pages->setCurrentIndex(8);
+}
+
+void MainWindow::on_Search_back_button_clicked()
+{
+    ui->pages->setCurrentIndex(1);
 }

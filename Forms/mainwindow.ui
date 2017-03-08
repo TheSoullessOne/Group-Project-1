@@ -17,14 +17,14 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
+      <x>40</x>
+      <y>10</y>
       <width>661</width>
       <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -59,7 +59,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="MainMenuLabel">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -154,6 +154,19 @@
        <string>Back to login</string>
       </property>
      </widget>
+     <widget class="QLabel" name="AdminMenuLabel">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Administrative Menu</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="ADD_MENU">
      <widget class="QPushButton" name="add_user">
@@ -195,6 +208,19 @@
        <string>BACK</string>
       </property>
      </widget>
+     <widget class="QLabel" name="AddUserLabel">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>10</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add User/Item</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="DELETE">
      <widget class="QPushButton" name="delete_user">
@@ -234,6 +260,19 @@
       </property>
       <property name="text">
        <string>BACK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DeletePageLabel">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>10</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete User / Item</string>
       </property>
      </widget>
     </widget>
@@ -316,13 +355,26 @@
        <string>BACK</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>0</y>
+        <width>51</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>REPORTS</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="READ_FILE">
      <widget class="QPushButton" name="readInButton">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>70</y>
+        <x>210</x>
+        <y>80</y>
         <width>121</width>
         <height>23</height>
        </rect>
@@ -342,19 +394,6 @@
       </property>
       <property name="text">
        <string>BACK</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="readInButton2">
-      <property name="geometry">
-       <rect>
-        <x>370</x>
-        <y>70</y>
-        <width>211</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>READ IN FILE DIFFERENT WAY</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit">
@@ -395,19 +434,91 @@
        <string>BACK</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="SEARCH">
-     <widget class="QPushButton" name="backButton_search">
+     <widget class="QLabel" name="UpgradeLabel">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>100</y>
+        <x>226</x>
+        <y>20</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Upgrade / Downgrade</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="SEARCH">
+     <widget class="QPushButton" name="backButton_admin_login">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>360</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
        <string>BACK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="AdminLoginLabel">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>30</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Admin Login </string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="UsernameAdminLabel">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>120</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Username:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Admin_Username_line_edit">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>120</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Admin_Password_line_edit">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>150</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="PasswordAdminLabel">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Password:</string>
       </property>
      </widget>
     </widget>
@@ -435,8 +546,61 @@
        <string>Enter ID, name, date or item name to search for report</string>
       </property>
      </widget>
+     <widget class="QLabel" name="SearchLabe">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>40</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Search?</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Search_back_button">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>290</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back to menu</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="ENTER_USER_INFO"/>
+    <widget class="QWidget" name="ENTER_USER_INFO">
+     <widget class="QLabel" name="MemberInfoPageLabel">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>40</y>
+        <width>161</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Member Info Page</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Member_info_back_button">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>280</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back to login</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="ENTER_DELETE_INFO"/>
    </widget>
   </widget>

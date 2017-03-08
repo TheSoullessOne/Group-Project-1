@@ -98,11 +98,19 @@ private slots:
 
     void on_enterPassword_returnPressed();
 
-//    void on_pushButton_clicked();
-
     void on_back_to_login_clicked();
 
     void on_Admin_Login_Button_clicked();
+
+    void on_backButton_admin_login_clicked();
+
+    void on_Admin_Password_line_edit_returnPressed();
+
+    void on_Member_info_back_button_clicked();
+
+    void on_searchButtonBrians_clicked();
+
+    void on_Search_back_button_clicked();
 
 private:
     Ui::MainWindow *ui;
