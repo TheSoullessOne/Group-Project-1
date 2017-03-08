@@ -17,14 +17,14 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
+      <x>40</x>
+      <y>10</y>
       <width>661</width>
       <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="menu">
      <widget class="QWidget" name="verticalLayoutWidget">
@@ -73,7 +73,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="searchButtonBrians">
          <property name="text">
           <string>search?</string>
          </property>
@@ -245,40 +245,66 @@
      </widget>
     </widget>
     <widget class="QWidget" name="READ_FILE">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="readInButton">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>30</x>
         <y>70</y>
-        <width>75</width>
+        <width>121</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="enter_fileName">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>120</y>
-        <width>341</width>
-        <height>31</height>
-       </rect>
+       <string>READ IN FILE </string>
       </property>
      </widget>
      <widget class="QPushButton" name="backButton_readfile">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>240</y>
+        <x>560</x>
+        <y>380</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
        <string>BACK</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="enterFileName">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>180</y>
+        <width>411</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enter file name </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="readInButton2">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>70</y>
+        <width>211</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>READ IN FILE DIFFERENT WAY</string>
       </property>
      </widget>
     </widget>
@@ -312,6 +338,33 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="reportsInputOptions">
+     <widget class="QPlainTextEdit" name="readInSearchString">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>120</y>
+        <width>351</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>90</y>
+        <width>511</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enter ID, name, date or item name to search for report</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ENTER_USER_INFO"/>
+    <widget class="QWidget" name="ENTER_DELETE_INFO"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -320,7 +373,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
