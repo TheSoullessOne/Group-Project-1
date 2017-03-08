@@ -241,3 +241,53 @@ void MainWindow::SaveToFile(QString)   {
 
     }
 }
+
+void MainWindow::on_readInButton_clicked()
+{
+    //This is for the first way of readding in file
+}
+
+void MainWindow::on_purchases_rep_clicked()
+{
+    ui->pages->setCurrentIndex(7); //takes you to page to input the string
+}
+
+void MainWindow::on_sales_rep_clicked()
+{
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+}
+
+void MainWindow::on_quantity_rep_clicked()
+{
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+}
+
+void MainWindow::on_rebate_rep_clicked()
+{
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+}
+
+void MainWindow::on_expiring_rep_clicked()
+{
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+}
+
+void MainWindow::on_delete_user_clicked()
+{
+    ui->pages->setCurrentIndex(9);
+}
+
+void MainWindow::on_delete_item_clicked()
+{
+    ui->pages->setCurrentIndex(9);
+}
+
+void MainWindow::on_add_user_clicked()
+{
+    ui->pages->setCurrentIndex(8);
+}
+
+void MainWindow::on_add_purchase_clicked()
+{
+    ui->pages->setCurrentIndex(8);
+}

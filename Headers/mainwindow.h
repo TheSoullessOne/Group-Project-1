@@ -75,6 +75,26 @@ private slots:
 
     void on_lineEdit_returnPressed();
 
+    void on_readInButton_clicked();
+
+    void on_purchases_rep_clicked();
+
+    void on_sales_rep_clicked();
+
+    void on_quantity_rep_clicked();
+
+    void on_rebate_rep_clicked();
+
+    void on_expiring_rep_clicked();
+
+    void on_delete_user_clicked();
+
+    void on_delete_item_clicked();
+
+    void on_add_user_clicked();
+
+    void on_add_purchase_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
