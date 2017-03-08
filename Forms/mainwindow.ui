@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -55,7 +55,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="enterPassword"/>
+        <widget class="QLineEdit" name="enterPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -506,6 +510,9 @@
         <width>181</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
       </property>
      </widget>
      <widget class="QLabel" name="PasswordAdminLabel">
