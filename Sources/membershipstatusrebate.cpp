@@ -18,7 +18,7 @@ void membershipStatus(QString id){
     //(regular or executive)
 
 
-    if(executive_yes = true){
+    if(executive_yes == true){
         //annual executive membership is $95
         //the rebate will be subtracted from this charge
         //rebate = 3.25% * subtotal (before tax)
@@ -29,7 +29,7 @@ void membershipStatus(QString id){
         //to create a yearly total?
 
     }
-    else if(executive_yes = false){
+    else if(executive_yes == false){
         //annual regular membership is $85
         //there is no rebate
     }
