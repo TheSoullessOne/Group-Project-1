@@ -17,8 +17,8 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
+      <x>40</x>
+      <y>20</y>
       <width>661</width>
       <height>421</height>
      </rect>
@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -97,9 +97,9 @@
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>160</width>
+        <x>170</x>
+        <y>40</y>
+        <width>171</width>
         <height>170</height>
        </rect>
       </property>
@@ -115,6 +115,9 @@
         <widget class="QPushButton" name="deleteRec">
          <property name="text">
           <string>DELETE </string>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -151,8 +154,8 @@
      <widget class="QPushButton" name="back_to_login">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>260</y>
+        <x>220</x>
+        <y>220</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -164,14 +167,27 @@
      <widget class="QLabel" name="AdminMenuLabel">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>101</width>
-        <height>21</height>
+        <x>120</x>
+        <y>0</y>
+        <width>291</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Administrative Menu</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ff55ff;&quot;&gt;Administrative Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>290</y>
+        <width>311</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; color:#00ff00;&quot;&gt;GREEN&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -457,8 +473,8 @@
      <widget class="QPushButton" name="readInButton">
       <property name="geometry">
        <rect>
-        <x>210</x>
-        <y>80</y>
+        <x>120</x>
+        <y>90</y>
         <width>121</width>
         <height>23</height>
        </rect>
@@ -768,7 +784,56 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ENTER_DELETE_INFO"/>
+    <widget class="QWidget" name="ENTER_DELETE_INFO">
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>611</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#aa0000;&quot;&gt;ENTER USER NAME OR ITEM NAME of thing you want to delete&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>60</y>
+        <width>281</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="inputNewUserInfo">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>329</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>30</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#5500ff;&quot;&gt;Enter Full Name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
