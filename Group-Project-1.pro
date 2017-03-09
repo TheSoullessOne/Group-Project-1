@@ -103,15 +103,14 @@ FORMS    += mainwindow.ui
 #=======
 SOURCES += Sources\main.cpp\
     Sources\mainwindow.cpp \
-    Sources\functions.cpp \
     Sources\membershipstatusrebate.cpp \
-    Sources\buildll.cpp \
     Sources\finalmenu.cpp \
     Sources\mainmenu.cpp \
     Sources\submenu.cpp \
     Sources\member.cpp \
     Sources\date.cpp \
-    Sources\vectors.cpp
+    Sources\vectors.cpp \
+    Sources/item.cpp
 
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
@@ -119,8 +118,7 @@ HEADERS  += Headers\mainwindow.h \
     Headers\header.h \
     Headers\item.h \
     Headers\member.h \
-    Headers\mainmenu.h \
-    Headers\linkedlist.h
+    Headers\mainmenu.h
 
 FORMS    += Forms\mainwindow.ui
 #>>>>>>> d937bd0fb638a297cfd833ef4b3a0d1dc3bd8dfc

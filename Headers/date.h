@@ -1,6 +1,8 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <QString>
+
 class date
 {
   public:
@@ -29,6 +31,8 @@ class date
     void setYear(int y){
     year = y;
     }
+
+    QString printDate();
 
   private:
     int day;

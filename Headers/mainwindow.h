@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "executive.h"
 #include <QVector>
+#include <QMessageBox>
 using namespace std;
 
 struct memberStruct {
@@ -38,9 +39,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void UpdateDataFromFile(QString);
 
-    void UpdateMembersFromFile(QString);
+
+    bool UpdateDataFromFile(QString);
+
+    bool UpdateMembersFromFile(QString);
+
+    void SaveToFile(QString);
 
 private slots:
     void on_search_clicked();
@@ -55,7 +60,6 @@ private slots:
 
     void on_readInFile_clicked();
 
-    void on_backButton_6_clicked();
 
     void on_backButton_addmen_clicked();
 
@@ -69,10 +73,48 @@ private slots:
 
     void on_backButton_search_clicked();
 
+    void on_readInButton_clicked();
+
+    void on_purchases_rep_clicked();
+
+    void on_sales_rep_clicked();
+
+    void on_quantity_rep_clicked();
+
+    void on_rebate_rep_clicked();
+
+    void on_expiring_rep_clicked();
+
+    void on_delete_user_clicked();
+
+    void on_delete_item_clicked();
+
+    void on_add_user_clicked();
+
+    void on_add_purchase_clicked();
+
+    void on_enterPassword_returnPressed();
+
+    void on_back_to_login_clicked();
+
+    void on_Admin_Login_Button_clicked();
+
+    void on_backButton_admin_login_clicked();
+
+    void on_Admin_Password_line_edit_returnPressed();
+
+    void on_Member_info_back_button_clicked();
+
+    void on_searchButtonBrians_clicked();
+
+    void on_Search_back_button_clicked();
+
+    void on_read_file_line_edit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
+    QVector<int> memberIds;
 };
 
 #endif // MAINWINDOW_H
