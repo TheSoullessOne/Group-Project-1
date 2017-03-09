@@ -5,6 +5,20 @@
 #include <QFile>
 #include <QStringList>
 using namespace std;
+enum pages{
+    LOGIN,
+    MAIN_MENU,
+    ADD_MENU,
+    DELETE,
+    REPORTS,
+    READ_FILE,
+    UPGRADE,
+    ADMIN_LOGIN,
+    SEARCH,
+    MEMBER_INFO,
+    ENTER_DELETE_INFO,
+    INPUT_NEW_USER_INFO
+};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -214,7 +228,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
             // Reads in the 4 lines that belong to 1 member
             tempName = fin.readLine();
-            tempId = fin.readLine().toInt();
+            tempId   = fin.readLine().toInt();
             tempRank = fin.readLine();
             tempDate = fin.readLine();
 
