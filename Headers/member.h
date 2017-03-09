@@ -2,6 +2,7 @@
 #define MEMBER_H_
 #include "date.h"
 #include "item.h"
+#include <QVector>
 
 
 class member
@@ -9,7 +10,7 @@ class member
   public:
     // Constructors
     member();
-    member(QString, int, bool, int, int, int, double, double, item*);
+    member(QString, int, bool, int, int, int, double, double, QVector<item*>);
 
     // Gets
     QString getName() const{
@@ -30,8 +31,8 @@ class member
     double getAnnual() const{
     return annual_dues;
     }
-    item* getReceipt() const{
-    return receipt;
+    QVector<item*> getReceipt() const{
+        return receipt;
     }
 
     // Sets
@@ -55,8 +56,8 @@ class member
     void setAnnual(double a){
     annual_dues = a;
     }
-    void setReceipt(item* r){
-    receipt = r;
+    void setReceipt(QVector<item*> r){
+        receipt = r;
     }
 
     // Operator Overloads
@@ -77,7 +78,7 @@ class member
     double total;        // Total Amount Spent
     double annual_dues;  // Regular   Member: $85.00
                          // Executive Member: $95.00
-    item*  receipt;      // Will attempt to keep track of members' purchases
+    QVector<item*>  receipt;      // Will attempt to keep track of members' purchases
                          /*** Satisfies Pointer Requirement ***/
 }; // End class member
 

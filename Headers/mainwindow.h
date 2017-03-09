@@ -41,7 +41,7 @@ public:
     ~MainWindow();
 
 
-    void UpdateDataFromFile(QString);
+    bool UpdateDataFromFile(QString);
 
     bool UpdateMembersFromFile(QString);
 

@@ -23,8 +23,11 @@
       <height>421</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -452,7 +455,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="SEARCH">
+    <widget class="QWidget" name="ADMIN_LOGIN">
      <widget class="QPushButton" name="backButton_admin_login">
       <property name="geometry">
        <rect>
@@ -529,7 +532,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="reportsInputOptions">
+    <widget class="QWidget" name="SEARCH">
      <widget class="QPlainTextEdit" name="readInSearchString">
       <property name="geometry">
        <rect>
@@ -580,7 +583,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ENTER_USER_INFO">
+    <widget class="QWidget" name="MEMBER_INFO">
      <widget class="QLabel" name="MemberInfoPageLabel">
       <property name="geometry">
        <rect>

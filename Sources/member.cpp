@@ -10,7 +10,6 @@ member::member()    {
     expiry.setYear(0);
     total = 0;
     annual_dues = 0;
-    receipt = NULL;
 }
 
 // Specific constructor
@@ -22,7 +21,7 @@ member::member(QString tempName,
                int tempYear,
                double tempTotal,
                double tempDues,
-               item* tempReceipt)   {
+               QVector<item*> tempReceipt)   {
     name = tempName;
     num = tempNum;
     type = tempType;

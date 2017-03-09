@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <algorithm>
 #include <QFile>
+#include <QStringList>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -108,22 +109,83 @@ void MainWindow::on_search_clicked()
     }
 }
 
-void MainWindow::UpdateDataFromFile(QString fileName)   {
-    QString tempDate;
-    QString itemName;
-    int tempId = 0;     // SEARCH FUNCTION
-    double itemPrice = 0;
-    int itemQuan = 0;
-
+bool MainWindow::UpdateDataFromFile(QString fileName)   {
+    // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
+    // Opens the file if it exists and makes it read Only
+    if(inputFile.open(QFile::ReadOnly)) {
 
-    QTextStream fin(&inputFile);
+        QString tempPriceAndAmt;
+        QString tempPrice;
+        QString tempAmt;
+        QString tempName;
+        QString tempDate;
+        QVector<item*> tempReceipt;
+        int tempId;
+        item *tempItem;
+        bool found;
+        int index = 0;
 
-    tempDate = fin.readLine();
-    fin.readLine(tempId);
-    itemName = fin.readLine();
-    fin.readLine(itemPrice);
-    fin.readLine(itemQuan);
+        // My textStream variables "fstream"
+        QTextStream fin(&inputFile);
+
+        // While !eof
+        while(!fin.atEnd())  {
+            found = false;
+            tempDate = fin.readLine();
+            tempId = fin.readLine().toInt();
+            tempName = fin.readLine();
+            tempPriceAndAmt = fin.readLine();
+
+            QStringList strList = tempPriceAndAmt.split('\t', QString::SkipEmptyParts);
+            tempPrice = strList[0];
+            tempAmt = strList[1];
+
+            int i = 0;
+            while(!found && i < ((myMembers.execVec.size() + myMembers.memberVec.size()) / 2))   {
+                if(tempId == myMembers.execVec[i]->getNum() ||
+                   tempId == myMembers.memberVec[i]->getNum())  {
+                    found = true;
+                    qDebuf() << "User ID found!" << endl;
+                }
+                else    {
+                    ++i;
+                }
+            }
+
+            if(tempId == myMembers.execVec[i]->getNum()) {
+                qDebug() << "New executive receipt" << endl;
+
+                tempItem = new item;
+                tempReceipt.push_back(tempItem);
+                index = myMembers.execVec[i]->getReceipt().size() - 1;
+                tempReceipt[index]->setShopDate(tempDate.left(2).toInt(),
+                                                tempDate.mid(3,2).toInt(),
+                                                tempDate.right(4).toInt());
+                tempReceipt[index]->setItemName(tempName);
+                tempReceipt[index]->setItemPrice(tempPrice.toDouble());
+                myMembers.execVec[i]->setReceipt(tempReceipt);
+                myMembers.execVec[i]->setRebate(this->myMembers.execVec[i]->getRebate() + (0.0325 * tempPrice.toDouble() * tempAmt.toDouble()));
+
+            }
+            else if(tempId == myMembers.memberVec[i]->getNum())
+            {
+                qDebug() << "New member receipt" << endl;
+
+                tempItem = new item;
+                tempReceipt.push_back(tempItem);
+                index = myMembers.memberVec[i]->getReceipt().size() - 1;
+                tempReceipt[index]->setShopDate(tempDate.left(2).toInt(),
+                                                tempDate.mid(3,2).toInt(),
+                                                tempDate.right(4).toInt());
+                tempReceipt[index]->setItemName(tempName);
+                tempReceipt[index]->setItemPrice(tempPrice.toDouble());
+                myMembers.memberVec[i]->setReceipt(tempReceipt);
+            }
+        }
+        return true;
+    }
+    return false;
 }
 
 bool MainWindow::UpdateMembersFromFile(QString fileName)    {
@@ -163,6 +225,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                                                     tempDate.left(2).toInt(),
                                                     tempDate.right(4).toInt());
                 myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
+                myMembers.execVec[index]->setType(true);
                 myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
             }
             else    // creates member mem and initializes
@@ -176,6 +239,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                                                       tempDate.left(2).toInt(),
                                                       tempDate.right(4).toInt());
                 myMembers.memberVec[index]->setAnnual(85);      // Sets the annual dues to 85
+                myMembers.memberVec[index]->setType(false);
             }
         }
         return true;
@@ -383,7 +447,7 @@ void MainWindow::on_read_file_line_edit_returnPressed()
 
     fileName = "Texts\\" + fileName;
 
-    if(UpdateMembersFromFile(fileName))  {
+    if(UpdateDataFromFile(fileName))  {
         //Change the page, let user know it worked
         qDebug()    << "success";
     }

@@ -31,7 +31,8 @@ SOURCES += Sources\main.cpp\
     Sources\submenu.cpp \
     Sources\member.cpp \
     Sources\date.cpp \
-    Sources\vectors.cpp
+    Sources\vectors.cpp \
+    Sources/item.cpp
 
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
