@@ -114,7 +114,7 @@
     </property>
 >>>>>>> 4bcf4e944d4587a9879cf68be53fce2cdd215a13
     <property name="currentIndex">
-     <number>7</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -837,64 +837,63 @@
      </widget>
     </widget>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
 =======
     <widget class="QWidget" name="ENTER_DELETE_INFO"/>
 <<<<<<< HEAD
 >>>>>>> 4bcf4e944d4587a9879cf68be53fce2cdd215a13
 =======
-    <widget class="QWidget" name="inputNewUserInfo">
-     <widget class="QWidget" name="verticalLayoutWidget_4">
+=======
+    <widget class="QWidget" name="ENTER_DELETE_INFO">
+     <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>40</y>
-        <width>331</width>
-        <height>231</height>
+        <x>30</x>
+        <y>10</y>
+        <width>611</width>
+        <height>51</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Enter Full Name</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_2"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Enter new User Name</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_3"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Enter  new password</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_4"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Enter One Purchase Validation</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_5"/>
-       </item>
-      </layout>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#aa0000;&quot;&gt;ENTER USER NAME OR ITEM NAME of thing you want to delete&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>60</y>
+        <width>281</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+>>>>>>> ef9367b333250061eb5e85ee8cfc73dd0c4f369d
+    <widget class="QWidget" name="inputNewUserInfo">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>329</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>30</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#5500ff;&quot;&gt;Enter Full Name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
      </widget>
     </widget>
 >>>>>>> 4c4fe8e94150ad42c12ff386d0874aa94bd6a239
