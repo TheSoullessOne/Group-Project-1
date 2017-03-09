@@ -56,8 +56,8 @@ class member
     void setAnnual(double a){
     annual_dues = a;
     }
-    void setReceipt(QVector<item*> r){
-        receipt = r;
+    void setReceipt(item* tempItem){
+        receipt.push_back(tempItem);
     }
 
     // Operator Overloads

@@ -24,6 +24,10 @@ class item
         price = tempPrice;
     }
 
+    void setAmtBought(int tempAmt)  {
+        amtBought = tempAmt;
+    }
+
     date getShopDate() const  {
         return shopping_day;
     }
@@ -36,9 +40,14 @@ class item
         return price;
     }
 
+    int getAmtBought() {
+        return amtBought;
+    }
+
   private:
     QString name;
     double price;
+    int     amtBought;
     date    shopping_day;
 };
 

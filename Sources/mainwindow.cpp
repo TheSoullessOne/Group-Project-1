@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->File_error_message_label->setHidden(true);
     UpdateMembersFromFile("Texts\\warehouse shoppers.txt");
 }
 
@@ -57,11 +58,6 @@ void MainWindow::on_readInFile_clicked()
     ui->pages->setCurrentIndex(5);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
-
-}
-
-void MainWindow::on_backButton_6_clicked()
-{
 
 }
 
@@ -115,6 +111,7 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
     // Opens the file if it exists and makes it read Only
     if(inputFile.open(QFile::ReadOnly)) {
 
+
         QString tempPriceAndAmt;
         QString tempPrice;
         QString tempAmt;
@@ -142,45 +139,52 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             tempAmt = strList[1];
 
             int i = 0;
-            while(!found && i < ((myMembers.execVec.size() + myMembers.memberVec.size()) / 2))   {
-                if(tempId == myMembers.execVec[i]->getNum() ||
-                   tempId == myMembers.memberVec[i]->getNum())  {
+            while(!found && i < myMembers.execVec.size())   {
+                if(myMembers.execVec[i]->getNum() == tempId)    {
                     found = true;
-                    qDebuf() << "User ID found!" << endl;
+                }
+                else
+                {
+                    ++i;
+                }
+            }
+            if(!found)  {
+                i = 0;
+            }
+            while(!found && i < myMembers.memberVec.size())   {
+                if(tempId == myMembers.memberVec[i]->getNum())  {
+                    found = true;
                 }
                 else    {
                     ++i;
                 }
             }
+            if(!found)  {
+                break;
+            }
 
             if(tempId == myMembers.execVec[i]->getNum()) {
-                qDebug() << "New executive receipt" << endl;
 
                 tempItem = new item;
-                tempReceipt.push_back(tempItem);
-                index = myMembers.execVec[i]->getReceipt().size() - 1;
-                tempReceipt[index]->setShopDate(tempDate.left(2).toInt(),
-                                                tempDate.mid(3,2).toInt(),
-                                                tempDate.right(4).toInt());
-                tempReceipt[index]->setItemName(tempName);
-                tempReceipt[index]->setItemPrice(tempPrice.toDouble());
-                myMembers.execVec[i]->setReceipt(tempReceipt);
+                tempItem->setShopDate(tempDate.left(2).toInt(),
+                                      tempDate.mid(3,2).toInt(),
+                                      tempDate.right(4).toInt());
+                tempItem->setItemName(tempName);
+                tempItem->setItemPrice(tempPrice.toDouble());
+                tempItem->setAmtBought(tempAmt.toDouble());
+                myMembers.execVec[i]->setReceipt(tempItem);
                 myMembers.execVec[i]->setRebate(this->myMembers.execVec[i]->getRebate() + (0.0325 * tempPrice.toDouble() * tempAmt.toDouble()));
-
             }
             else if(tempId == myMembers.memberVec[i]->getNum())
             {
-                qDebug() << "New member receipt" << endl;
-
                 tempItem = new item;
-                tempReceipt.push_back(tempItem);
-                index = myMembers.memberVec[i]->getReceipt().size() - 1;
-                tempReceipt[index]->setShopDate(tempDate.left(2).toInt(),
-                                                tempDate.mid(3,2).toInt(),
-                                                tempDate.right(4).toInt());
-                tempReceipt[index]->setItemName(tempName);
-                tempReceipt[index]->setItemPrice(tempPrice.toDouble());
-                myMembers.memberVec[i]->setReceipt(tempReceipt);
+                tempItem->setShopDate(tempDate.left(2).toInt(),
+                                      tempDate.mid(3,2).toInt(),
+                                      tempDate.right(4).toInt());
+                tempItem->setItemName(tempName);
+                tempItem->setItemPrice(tempPrice.toDouble());
+                tempItem->setAmtBought(tempAmt.toDouble());
+                myMembers.memberVec[i]->setReceipt(tempItem);
             }
         }
         return true;
@@ -275,11 +279,6 @@ void MainWindow::on_backButton_upgrade_clicked()
 void MainWindow::on_backButton_search_clicked()
 {
     ui->pages->setCurrentIndex(0);
-}
-
-void MainWindow::on_lineEdit_returnPressed()
-{
-
 }
 
 
@@ -440,6 +439,9 @@ void MainWindow::on_Search_back_button_clicked()
 
 void MainWindow::on_read_file_line_edit_returnPressed()
 {
+    ui->File_error_message_label->setHidden(true);
+//    ui->File_error_message_label->setEnabled(false);
+
     QString fileName = ui->read_file_line_edit->text();
 
     if(!fileName.endsWith(".txt"))
@@ -447,13 +449,10 @@ void MainWindow::on_read_file_line_edit_returnPressed()
 
     fileName = "Texts\\" + fileName;
 
-    if(UpdateDataFromFile(fileName))  {
-        //Change the page, let user know it worked
-        qDebug()    << "success";
-    }
-    else
-    {
+    if(!UpdateDataFromFile(fileName))  {
         // Error message prompt for input again
-        qDebug()    << "Failure.";
+        ui->File_error_message_label->setHidden(false);
+//        ui->File_error_message_label->setEnabled(true);
     }
+    ui->read_file_line_edit->clear();
 }

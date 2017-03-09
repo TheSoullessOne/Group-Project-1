@@ -60,7 +60,6 @@ private slots:
 
     void on_readInFile_clicked();
 
-    void on_backButton_6_clicked();
 
     void on_backButton_addmen_clicked();
 
@@ -73,8 +72,6 @@ private slots:
     void on_backButton_upgrade_clicked();
 
     void on_backButton_search_clicked();
-
-    void on_lineEdit_returnPressed();
 
     void on_readInButton_clicked();
 
