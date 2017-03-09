@@ -5,7 +5,7 @@
 #include <QFile>
 #include <QStringList>
 using namespace std;
-enum pages{
+enum PAGES{
     LOGIN,
     MAIN_MENU,
     ADD_MENU,
