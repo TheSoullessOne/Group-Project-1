@@ -44,11 +44,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void deleteItemOrName(QString);
+    bool deleteItemOrName(QString);
 
-    void memberRebate(QString);
+    double memberRebate(int);
 
-    void upgrade(QString);
+    void upgrade(int);
 
     bool UpdateDataFromFile(QString);
 
@@ -125,6 +125,8 @@ private slots:
     void on_search_line_edit_returnPressed();
 
     void on_Delete_line_edit_returnPressed();
+
+    void on_backButton_expiredMembers_clicked();
 
 private:
     Ui::MainWindow *ui;
