@@ -32,13 +32,12 @@ SOURCES += Sources\main.cpp\
     Sources\member.cpp \
     Sources\date.cpp \
     Sources\vectors.cpp \
-    Sources/item.cpp \
-    Sources/upgrade.cpp
+    Sources\item.cpp \
+    Sources\upgrade.cpp
 
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
     Headers\executive.h \
-    Headers\header.h \
     Headers\item.h \
     Headers\member.h \
     Headers\mainmenu.h
