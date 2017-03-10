@@ -14,15 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<!--<<<<<<< HEAD-->
-=======
->>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
-   <widget class="QWidget" name="verticalLayoutWidget">
-=======
    <widget class="QStackedWidget" name="pages">
->>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -31,88 +23,9 @@
       <height>421</height>
      </rect>
     </property>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QPushButton" name="Adduser">
-       <property name="text">
-        <string>ADD MEMBER</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="deleteRec">
-       <property name="text">
-        <string>DELETE A  RECORD</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="reportsSearch">
-       <property name="text">
-        <string>REPORTS</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="readInFile">
-       <property name="text">
-        <string>READ FILE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="upgrade">
-       <property name="text">
-        <string>UPGRADE</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-<<<<<<< HEAD
-<!--=======-->
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>90</y>
-      <width>80</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QQuickWidget" name="quickWidget">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>60</y>
-      <width>171</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
-    </property>
-<!-->>>>>>> 43272280820e008d5101a297129f2adc1d0ff363-->
-=======
->>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
-=======
-=======
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
->>>>>>> 4bcf4e944d4587a9879cf68be53fce2cdd215a13
     <property name="currentIndex">
      <number>5</number>
     </property>
@@ -969,15 +882,6 @@
       </layout>
      </widget>
     </widget>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
-=======
-    <widget class="QWidget" name="ENTER_DELETE_INFO"/>
-<<<<<<< HEAD
->>>>>>> 4bcf4e944d4587a9879cf68be53fce2cdd215a13
-=======
-=======
     <widget class="QWidget" name="ENTER_DELETE_INFO">
      <widget class="QLabel" name="label_4">
       <property name="geometry">
@@ -1016,7 +920,6 @@
       </property>
      </widget>
     </widget>
->>>>>>> ef9367b333250061eb5e85ee8cfc73dd0c4f369d
     <widget class="QWidget" name="inputNewUserInfo">
      <widget class="QLineEdit" name="lineEdit_2">
       <property name="geometry">
@@ -1042,7 +945,6 @@
       </property>
      </widget>
     </widget>
->>>>>>> 4c4fe8e94150ad42c12ff386d0874aa94bd6a239
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
