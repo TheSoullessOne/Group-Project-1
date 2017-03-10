@@ -18,7 +18,9 @@ enum PAGES{
     SEARCH,             //8
     MEMBER_INFO,        //9
     ENTER_DELETE_INFO,  //10
-    INPUT_NEW_USER_INFO //11
+    SEARCH_EXPIRED,     //11
+    ADD_MEMBER          //12
+
 };
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -340,7 +342,7 @@ void MainWindow::SaveToFile(QString fileName)   {
 
 void MainWindow::on_readInButton_clicked()
 {
-    //This is for the first way of readding in file
+    //This is for the first way of reading in file
 }
 
 void MainWindow::on_purchases_rep_clicked()
@@ -495,7 +497,7 @@ void deleteItemOrName(QString searchItem)  {
 
 void MainWindow::on_searchByMonth_clicked()
 {
-
+    ui->pages->setCurrentIndex(SEARCH_EXPIRED);
 }
 
 void MainWindow::on_lineEdit_2_returnPressed()
@@ -505,5 +507,20 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 void MainWindow::on_backButton_expiredMembers_clicked()
 {
-    ui->pages->setCurrentIndex(2);
+    ui->pages->setCurrentIndex(MAIN_MENU);
+}
+
+void MainWindow::on_backButton_addMember_clicked()
+{
+    ui->pages->setCurrentIndex(ADD_MENU);
+}
+
+void MainWindow::on_add_member_button_clicked()
+{
+    ui->pages->setCurrentIndex(ADD_MEMBER);
+}
+
+void MainWindow::on_backButton_deleteInput_clicked()
+{
+    ui->pages->setCurrentIndex(DELETE);
 }

@@ -122,6 +122,12 @@ private slots:
 
     void on_backButton_expiredMembers_clicked();
 
+    void on_backButton_addMember_clicked();
+
+    void on_add_member_button_clicked();
+
+    void on_backButton_deleteInput_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;

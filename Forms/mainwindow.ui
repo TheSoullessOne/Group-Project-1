@@ -17,9 +17,9 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>10</y>
-      <width>691</width>
+      <width>711</width>
       <height>421</height>
      </rect>
     </property>
@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>11</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -179,8 +179,8 @@
      <widget class="QPushButton" name="backButton_addmen">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>340</y>
+        <x>370</x>
+        <y>220</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -192,21 +192,21 @@
      <widget class="QLabel" name="AddUserLabel">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>190</x>
         <y>10</y>
-        <width>171</width>
-        <height>16</height>
+        <width>281</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Add User/Item</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; text-decoration: underline; color:#00ff00;&quot;&gt;ADD NEW MEMBER/ITEM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QWidget" name="verticalLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>40</y>
+        <x>210</x>
+        <y>70</y>
         <width>231</width>
         <height>131</height>
        </rect>
@@ -228,81 +228,13 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>80</y>
-        <width>181</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>80</y>
-        <width>61</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>New Name:</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>120</y>
-        <width>70</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::RightToLeft</enum>
-      </property>
-      <property name="text">
-       <string>Exec?</string>
-      </property>
-      <property name="tristate">
-       <bool>false</bool>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="DELETE">
-     <widget class="QPushButton" name="delete_user">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>50</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>DELETE USER</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="delete_item">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>DELETE ITEM</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="backButton_delete">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>140</y>
+        <x>600</x>
+        <y>370</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -314,14 +246,14 @@
      <widget class="QLabel" name="DeletePageLabel">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>200</x>
         <y>10</y>
-        <width>141</width>
-        <height>21</height>
+        <width>221</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Delete User / Item</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600; text-decoration: underline;&quot;&gt;DELETE USER/ITEM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -553,8 +485,8 @@
      <widget class="QPushButton" name="backButton_upgrade">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>340</y>
+        <x>620</x>
+        <y>390</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -566,14 +498,86 @@
      <widget class="QLabel" name="UpgradeLabel">
       <property name="geometry">
        <rect>
-        <x>226</x>
-        <y>20</y>
-        <width>121</width>
+        <x>180</x>
+        <y>0</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; text-decoration: underline; color:#aa00ff;&quot;&gt;Upgrade / Downgrade&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>100</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ENTER ID</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_12">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>160</y>
+        <width>411</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>130</y>
+        <width>471</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Upgrade / Downgrade</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff34c9;&quot;&gt;Should you upgrade or degrade? and how much money?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>240</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>UPGRADE</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox_3">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>240</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>DEGRADE</string>
       </property>
      </widget>
     </widget>
@@ -884,7 +888,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ENTER_DELETE_INFO"/>
+    <widget class="QWidget" name="ENTER_DELETE_INFO_2"/>
     <widget class="QWidget" name="SEARCH_EXPIRED">
      <widget class="QLineEdit" name="search_line_edit">
       <property name="geometry">
@@ -933,6 +937,83 @@
       </property>
       <property name="text">
        <string>BACK</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="ADD_MEMBER_ITEMS">
+     <widget class="QLabel" name="enterNameLabel">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>130</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ENTER NAME</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="executiveOrNotLabel">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>150</y>
+        <width>451</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Would you like to be an executive for just $10 more ?</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nameInputLine">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>130</y>
+        <width>311</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="executive_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>160</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CheckBox</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_addMember">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>380</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>50</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; text-decoration: underline;&quot;&gt;ADD NEW MEMBER &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
