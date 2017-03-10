@@ -5,21 +5,6 @@
 #include <QFile>
 #include <QStringList>
 using namespace std;
-enum PAGES{
-
-    LOGIN,              //0
-    MAIN_MENU,          //1
-    ADD_MENU,           //2
-    DELETE,             //3
-    REPORTS,            //4
-    READ_FILE,          //5
-    UPGRADE,            //6
-    ADMIN_LOGIN,        //7
-    SEARCH,             //8
-    MEMBER_INFO,        //9
-    ENTER_DELETE_INFO,  //10
-    INPUT_NEW_USER_INFO //11
-};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->File_error_message_label->setHidden(true);
-    UpdateMembersFromFile("Texts\\warehouse shoppers.txt");
+    if(!UpdateMembersFromFile("Texts\\warehouse shoppers.txt")){
+        qDebug() << "Error loading file";
+    }
+    qDebug()<< "Init: member size is" << myMembers.memberVec.size();
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +27,7 @@ MainWindow::~MainWindow()
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
-    ui->pages->setCurrentIndex(ADD_MENU);
+    ui->pages->setCurrentIndex(2);
     //Here we call the function that makes new members
     //Take you to another menu to see what kind of member
 }
@@ -47,7 +35,7 @@ void MainWindow::on_Adduser_clicked()
 //Function to delete a user or item
 void MainWindow::on_deleteRec_clicked()
 {
-    ui->pages->setCurrentIndex(DELETE);
+    ui->pages->setCurrentIndex(3);
     //Link to another menu that will determine what the user
     //wants to delete, whether an item or list
 }
@@ -55,14 +43,14 @@ void MainWindow::on_deleteRec_clicked()
 //Function to upgrade a user
 void MainWindow::on_upgrade_clicked()
 {
-    ui->pages->setCurrentIndex(UPGRADE);
+    ui->pages->setCurrentIndex(6);
     //Link the function that determines whether a user can upgrade
 }
 
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
-    ui->pages->setCurrentIndex(REPORTS);
+    ui->pages->setCurrentIndex(4);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -70,25 +58,33 @@ void MainWindow::on_reportsSearch_clicked()
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
-    ui->pages->setCurrentIndex(READ_FILE);
+    ui->pages->setCurrentIndex(5);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
 }
 
-void MainWindow::on_search_clicked()
+void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
-    ui->pages->setCurrentIndex(UPGRADE);
+    //ui->pages->setCurrentIndex(6);
 
 
     //this vector will contain all of the members
-    vector<member> memberSearch = {};//add infor for members. This vector holds all the members
+    vector<member*> memberSearch;//add infor for members. This vector holds all the members
+    for(int i = 0; i < myMembers.memberVec.size(); i++)
+    {
+        memberSearch.push_back(myMembers.memberVec[i]);
+    }
+    for(int j = 0; j < myMembers.execVec.size(); j++)
+    {
+        memberSearch.push_back(myMembers.execVec[j]);
+    }
     //this vector will contain all of the expired members it is set to be the same size as the member search vector
-    vector<member> expiringMember (memberSearch.size());
+    vector<member*> expiringMember (memberSearch.size());
     //this is the expiring month that we will be getting from the user
-    int expiringMonth;
-
+    QString tempMonth= ui->search_line_edit->text();
+    int expiringMonth = tempMonth.toInt();
     //auto is for letting the compiler figure out the type. it saves typing, and in case you are going to change the return type.
     //instead of typing vector<member>::iterator auto does it for you
     //it means iterator and we use this in order to resize the expiringMember
@@ -98,26 +94,34 @@ void MainWindow::on_search_clicked()
                        expiringMember.begin(), checkExperation(expiringMonth));
     expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
 
-    qDebug() << "Expiring members contains:";   // need to replace cout eventually
+    ui->Output_ExpiredMembers->setText("Expiring members contains:\n" );   // need to replace cout eventually
     //for loop is for showing the contains of expiringMember
     //this for loop looks confusin but all it is doing is looping over the vector.
-    for (member x: expiringMember)
+    for (member* x: expiringMember)
     {
-        qDebug() << ' ' << x.getName() << endl;
+        ui->Output_ExpiredMembers->append(x->getName() +"\n");
+
     }
 
     //this for loop is made in order to tell the member the renewal fee.
     for(unsigned int i=0; i < expiringMember.size(); i++ )
     {
-        if(expiringMember[i].getType() == false)
+        if(expiringMember[i]->getType() == false)
         {
-            qDebug() <<expiringMember[i].getName() << " your renewal cost is $85.00";
+            ui->Output_ExpiredMembers->append(expiringMember[i]->getName() + " your renewal cost is $85.00");
         }
         else
         {
-            qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
+            ui->Output_ExpiredMembers->append(expiringMember[i]->getName() + " your renewal cost is $95.00");
         }
     }
+    for(int i = 0; i < myMembers.memberVec.size(); i++)
+    {
+        qDebug() << myMembers.memberVec[i];
+    }
+    qDebug() << "the vector is " << myMembers.memberVec.size();
+    qDebug()<< "executives is " << myMembers.execVec.size();
+    qDebug() << "the function was called";
 }
 
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
@@ -228,7 +232,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
             // Reads in the 4 lines that belong to 1 member
             tempName = fin.readLine();
-            tempId   = fin.readLine().toInt();
+            tempId = fin.readLine().toInt();
             tempRank = fin.readLine();
             tempDate = fin.readLine();
 
@@ -267,32 +271,32 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
 void MainWindow::on_backButton_addmen_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_delete_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_reports_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_readfile_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_upgrade_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(LOGIN);
+    ui->pages->setCurrentIndex(0);
 }
 
 
@@ -326,47 +330,47 @@ void MainWindow::on_readInButton_clicked()
 
 void MainWindow::on_purchases_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN); //takes you to page to input the string
+    ui->pages->setCurrentIndex(7); //takes you to page to input the string
 }
 
 void MainWindow::on_sales_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
 }
 
 void MainWindow::on_quantity_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
 }
 
 void MainWindow::on_rebate_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
 }
 
 void MainWindow::on_expiring_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(7);//takes you to page to input the string
 }
 
 void MainWindow::on_delete_user_clicked()
 {
-    ui->pages->setCurrentIndex(MEMBER_INFO);
+    ui->pages->setCurrentIndex(9);
 }
 
 void MainWindow::on_delete_item_clicked()
 {
-    ui->pages->setCurrentIndex(MEMBER_INFO);
+    ui->pages->setCurrentIndex(9);
 }
 
 void MainWindow::on_add_user_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
+    ui->pages->setCurrentIndex(8);
 }
 
 void MainWindow::on_add_purchase_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
+    ui->pages->setCurrentIndex(8);
 }
 
 
@@ -396,25 +400,25 @@ void MainWindow::on_enterPassword_returnPressed()
     else if(found)
     {
         // Jump to member info page if password and id are correct
-        ui->pages->setCurrentIndex(MEMBER_INFO);
+        ui->pages->setCurrentIndex(9);
     }
 }
 
 
 void MainWindow::on_back_to_login_clicked()
 {
-    ui->pages->setCurrentIndex(LOGIN);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);
+    ui->pages->setCurrentIndex(7);
 }
 
 void MainWindow::on_backButton_admin_login_clicked()
 {
-    ui->pages->setCurrentIndex(LOGIN);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_Admin_Password_line_edit_returnPressed()
@@ -427,7 +431,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 
     if(username == "admin"  &&
        password == "password")  {
-        ui->pages->setCurrentIndex(MAIN_MENU);
+        ui->pages->setCurrentIndex(1);
     }
     else
     {
@@ -438,17 +442,17 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 
 void MainWindow::on_Member_info_back_button_clicked()
 {
-    ui->pages->setCurrentIndex(LOGIN);
+    ui->pages->setCurrentIndex(0);
 }
 
 void MainWindow::on_searchButtonBrians_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
+    ui->pages->setCurrentIndex(8);
 }
 
 void MainWindow::on_Search_back_button_clicked()
 {
-    ui->pages->setCurrentIndex(MAIN_MENU);
+    ui->pages->setCurrentIndex(1);
 }
 
 void MainWindow::on_read_file_line_edit_returnPressed()
@@ -474,7 +478,13 @@ void deleteItemOrName(QString searchItem)  {
 
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_searchByMonth_clicked()
 {
-    ui->pages->setCurrentIndex(DELETE);
+
 }
+
+void MainWindow::on_lineEdit_2_returnPressed()
+{
+
+}
+

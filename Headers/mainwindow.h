@@ -7,9 +7,6 @@
 #include <QMessageBox>
 using namespace std;
 
-// Globals
-const double SALES_TAX   =  7.25;
-
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
@@ -23,11 +20,11 @@ struct checkExperation
     checkExperation(int theMonth){this->theMonth = theMonth;}
     //this is the function call operator that turns the struct into a funtion. this also blew my MIND!!!
     //operator() is what overloads the function call operator in order to be able to turn the struct into a function.
-    bool operator()(member m)
+    bool operator()(member* m)
     {
     //this is going into the member class retriving the date then going into the date class and retriving the month.
     //then it is comparing month from date class to theMonth in the struct returning a true or false.
-        return m.getExpiry().getMonth() == theMonth;
+        return m->getExpiry().getMonth() == theMonth;
     }
 };
 
@@ -56,7 +53,6 @@ public:
     void SaveToFile(QString);
 
 private slots:
-    void on_search_clicked();
 
     void on_Adduser_clicked();
 
@@ -118,7 +114,11 @@ private slots:
 
     void on_read_file_line_edit_returnPressed();
 
-    void on_pushButton_4_clicked();
+    void on_searchByMonth_clicked();
+
+    void on_lineEdit_2_returnPressed();
+
+    void on_search_line_edit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
