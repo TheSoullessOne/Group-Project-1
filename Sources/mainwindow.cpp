@@ -21,6 +21,7 @@ enum PAGES{
     INPUT_NEW_USER_INFO //11
 };
 
+//----------------------------------------------------------------------
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -32,13 +33,19 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     qDebug()<< "Init: member size is" << myMembers.memberVec.size();
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 MainWindow::~MainWindow()
 {
     delete ui;
     SaveToFile("Texts\\warehouse shoppers.txt");
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
@@ -46,7 +53,10 @@ void MainWindow::on_Adduser_clicked()
     //Here we call the function that makes new members
     //Take you to another menu to see what kind of member
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 //Function to delete a user or item
 void MainWindow::on_deleteRec_clicked()
 {
@@ -54,14 +64,20 @@ void MainWindow::on_deleteRec_clicked()
     //Link to another menu that will determine what the user
     //wants to delete, whether an item or list
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 //Function to upgrade a user
 void MainWindow::on_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);
     //Link the function that determines whether a user can upgrade
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
@@ -69,7 +85,10 @@ void MainWindow::on_reportsSearch_clicked()
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
@@ -78,7 +97,10 @@ void MainWindow::on_readInFile_clicked()
     //way it is stored in the correct member data
 
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
@@ -138,7 +160,10 @@ void MainWindow::on_search_line_edit_returnPressed()
     qDebug()<< "executives is " << myMembers.execVec.size();
     qDebug() << "the function was called";
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
     // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
@@ -224,7 +249,10 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
     }
     return false;
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 bool MainWindow::UpdateMembersFromFile(QString fileName)    {
     // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
@@ -283,38 +311,58 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
     }
     return false;
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_addmen_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_delete_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_reports_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_readfile_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_search_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+//----------------------------------------------------------------------
 
 
+//----------------------------------------------------------------------
 void MainWindow::SaveToFile(QString fileName)   {
     QFile outputFile(fileName);
     if(outputFile.open(QFile::WriteOnly))   {
@@ -337,58 +385,90 @@ void MainWindow::SaveToFile(QString fileName)   {
         }
     }
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_readInButton_clicked()
 {
     //This is for the first way of readding in file
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_purchases_rep_clicked()
 {
     ui->pages->setCurrentIndex(ADMIN_LOGIN); //takes you to page to input the string
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_sales_rep_clicked()
 {
     ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_quantity_rep_clicked()
 {
     ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_rebate_rep_clicked()
 {
     ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_expiring_rep_clicked()
 {
     ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_add_user_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_add_purchase_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
 }
+//----------------------------------------------------------------------
 
 
+//----------------------------------------------------------------------
 void MainWindow::on_enterPassword_returnPressed()
 {
     QString username = ui->enterUserName->text();
@@ -418,24 +498,35 @@ void MainWindow::on_enterPassword_returnPressed()
         ui->pages->setCurrentIndex(MEMBER_INFO);
     }
 }
+//----------------------------------------------------------------------
 
 
+//----------------------------------------------------------------------
 void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
     ui->pages->setCurrentIndex(ADMIN_LOGIN);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_admin_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_Admin_Password_line_edit_returnPressed()
 {
     QString username = ui->Admin_Username_line_edit->text();
@@ -454,22 +545,34 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
         QMessageBox::critical(this, "Login Error", "Incorrect Password Or Username");
     }
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_Member_info_back_button_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_searchButtonBrians_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_Search_back_button_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_read_file_line_edit_returnPressed()
 {
     ui->File_error_message_label->setHidden(true);
@@ -487,23 +590,36 @@ void MainWindow::on_read_file_line_edit_returnPressed()
     }
     ui->read_file_line_edit->clear();
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void deleteItemOrName(QString searchItem)  {
 
 
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_searchByMonth_clicked()
 {
 
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_lineEdit_2_returnPressed()
 {
 
 }
+//----------------------------------------------------------------------
 
+
+//----------------------------------------------------------------------
 void MainWindow::on_backButton_expiredMembers_clicked()
 {
     ui->pages->setCurrentIndex(2);
 }
+//----------------------------------------------------------------------
