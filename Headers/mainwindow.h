@@ -120,6 +120,8 @@ private slots:
 
     void on_search_line_edit_returnPressed();
 
+    void on_backButton_expiredMembers_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;

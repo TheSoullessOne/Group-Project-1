@@ -503,3 +503,7 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 }
 
+void MainWindow::on_backButton_expiredMembers_clicked()
+{
+    ui->pages->setCurrentIndex(2);
+}
