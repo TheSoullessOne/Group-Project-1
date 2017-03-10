@@ -42,9 +42,9 @@ public:
 
     void deleteItemOrName(QString);
 
-    void memberRebate(QString);
+    double memberRebate(int);
 
-    void upgrade(QString);
+    void upgrade(int);
 
     bool UpdateDataFromFile(QString);
 
@@ -119,6 +119,8 @@ private slots:
     void on_lineEdit_2_returnPressed();
 
     void on_search_line_edit_returnPressed();
+
+    void on_backButton_expiredMembers_clicked();
 
 private:
     Ui::MainWindow *ui;

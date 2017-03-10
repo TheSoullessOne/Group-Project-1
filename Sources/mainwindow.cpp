@@ -6,6 +6,21 @@
 #include <QStringList>
 using namespace std;
 
+enum PAGES{
+    LOGIN_PAGE,         //0
+    MAIN_MENU,          //1
+    ADD_MENU,           //2
+    DELETE,             //3
+    REPORTS,            //4
+    READ_FILE,          //5
+    UPGRADE,            //6
+    ADMIN_LOGIN,        //7
+    SEARCH,             //8
+    MEMBER_INFO,        //9
+    ENTER_DELETE_INFO,  //10
+    INPUT_NEW_USER_INFO //11
+};
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -27,7 +42,7 @@ MainWindow::~MainWindow()
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
-    ui->pages->setCurrentIndex(2);
+    ui->pages->setCurrentIndex(ADD_MENU);
     //Here we call the function that makes new members
     //Take you to another menu to see what kind of member
 }
@@ -35,7 +50,7 @@ void MainWindow::on_Adduser_clicked()
 //Function to delete a user or item
 void MainWindow::on_deleteRec_clicked()
 {
-    ui->pages->setCurrentIndex(3);
+    ui->pages->setCurrentIndex(DELETE);
     //Link to another menu that will determine what the user
     //wants to delete, whether an item or list
 }
@@ -43,14 +58,14 @@ void MainWindow::on_deleteRec_clicked()
 //Function to upgrade a user
 void MainWindow::on_upgrade_clicked()
 {
-    ui->pages->setCurrentIndex(6);
+    ui->pages->setCurrentIndex(UPGRADE);
     //Link the function that determines whether a user can upgrade
 }
 
 //Function to search different types of reports
 void MainWindow::on_reportsSearch_clicked()
 {
-    ui->pages->setCurrentIndex(4);
+    ui->pages->setCurrentIndex(REPORTS);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -58,7 +73,7 @@ void MainWindow::on_reportsSearch_clicked()
 //Function to read in a file that has the 5 files of purchases for members
 void MainWindow::on_readInFile_clicked()
 {
-    ui->pages->setCurrentIndex(5);
+    ui->pages->setCurrentIndex(READ_FILE);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
 
@@ -67,7 +82,7 @@ void MainWindow::on_readInFile_clicked()
 void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
-    //ui->pages->setCurrentIndex(6);
+    //ui->pages->setCurrentIndex(UPGRADE);
 
 
     //this vector will contain all of the members
@@ -271,32 +286,32 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
 void MainWindow::on_backButton_addmen_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_backButton_delete_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_backButton_reports_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_backButton_readfile_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_backButton_upgrade_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
 
 
@@ -330,47 +345,47 @@ void MainWindow::on_readInButton_clicked()
 
 void MainWindow::on_purchases_rep_clicked()
 {
-    ui->pages->setCurrentIndex(7); //takes you to page to input the string
+    ui->pages->setCurrentIndex(ADMIN_LOGIN); //takes you to page to input the string
 }
 
 void MainWindow::on_sales_rep_clicked()
 {
-    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
 
 void MainWindow::on_quantity_rep_clicked()
 {
-    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
 
 void MainWindow::on_rebate_rep_clicked()
 {
-    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
 
 void MainWindow::on_expiring_rep_clicked()
 {
-    ui->pages->setCurrentIndex(7);//takes you to page to input the string
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
 }
 
 void MainWindow::on_delete_user_clicked()
 {
-    ui->pages->setCurrentIndex(9);
+    ui->pages->setCurrentIndex(MEMBER_INFO);
 }
 
 void MainWindow::on_delete_item_clicked()
 {
-    ui->pages->setCurrentIndex(9);
+    ui->pages->setCurrentIndex(MEMBER_INFO);
 }
 
 void MainWindow::on_add_user_clicked()
 {
-    ui->pages->setCurrentIndex(8);
+    ui->pages->setCurrentIndex(SEARCH);
 }
 
 void MainWindow::on_add_purchase_clicked()
 {
-    ui->pages->setCurrentIndex(8);
+    ui->pages->setCurrentIndex(SEARCH);
 }
 
 
@@ -400,25 +415,25 @@ void MainWindow::on_enterPassword_returnPressed()
     else if(found)
     {
         // Jump to member info page if password and id are correct
-        ui->pages->setCurrentIndex(9);
+        ui->pages->setCurrentIndex(MEMBER_INFO);
     }
 }
 
 
 void MainWindow::on_back_to_login_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
 
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
-    ui->pages->setCurrentIndex(7);
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);
 }
 
 void MainWindow::on_backButton_admin_login_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
 
 void MainWindow::on_Admin_Password_line_edit_returnPressed()
@@ -431,7 +446,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 
     if(username == "admin"  &&
        password == "password")  {
-        ui->pages->setCurrentIndex(1);
+        ui->pages->setCurrentIndex(MAIN_MENU);
     }
     else
     {
@@ -442,17 +457,17 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 
 void MainWindow::on_Member_info_back_button_clicked()
 {
-    ui->pages->setCurrentIndex(0);
+    ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
 
 void MainWindow::on_searchButtonBrians_clicked()
 {
-    ui->pages->setCurrentIndex(8);
+    ui->pages->setCurrentIndex(SEARCH);
 }
 
 void MainWindow::on_Search_back_button_clicked()
 {
-    ui->pages->setCurrentIndex(1);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 
 void MainWindow::on_read_file_line_edit_returnPressed()
@@ -488,3 +503,7 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 }
 
+void MainWindow::on_backButton_expiredMembers_clicked()
+{
+    ui->pages->setCurrentIndex(2);
+}
