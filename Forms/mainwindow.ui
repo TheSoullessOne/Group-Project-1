@@ -17,9 +17,9 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>20</x>
       <y>10</y>
-      <width>661</width>
+      <width>691</width>
       <height>421</height>
      </rect>
     </property>
@@ -710,20 +710,20 @@
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>40</y>
-        <width>161</width>
+        <y>10</y>
+        <width>181</width>
         <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Member Info Page</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;Member Info Page&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="Member_info_back_button">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>280</y>
+        <x>580</x>
+        <y>390</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -732,14 +732,165 @@
        <string>Back to login</string>
       </property>
      </widget>
+     <widget class="QLabel" name="MemberInfoPageLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>231</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#5500ff;&quot;&gt;MOST RECENT PURCHASES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="MemberInfoPageLabel_3">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>50</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff00ff;&quot;&gt;BASIC INFO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>271</width>
+        <height>331</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_7">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>100</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_8">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>250</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>80</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>NAME</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>180</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MEMBER TYPE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>130</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>MEMBER ID</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_9">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>200</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_10">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>300</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>280</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TOTAL AMOUNT SPENT</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_11">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>150</y>
+        <width>341</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>230</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>EXPIRATION DATE</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="ENTER_DELETE_INFO"/>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="SEARCH_EXPIRED">
      <widget class="QLineEdit" name="search_line_edit">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>20</y>
+        <x>350</x>
+        <y>50</y>
         <width>51</width>
         <height>20</height>
        </rect>
@@ -748,27 +899,40 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="enterMonthLabel">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>241</width>
+        <x>20</x>
+        <y>50</y>
+        <width>311</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
-       <string>Enter month in integer value i.e. 01,02,11,12. Then click OK.</string>
+       <string>Enter month in integer value i.e. 01,02,11,12.</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="Output_ExpiredMembers">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>50</y>
-        <width>621</width>
-        <height>401</height>
+        <x>20</x>
+        <y>80</y>
+        <width>581</width>
+        <height>281</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_expiredMembers">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>390</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
       </property>
      </widget>
     </widget>
@@ -780,7 +944,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
