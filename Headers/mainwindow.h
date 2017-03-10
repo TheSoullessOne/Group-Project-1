@@ -7,6 +7,9 @@
 #include <QMessageBox>
 using namespace std;
 
+// Globals
+const double SALES_TAX   =  7.25;
+
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
@@ -40,6 +43,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void memberRebate(QString);
+
+    void upgrade(QString);
 
     bool UpdateDataFromFile(QString);
 

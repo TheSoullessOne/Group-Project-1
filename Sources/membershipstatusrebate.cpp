@@ -7,7 +7,7 @@
 #include <QDebug>
 
 //pass in id - QString
-void membershipStatus(QString id){
+void memberRebate(QString id){
 
     bool executive_yes = false;
     //rebate is based off of total purchases for year
@@ -21,7 +21,7 @@ void membershipStatus(QString id){
     if(executive_yes == true){
         //annual executive membership is $95
         //the rebate will be subtracted from this charge
-        //rebate = 3.25% * subtotal (before tax)
+        //rebate = 3.25% * totalsubtotal (before tax)
         //if(month is Dec){
         //  rebate will be paid out
         //}

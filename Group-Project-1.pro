@@ -32,7 +32,12 @@ SOURCES += Sources\main.cpp\
     Sources\member.cpp \
     Sources\date.cpp \
     Sources\vectors.cpp \
+<<<<<<< HEAD
     Sources\item.cpp
+=======
+    Sources/item.cpp \
+    Sources/upgrade.cpp
+>>>>>>> a5057a34a4c43680f473e8ce011d56d660565fac
 
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
