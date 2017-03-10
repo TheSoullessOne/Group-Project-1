@@ -471,3 +471,8 @@ void MainWindow::on_read_file_line_edit_returnPressed()
     }
     ui->read_file_line_edit->clear();
 }
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->pages->setCurrentIndex(DELETE);
+}

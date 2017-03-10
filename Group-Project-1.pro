@@ -33,16 +33,20 @@ SOURCES += Sources\main.cpp\
     Sources\date.cpp \
     Sources\vectors.cpp \
 <<<<<<< HEAD
+<<<<<<< HEAD
     Sources\item.cpp
 =======
     Sources/item.cpp \
     Sources/upgrade.cpp
 >>>>>>> a5057a34a4c43680f473e8ce011d56d660565fac
+=======
+    Sources\item.cpp \
+    Sources\upgrade.cpp
+>>>>>>> fe5ac00813a252fbb48bb397d89c1dd1b31e218d
 
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
     Headers\executive.h \
-    Headers\header.h \
     Headers\item.h \
     Headers\member.h \
     Headers\mainmenu.h

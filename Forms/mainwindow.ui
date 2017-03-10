@@ -25,9 +25,9 @@
 >>>>>>> d0b5a8857acb7452d0a0c5ae6dd4999efcbaee28
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>661</width>
+      <x>20</x>
+      <y>10</y>
+      <width>721</width>
       <height>421</height>
      </rect>
     </property>
@@ -114,7 +114,7 @@
     </property>
 >>>>>>> 4bcf4e944d4587a9879cf68be53fce2cdd215a13
     <property name="currentIndex">
-     <number>10</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -267,14 +267,14 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>290</y>
+        <x>100</x>
+        <y>250</y>
         <width>311</width>
         <height>131</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; color:#00ff00;&quot;&gt;GREEN&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:72pt; color:#00ff00;&quot;&gt;HELLO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -847,21 +847,21 @@
      <widget class="QLabel" name="MemberInfoPageLabel">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>40</y>
-        <width>161</width>
-        <height>41</height>
+        <x>260</x>
+        <y>0</y>
+        <width>231</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
-       <string>Member Info Page</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff557f;&quot;&gt;Member Info Page&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QPushButton" name="Member_info_back_button">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>280</y>
+        <x>640</x>
+        <y>390</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -869,6 +869,104 @@
       <property name="text">
        <string>Back to login</string>
       </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>341</width>
+        <height>291</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>60</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#aa55ff;&quot;&gt;RECIEPT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>40</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#aa55ff;&quot;&gt;BASIC DATA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>100</y>
+        <width>361</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;NAME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_3"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;MEMBER ID&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_6"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;EXPIRATION DATE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_7"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;MEMBER TYPE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_5"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;TOTAL AMOUNT SPENT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextBrowser" name="textBrowser_4"/>
+       </item>
+      </layout>
      </widget>
     </widget>
 <<<<<<< HEAD
@@ -885,7 +983,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>10</y>
+        <y>160</y>
         <width>611</width>
         <height>51</height>
        </rect>
@@ -894,14 +992,27 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#aa0000;&quot;&gt;ENTER USER NAME OR ITEM NAME of thing you want to delete&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="enterDeleteString">
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>60</y>
-        <width>281</width>
-        <height>20</height>
+        <y>220</y>
+        <width>341</width>
+        <height>21</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="backButton_enterDeleteInfo">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>370</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BACK</string>
       </property>
      </widget>
     </widget>

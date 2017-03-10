@@ -117,6 +117,8 @@ private slots:
 
     void on_read_file_line_edit_returnPressed();
 
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
