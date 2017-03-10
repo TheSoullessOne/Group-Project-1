@@ -43,6 +43,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void deleteItemOrName(QString);
+
     void memberRebate(QString);
 
     void upgrade(QString);
@@ -65,7 +67,6 @@ private slots:
     void on_reportsSearch_clicked();
 
     void on_readInFile_clicked();
-
 
     void on_backButton_addmen_clicked();
 

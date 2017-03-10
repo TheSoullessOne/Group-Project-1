@@ -455,7 +455,6 @@ void MainWindow::on_Search_back_button_clicked()
 void MainWindow::on_read_file_line_edit_returnPressed()
 {
     ui->File_error_message_label->setHidden(true);
-//    ui->File_error_message_label->setEnabled(false);
 
     QString fileName = ui->read_file_line_edit->text();
 
@@ -467,7 +466,10 @@ void MainWindow::on_read_file_line_edit_returnPressed()
     if(!UpdateDataFromFile(fileName))  {
         // Error message prompt for input again
         ui->File_error_message_label->setHidden(false);
-//        ui->File_error_message_label->setEnabled(true);
     }
     ui->read_file_line_edit->clear();
+}
+
+void deleteItemOrName(QString searchItem)  {
+
 }

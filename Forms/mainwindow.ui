@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>10</number>
+     <number>9</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -97,7 +97,7 @@
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>170</x>
+        <x>180</x>
         <y>40</y>
         <width>171</width>
         <height>170</height>
@@ -145,7 +145,7 @@
        <item>
         <widget class="QPushButton" name="searchButtonBrians">
          <property name="text">
-          <string>search?</string>
+          <string>SEARCH</string>
          </property>
         </widget>
        </item>

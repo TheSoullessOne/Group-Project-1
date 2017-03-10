@@ -38,7 +38,6 @@ SOURCES += Sources\main.cpp\
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
     Headers\executive.h \
-    Headers\header.h \
     Headers\item.h \
     Headers\member.h \
     Headers\mainmenu.h
