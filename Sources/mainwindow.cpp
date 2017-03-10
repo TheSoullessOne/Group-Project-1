@@ -12,7 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->File_error_message_label->setHidden(true);
-    UpdateMembersFromFile("Texts\\warehouse shoppers.txt");
+    if(!UpdateMembersFromFile("Texts\\warehouse shoppers.txt")){
+        qDebug() << "Error loading file";
+    }
+    qDebug()<< "Init: member size is" << myMembers.memberVec.size();
 }
 
 MainWindow::~MainWindow()
@@ -61,19 +64,27 @@ void MainWindow::on_readInFile_clicked()
 
 }
 
-void MainWindow::on_search_clicked()
+void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
-    ui->pages->setCurrentIndex(6);
+    //ui->pages->setCurrentIndex(6);
 
 
     //this vector will contain all of the members
-    vector<member> memberSearch = {};//add infor for members. This vector holds all the members
+    vector<member*> memberSearch;//add infor for members. This vector holds all the members
+    for(int i = 0; i < myMembers.memberVec.size(); i++)
+    {
+        memberSearch.push_back(myMembers.memberVec[i]);
+    }
+    for(int j = 0; j < myMembers.execVec.size(); j++)
+    {
+        memberSearch.push_back(myMembers.execVec[j]);
+    }
     //this vector will contain all of the expired members it is set to be the same size as the member search vector
-    vector<member> expiringMember (memberSearch.size());
+    vector<member*> expiringMember (memberSearch.size());
     //this is the expiring month that we will be getting from the user
-    int expiringMonth;
-
+    QString tempMonth= ui->search_line_edit->text();
+    int expiringMonth = tempMonth.toInt();
     //auto is for letting the compiler figure out the type. it saves typing, and in case you are going to change the return type.
     //instead of typing vector<member>::iterator auto does it for you
     //it means iterator and we use this in order to resize the expiringMember
@@ -83,26 +94,34 @@ void MainWindow::on_search_clicked()
                        expiringMember.begin(), checkExperation(expiringMonth));
     expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
 
-    qDebug() << "Expiring members contains:";   // need to replace cout eventually
+    ui->Output_ExpiredMembers->setText("Expiring members contains:\n" );   // need to replace cout eventually
     //for loop is for showing the contains of expiringMember
     //this for loop looks confusin but all it is doing is looping over the vector.
-    for (member x: expiringMember)
+    for (member* x: expiringMember)
     {
-        qDebug() << ' ' << x.getName() << endl;
+        ui->Output_ExpiredMembers->append(x->getName() +"\n");
+
     }
 
     //this for loop is made in order to tell the member the renewal fee.
-    for(int i=0; i < expiringMember.size(); i++ )
+    for(unsigned int i=0; i < expiringMember.size(); i++ )
     {
-        if(expiringMember[i].getType() == false)
+        if(expiringMember[i]->getType() == false)
         {
-            qDebug() <<expiringMember[i].getName() << " your renewal cost is $85.00";
+            ui->Output_ExpiredMembers->append(expiringMember[i]->getName() + " your renewal cost is $85.00");
         }
         else
         {
-            qDebug() <<expiringMember[i].getName() << " your renewal cost is $95.00";
+            ui->Output_ExpiredMembers->append(expiringMember[i]->getName() + " your renewal cost is $95.00");
         }
     }
+    for(int i = 0; i < myMembers.memberVec.size(); i++)
+    {
+        qDebug() << myMembers.memberVec[i];
+    }
+    qDebug() << "the vector is " << myMembers.memberVec.size();
+    qDebug()<< "executives is " << myMembers.execVec.size();
+    qDebug() << "the function was called";
 }
 
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
@@ -121,7 +140,6 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         int tempId;
         item *tempItem;
         bool found;
-        int index = 0;
 
         // My textStream variables "fstream"
         QTextStream fin(&inputFile);
@@ -456,3 +474,14 @@ void MainWindow::on_read_file_line_edit_returnPressed()
     }
     ui->read_file_line_edit->clear();
 }
+
+void MainWindow::on_searchByMonth_clicked()
+{
+
+}
+
+void MainWindow::on_lineEdit_2_returnPressed()
+{
+
+}
+
