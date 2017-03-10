@@ -42,7 +42,7 @@ public:
 
     void deleteItemOrName(QString);
 
-    void memberRebate(QString);
+    float memberRebate(QString);
 
     void upgrade(QString);
 

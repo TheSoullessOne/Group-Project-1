@@ -13,6 +13,8 @@ void MainWindow::upgrade(QString id){
     //here, set executive equal to true/false based on
     //the search function above
 
+
+
     if(executive == true){
         //if(rebate < 10){
         //  the member should downgrade to save money
