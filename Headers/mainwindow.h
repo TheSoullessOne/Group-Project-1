@@ -42,9 +42,9 @@ public:
 
     void deleteItemOrName(QString);
 
-    float memberRebate(QString);
+    double memberRebate(int);
 
-    void upgrade(QString);
+    void upgrade(int);
 
     bool UpdateDataFromFile(QString);
 
