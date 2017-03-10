@@ -6,7 +6,7 @@
 #include <QChar>
 #include <QDebug>
 
-void upgrade(QString id){
+void MainWindow::upgrade(QString id){
     //utilize same search function as before
     bool executive = true;
 

@@ -7,7 +7,7 @@
 #include <QDebug>
 
 //pass in id - QString
-void memberRebate(QString id){
+void MainWindow::memberRebate(QString id){
 
     bool executive_yes = false;
     //rebate is based off of total purchases for year
