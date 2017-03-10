@@ -107,7 +107,7 @@ void MainWindow::on_search_clicked()
     }
 
     //this for loop is made in order to tell the member the renewal fee.
-    for(int i=0; i < expiringMember.size(); i++ )
+    for(unsigned int i=0; i < expiringMember.size(); i++ )
     {
         if(expiringMember[i].getType() == false)
         {
@@ -136,7 +136,6 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         int tempId;
         item *tempItem;
         bool found;
-        int index = 0;
 
         // My textStream variables "fstream"
         QTextStream fin(&inputFile);
@@ -472,4 +471,10 @@ void MainWindow::on_read_file_line_edit_returnPressed()
 
 void deleteItemOrName(QString searchItem)  {
 
+
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->pages->setCurrentIndex(DELETE);
 }
