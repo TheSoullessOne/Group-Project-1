@@ -10,7 +10,11 @@ using namespace std;
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
+    QVector<item*> ourStock;
+    QVector<int> deletedMemberIds;
+    QVector<QString> deletedItemNames;
 };
+
 
 //This struct is a functor which is a struct that has the function call operator
 struct checkExperation
@@ -40,7 +44,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void deleteItemOrName(QString);
+    bool deleteItemOrName(QString);
 
     double memberRebate(int);
 
@@ -119,6 +123,8 @@ private slots:
     void on_lineEdit_2_returnPressed();
 
     void on_search_line_edit_returnPressed();
+
+    void on_Delete_line_edit_returnPressed();
 
     void on_backButton_expiredMembers_clicked();
 
