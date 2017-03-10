@@ -19,10 +19,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
-=======
->>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
 //Function to add a new user
 void MainWindow::on_Adduser_clicked()
 {
@@ -60,11 +56,6 @@ void MainWindow::on_readInFile_clicked()
       ui->pages->setCurrentIndex(4);
     //Here we link a function that searched for the user so that
     //way it is stored in the correct member data
-<<<<<<< HEAD
-//=======
-=======
-
->>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
 }
 
 void MainWindow::on_search_clicked()
@@ -91,10 +82,6 @@ void MainWindow::on_search_clicked()
 bool is_positive(int i)
 {
     return !(i<0);
-<<<<<<< HEAD
-//>>>>>>> 43272280820e008d5101a297129f2adc1d0ff363
-=======
->>>>>>> 6e8a67cf476172d09012fc049c5b8d1183f67986
 }
 
 
