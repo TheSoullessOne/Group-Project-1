@@ -523,6 +523,8 @@ void MainWindow::on_enterPassword_returnPressed()
     {
         // Jump to member info page if password and id are correct
         ui->pages->setCurrentIndex(MEMBER_INFO);
+        ui->enterUserName->clear();
+        ui->enterPassword->clear();
     }
 }
 //----------------------------------------------------------------------
@@ -565,6 +567,8 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     if(username == "admin"  &&
        password == "password")  {
         ui->pages->setCurrentIndex(MAIN_MENU);
+        ui->Admin_Username_line_edit->clear();
+        ui->Admin_Password_line_edit->clear();
     }
     else
     {
@@ -665,8 +669,7 @@ bool MainWindow::deleteItemOrName(QString searchItem)  {
         }
     }
     if(!found)  {
-        QMessageBox::critical(this, "Name not found", "I'm sorry, that name was not found.");
-        return false;
+        return found;
     }
     return true;
 }
@@ -693,8 +696,11 @@ void MainWindow::on_lineEdit_2_returnPressed()
 void MainWindow::on_Delete_line_edit_returnPressed()
 {
     QString searchItem = ui->Delete_line_edit->text();
-    if(deleteItemOrName(searchItem))    {
-        // Stuff here
+    if(!deleteItemOrName(searchItem))    {
+        QMessageBox::critical(this, "Name not found", "I'm sorry, that name was not found.");
+    }
+    else    {
+        ui->Delete_line_edit->clear();
     }
 }
 
