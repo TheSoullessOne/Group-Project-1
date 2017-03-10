@@ -15,7 +15,23 @@ MainWindow::MainWindow(QWidget *parent) :
     if(!UpdateMembersFromFile("Texts\\warehouse shoppers.txt")){
         qDebug() << "Error loading file";
     }
-    qDebug()<< "Init: member size is" << myMembers.memberVec.size();
+    if(!UpdateDataFromFile("Texts\\day1.txt"))   {
+        qDebug() << "Error1.";
+    }
+    if(!UpdateDataFromFile("Texts\\day2.txt"))   {
+        qDebug() << "Error2.";
+    }
+    if(!UpdateDataFromFile("Texts\\day3.txt"))   {
+        qDebug() << "Error3.";
+    }
+    if(!UpdateDataFromFile("Texts\\day4.txt"))   {
+        qDebug() << "Error4.";
+    }
+    if(!UpdateDataFromFile("Texts\\day5.txt"))   {
+        qDebug() << "Error5.";
+    }
+
+
 }
 
 MainWindow::~MainWindow()
@@ -125,6 +141,9 @@ void MainWindow::on_search_line_edit_returnPressed()
 }
 
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
+    qDebug() << fileName;
+
+
     // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
     // Opens the file if it exists and makes it read Only
@@ -140,6 +159,7 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         int tempId;
         item *tempItem;
         bool found;
+        bool otherFound = false;
 
         // My textStream variables "fstream"
         QTextStream fin(&inputFile);
@@ -203,6 +223,14 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
                 tempItem->setItemPrice(tempPrice.toDouble());
                 tempItem->setAmtBought(tempAmt.toDouble());
                 myMembers.memberVec[i]->setReceipt(tempItem);
+            }
+            for(int j = 0; j < myMembers.ourStock.size(); ++j)  {
+                if(tempName == myMembers.ourStock[j]->getItemName())    {
+                    otherFound = true;
+                }
+            }
+            if(!otherFound)  {
+                myMembers.ourStock.push_back(tempItem);
             }
         }
         return true;
@@ -430,7 +458,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     password = password.toLower();
 
     if(username == "admin"  &&
-       password == "password")  {
+            password == "password")  {
         ui->pages->setCurrentIndex(1);
     }
     else
@@ -473,9 +501,51 @@ void MainWindow::on_read_file_line_edit_returnPressed()
     ui->read_file_line_edit->clear();
 }
 
-void deleteItemOrName(QString searchItem)  {
+void MainWindow::deleteItemOrName(QString searchItem)  {
+    bool found = false;
+    int i = 0;
 
-
+    while(!found && i < myMembers.execVec.size())    {
+        if(searchItem == myMembers.execVec[i]->getName())   {
+            found = true;
+            myMembers.deletedMemberIds.push_back(this->myMembers.execVec[i]->getNum());
+            qDebug() << "Deleted " << myMembers.execVec[i]->getName();
+        }
+        else
+        {
+            ++i;
+        }
+    }
+    if(!found)  {
+        i = 0;
+    }
+    while(!found && i < myMembers.memberVec.size()) {
+        if(searchItem == myMembers.memberVec[i]->getName())    {
+            found = true;
+            myMembers.deletedMemberIds.push_back(this->myMembers.memberVec[i]->getNum());
+            qDebug() << "Deleted " << myMembers.memberVec[i]->getName();
+        }
+        else
+        {
+            ++i;
+        }
+    }
+    if(!found)  {
+        i = 0;
+    }
+    while(!found && i < myMembers.ourStock.size())    {
+        if(searchItem == myMembers.ourStock[i]->getItemName()) {
+            found == true;
+            myMembers.deletedItemNames.push_back(myMembers.ourStock[i]->getItemName());
+        }
+        else
+        {
+            ++i;
+        }
+    }
+    if(!found)  {
+        QMessageBox::critical(this, "Name not found", "I'm sorry, that name was not found.");
+    }
 }
 
 void MainWindow::on_searchByMonth_clicked()
@@ -488,3 +558,9 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 }
 
+
+void MainWindow::on_Delete_line_edit_returnPressed()
+{
+    QString searchItem = ui->Delete_line_edit->text();
+    deleteItemOrName(searchItem);
+}

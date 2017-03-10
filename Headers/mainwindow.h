@@ -10,7 +10,11 @@ using namespace std;
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
+    QVector<item*> ourStock;
+    QVector<int> deletedMemberIds;
+    QVector<QString> deletedItemNames;
 };
+
 
 //This struct is a functor which is a struct that has the function call operator
 struct checkExperation
@@ -119,6 +123,8 @@ private slots:
     void on_lineEdit_2_returnPressed();
 
     void on_search_line_edit_returnPressed();
+
+    void on_Delete_line_edit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
