@@ -170,13 +170,13 @@ void MainWindow::on_search_line_edit_returnPressed()
             ui->Output_ExpiredMembers->append(expiringMember[i]->getName() + " your renewal cost is $95.00");
         }
     }
-    for(int i = 0; i < myMembers.memberVec.size(); i++)
-    {
-        qDebug() << myMembers.memberVec[i];
-    }
-    qDebug() << "the vector is " << myMembers.memberVec.size();
-    qDebug()<< "executives is " << myMembers.execVec.size();
-    qDebug() << "the function was called";
+//    for(int i = 0; i < myMembers.memberVec.size(); i++)
+//    {
+//        qDebug() << myMembers.memberVec[i];
+//    }
+//    qDebug() << "the vector is " << myMembers.memberVec.size();
+//    qDebug()<< "executives is " << myMembers.execVec.size();
+//    qDebug() << "the function was called";
 }
 //----------------------------------------------------------------------
 
@@ -198,6 +198,7 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         int tempId;
         item *tempItem;
         bool found;
+        bool execBool;
         bool otherFound = false;
 
         // My textStream variables "fstream"
@@ -211,36 +212,42 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             tempName = fin.readLine();
             tempPriceAndAmt = fin.readLine();
 
+            // A string List can seperate QString into an array and the first parameter is what
+            // Defines where to seperate it. So in the day1-5 text files there are tabs between
+            // The Item price and amount bought
             QStringList strList = tempPriceAndAmt.split('\t', QString::SkipEmptyParts);
             tempPrice = strList[0];
             tempAmt = strList[1];
 
+            // i is just an incrementer to access the index
             int i = 0;
+            // While loop to search through the executive Vector
             while(!found && i < myMembers.execVec.size())   {
                 if(myMembers.execVec[i]->getNum() == tempId)    {
                     found = true;
+                    execBool = false;
                 }
                 else
                 {
                     ++i;
                 }
             }
+            // if the item wasnt found in the member Vec it resets i
             if(!found)  {
                 i = 0;
             }
+            // Searches through the member vector
             while(!found && i < myMembers.memberVec.size())   {
                 if(tempId == myMembers.memberVec[i]->getNum())  {
                     found = true;
+                    execBool = true;
                 }
                 else    {
                     ++i;
                 }
             }
-            if(!found)  {
-                break;
-            }
-
-            if(tempId == myMembers.execVec[i]->getNum()) {
+            // Is it an executive? If so...
+            if(execBool) {
 
                 tempItem = new item;
                 tempItem->setShopDate(tempDate.left(2).toInt(),
@@ -250,9 +257,10 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
                 tempItem->setItemPrice(tempPrice.toDouble());
                 tempItem->setAmtBought(tempAmt.toDouble());
                 myMembers.execVec[i]->setReceipt(tempItem);
+                myMembers.execVec[i]->setTotal(this->myMembers.execVec[i]->getTotal() + (tempPrice.toDouble() * tempAmt.toDouble()));
                 myMembers.execVec[i]->setRebate(this->myMembers.execVec[i]->getRebate() + (0.0325 * tempPrice.toDouble() * tempAmt.toDouble()));
             }
-            else if(tempId == myMembers.memberVec[i]->getNum())
+            else    // if not an executive do this...
             {
                 tempItem = new item;
                 tempItem->setShopDate(tempDate.left(2).toInt(),
@@ -262,18 +270,25 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
                 tempItem->setItemPrice(tempPrice.toDouble());
                 tempItem->setAmtBought(tempAmt.toDouble());
                 myMembers.memberVec[i]->setReceipt(tempItem);
+                myMembers.memberVec[i]->setTotal(this->myMembers.memberVec[i]->getTotal() + (tempPrice.toDouble() * tempAmt.toDouble()));
             }
+            // This for loop checks to see if the item name is already in the ourStock vector.
+            // If it isn't...
             for(int j = 0; j < myMembers.ourStock.size(); ++j)  {
                 if(tempName == myMembers.ourStock[j]->getItemName())    {
                     otherFound = true;
                 }
             }
+            // Then it will create the item and push it to the back fo the vector
             if(!otherFound)  {
                 myMembers.ourStock.push_back(tempItem);
             }
         }
+        // it returns true because the function is called in an if-statement
+        // Pretty much saying, it returns true if the function worked
         return true;
     }
+    // Returns false if the function did not work, meaning the file didnt exist
     return false;
 }
 //----------------------------------------------------------------------
@@ -318,6 +333,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                                                     tempDate.right(4).toInt());
                 myMembers.execVec[index]->setAnnual(95);        // Sets the annual due to 95
                 myMembers.execVec[index]->setType(true);
+                myMembers.execVec[index]->setTotal(0);
                 myMembers.execVec[index]->setRebate(0);         // Sets rebate to 0 just for it to start
             }
             else    // creates member mem and initializes
@@ -331,6 +347,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                                                       tempDate.left(2).toInt(),
                                                       tempDate.right(4).toInt());
                 myMembers.memberVec[index]->setAnnual(85);      // Sets the annual dues to 85
+                myMembers.memberVec[index]->setTotal(0);
                 myMembers.memberVec[index]->setType(false);
             }
         }
@@ -391,16 +408,21 @@ void MainWindow::on_backButton_search_clicked()
 
 //----------------------------------------------------------------------
 void MainWindow::SaveToFile(QString fileName)   {
+    // Creates our QFile variable
     QFile outputFile(fileName);
+    // If the file exists and is able to written to:
     if(outputFile.open(QFile::WriteOnly))   {
+        // Creates our "fstream" variable
         QTextStream fout(&outputFile);
 
+        // Outputs the executives first
         for(int i = 0; i < myMembers.execVec.size(); ++i)   {
             fout << myMembers.execVec[i]->getName() << endl;
             fout << myMembers.execVec[i]->getNum() << endl;
             fout << "Executive" << endl;
             fout << myMembers.execVec[i]->getExpiry().printDate() << endl;
         }
+        // Then it outputs the members
         for(int j = 0; j < myMembers.memberVec.size(); ++j) {
             fout << myMembers.memberVec[j]->getName() << endl;
             fout << myMembers.memberVec[j]->getNum() << endl;
@@ -498,33 +520,175 @@ void MainWindow::on_add_purchase_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_enterPassword_returnPressed()
 {
+    // Stores the info that the user passed into the user Id line
     QString username = ui->enterUserName->text();
+    // Converts the string to an int to be able to be searched
     int tempId = username.toInt();
+    // Stores the info that the user passed into the password line
     QString password = ui->enterPassword->text();
+    // Creates a found boolean and sets it to false
     bool found = false;
+    bool exists = false;
+    bool deleted = false;
+    bool exec = false;
+    int index = 0;
+    QString date;
+    QString name;
+    QString typeString;
+    int num;
+    double total;
 
+    ui->Member_Info_Receipt->clear();
+    ui->Member_Info_Name->clear();
+    ui->Member_Info_Id->clear();
+    ui->Member_Info_Spent->clear();
+    ui->Member_Info_Expiration->clear();
+    ui->Member_Info_Type->clear();
+
+    // Creates our memberId vector for easy searching
+    // Happens on user login
+    // The inner for loops for both below check to see if the memberId
+    // already exists. If it does exist, then it will not add the id
+    // to the vector. If it doesnt exist in the vector then it will
+    // add the member id.
     for(int i = 0; i < myMembers.execVec.size(); ++i)   {
-        memberIds.push_back(myMembers.execVec[i]->getNum());
+        exists = false;
+        // checks to see if the user already exists in the id Vector
+        for(int j = 0; j < memberIds.size(); ++j)   {
+            if(memberIds[j] == myMembers.execVec[i]->getNum()){
+                exists = true;
+            }
+        }
+        // If they dont exist, saves the index and sets exec to ttrue
+        if(!exists) {
+            memberIds.push_back(myMembers.execVec[i]->getNum());
+            if(tempId == myMembers.execVec[i]->getNum())    {
+                exec = true;
+                index = i;
+            }
+        }
     }
+    // Checks to see if the user is already in the member id vector
     for(int j = 0; j < myMembers.memberVec.size(); ++j) {
-        memberIds.push_back(myMembers.memberVec[j]->getNum());
+        exists = false;
+        // Checks to see if it exists
+        for(int k = 0; k < memberIds.size(); ++k)   {
+            if(memberIds[k] == myMembers.memberVec[j]->getNum())    {
+                exists = true;
+            }
+        }
+        // if it doesnt exist, saves index and sets exec to false
+        if(!exists) {
+            memberIds.push_back(myMembers.memberVec[j]->getNum());
+            if(tempId == myMembers.memberVec[j]->getNum())    {
+                exec = false;
+                index = j;
+            }
+        }
     }
 
+    // checks to see if the user was found
     for(int i = 0; i < memberIds.size(); ++i)   {
         if(tempId == memberIds[i])  {
             found = true;
         }
     }
 
-    if(password != "member")  {
-        QMessageBox::critical(this, "Login Error", "Incorrect Password");
+    // checks to see if the user has been deleted
+    for(int i = 0; i < myMembers.deletedMemberIds.size(); ++i)   {
+        if(tempId == myMembers.deletedMemberIds[i]) {
+            deleted = true;
+        }
     }
-    else if(found)
-    {
+
+    // if user is NOT deleted, and FOUND, and password is "member, change the displays
+    // and change page to member info page
+    if(!deleted && found && password == "member")  {
+        ui->Member_Info_Receipt->clear();
+        ui->Member_Info_Name->clear();
+        ui->Member_Info_Id->clear();
+        ui->Member_Info_Spent->clear();
+        ui->Member_Info_Expiration->clear();
+        ui->Member_Info_Type->clear();
         // Jump to member info page if password and id are correct
+        if(exec)    {
+            // Sets predefined variables
+            name = myMembers.execVec[index]->getName();
+            num =  myMembers.execVec[index]->getNum();
+            total =myMembers.execVec[index]->getTotal();
+            date = myMembers.execVec[index]->getExpiry().printDate();
+            typeString = "Executive Member";
+
+            // This sets the receipt display browser, i first hardcode the first line, then append all the others
+            ui->Member_Info_Receipt->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
+            for(int i = 0; i < 5; ++i)  {
+                ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i]->getItemName());
+                ui->Member_Info_Receipt->append( QString::number(myMembers.execVec[index]->getReceipt()[i]->getAmtBought())
+                                                + " @ " + "$" +QString::number(myMembers.execVec[index]->getReceipt()[i]->getItemPrice())
+                                                + " ea. ");\
+                ui->Member_Info_Receipt->append("\n");
+                if(i < 4)
+                ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i + 1]->getShopDate().printDate());
+
+            }   // end-for(int i
+        }
+        else
+        {
+            // Sets predefined variables
+            name = myMembers.memberVec[index]->getName();
+            num =  myMembers.memberVec[index]->getNum();
+            total =myMembers.memberVec[index]->getTotal();
+            date = myMembers.memberVec[index]->getExpiry().printDate();
+            typeString = "Regular Member";
+
+            // This sets the receipt display browser, i first hardcode the first line, then append all the others
+            ui->Member_Info_Receipt->setText(myMembers.memberVec[index]->getReceipt()[0]->getShopDate().printDate());
+            for(int i = 0; i < 5; ++i)  {
+                ui->Member_Info_Receipt->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName());
+                ui->Member_Info_Receipt->append( QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())
+                                                + " @ " + "$" +QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())
+                                                + " ea. ");\
+                ui->Member_Info_Receipt->append("\n");
+                if(i < 4)
+                ui->Member_Info_Receipt->append(myMembers.memberVec[index]->getReceipt()[i + 1]->getShopDate().printDate());
+
+            }   // end-for(int i
+        }
+        // Sets the remainder of the display browsers with values received
+        ui->Member_Info_Name->setText(name);
+        ui->Member_Info_Id->setText(QString::number(num));
+        ui->Member_Info_Spent->setText(QString::number(total));
+        ui->Member_Info_Expiration->setText(date);
+        ui->Member_Info_Type->setText(typeString);
+
+        // Changes the page to member info page and resets the lines the user typed in info to login
         ui->pages->setCurrentIndex(MEMBER_INFO);
         ui->enterUserName->clear();
         ui->enterPassword->clear();
+    }
+    // If the member is deleted, clear the member info browsers to not receive a runtime error
+    // And then displays error
+    else if(deleted)
+    {
+        ui->Member_Info_Receipt->clear();
+        ui->Member_Info_Name->clear();
+        ui->Member_Info_Id->clear();
+        ui->Member_Info_Spent->clear();
+        ui->Member_Info_Expiration->clear();
+        ui->Member_Info_Type->clear();
+        QMessageBox::critical(this, "User Deleted", "That user has been deleted.");
+    }
+    else
+    {
+        // If the password is incorrect, clear the member info browsers to not receive a runtime error
+        // And then displays error
+        ui->Member_Info_Receipt->clear();
+        ui->Member_Info_Name->clear();
+        ui->Member_Info_Id->clear();
+        ui->Member_Info_Spent->clear();
+        ui->Member_Info_Expiration->clear();
+        ui->Member_Info_Type->clear();
+        QMessageBox::critical(this, "Login Error", "Incorrect Password");
     }
 }
 //----------------------------------------------------------------------
@@ -648,7 +812,6 @@ bool MainWindow::deleteItemOrName(QString searchItem)  {
         if(searchItem == myMembers.memberVec[i]->getName())    {
             found = true;
             myMembers.deletedMemberIds.push_back(this->myMembers.memberVec[i]->getNum());
-            qDebug() << "Deleted " << myMembers.memberVec[i]->getName();
         }
         else
         {

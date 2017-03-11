@@ -17,7 +17,7 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>10</y>
       <width>711</width>
       <height>421</height>
@@ -107,42 +107,42 @@
        <item>
         <widget class="QPushButton" name="Adduser">
          <property name="text">
-          <string>ADD</string>
+          <string>Add A Member Or Item</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="deleteRec">
          <property name="text">
-          <string>DELETE </string>
+          <string>Delete A Member Or Item</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="reportsSearch">
          <property name="text">
-          <string>REPORTS</string>
+          <string>Create A Report</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="readInFile">
          <property name="text">
-          <string>READ FILE</string>
+          <string>Read In a File</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="upgrade">
          <property name="text">
-          <string>UPGRADE</string>
+          <string>Upgrade / Downgrade Member</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="searchByMonth">
          <property name="text">
-          <string>Search By Month</string>
+          <string>Search For Expiring Members</string>
          </property>
         </widget>
        </item>
@@ -269,14 +269,14 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>10</x>
         <y>80</y>
-        <width>121</width>
+        <width>191</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
-       <string>Enter Name To Delete:</string>
+       <string>Enter Member or Item Name To Delete:</string>
       </property>
      </widget>
     </widget>
@@ -785,7 +785,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff00ff;&quot;&gt;BASIC INFO&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="Member_Info_Receipt">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -795,7 +795,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_7">
+     <widget class="QTextBrowser" name="Member_Info_Name">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -805,7 +805,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_8">
+     <widget class="QTextBrowser" name="Member_Info_Expiration">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -854,7 +854,7 @@
        <string>MEMBER ID</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_9">
+     <widget class="QTextBrowser" name="Member_Info_Type">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -864,7 +864,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_10">
+     <widget class="QTextBrowser" name="Member_Info_Spent">
       <property name="geometry">
        <rect>
         <x>320</x>
@@ -887,7 +887,7 @@
        <string>TOTAL AMOUNT SPENT</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_11">
+     <widget class="QTextBrowser" name="Member_Info_Id">
       <property name="geometry">
        <rect>
         <x>320</x>
