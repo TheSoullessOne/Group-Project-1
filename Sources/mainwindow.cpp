@@ -217,7 +217,7 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             while(!found && i < myMembers.execVec.size())   {
                 if(myMembers.execVec[i]->getNum() == tempId)    {
                     found = true;
-                    execBool = false;
+                    execBool = true;
                 }
                 else
                 {
@@ -232,7 +232,7 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             while(!found && i < myMembers.memberVec.size())   {
                 if(tempId == myMembers.memberVec[i]->getNum())  {
                     found = true;
-                    execBool = true;
+                    execBool = false;
                 }
                 else    {
                     ++i;
@@ -240,7 +240,6 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             }
             // Is it an executive? If so...
             if(execBool) {
-
                 tempItem = new item;
                 tempItem->setShopDate(tempDate.left(2).toInt(),
                                       tempDate.mid(3,2).toInt(),
