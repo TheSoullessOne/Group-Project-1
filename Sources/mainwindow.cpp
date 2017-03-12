@@ -480,7 +480,7 @@ void MainWindow::on_rebate_rep_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_expiring_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(SEARCH_EXPIRED);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
