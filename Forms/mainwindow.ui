@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -281,71 +281,6 @@
      </widget>
     </widget>
     <widget class="QWidget" name="REPORTS">
-     <widget class="QPushButton" name="purchases_rep">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>80</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Purchases</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="sales_rep">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>120</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Sales Report</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="quantity_rep">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>160</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Quantity </string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="rebate_rep">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>200</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Rebate</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="expiring_rep">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>240</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Expiring</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="backButton_reports">
       <property name="geometry">
        <rect>
@@ -370,6 +305,63 @@
       </property>
       <property name="text">
        <string>REPORTS</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>160</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QPushButton" name="purchases_rep">
+         <property name="text">
+          <string>Purchases</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="sales_rep">
+         <property name="text">
+          <string>Sales Report</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="quantity_rep">
+         <property name="text">
+          <string>Quantity </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="rebate_rep">
+         <property name="text">
+          <string>Rebate</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="expiring_rep">
+         <property name="text">
+          <string>Expiring</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTextBrowser" name="Report_display_browser">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>80</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -949,7 +941,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="backButton_expiredMembers">
+     <widget class="QPushButton" name="backButton_search">
       <property name="geometry">
        <rect>
         <x>600</x>

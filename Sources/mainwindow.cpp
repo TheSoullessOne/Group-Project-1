@@ -31,22 +31,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->File_error_message_label->setHidden(true);
     if(!UpdateMembersFromFile("Texts\\warehouse shoppers.txt")){
-        qDebug() << "Error loading file";
+        QMessageBox::critical(this, "Error with File", "Warehouse Shoppers did not load properly.\nPlease try again.");
     }
     if(!UpdateDataFromFile("Texts\\day1.txt"))   {
-        qDebug() << "Error1.";
+        QMessageBox::critical(this, "Error with File", "day1.txt did not load properly.\nPlease try again.");
     }
     if(!UpdateDataFromFile("Texts\\day2.txt"))   {
-        qDebug() << "Error2.";
+        QMessageBox::critical(this, "Error with File", "day2.txt did not load properly.\nPlease try again.");
     }
     if(!UpdateDataFromFile("Texts\\day3.txt"))   {
-        qDebug() << "Error3.";
+        QMessageBox::critical(this, "Error with File", "day3.txt did not load properly.\nPlease try again.");
     }
     if(!UpdateDataFromFile("Texts\\day4.txt"))   {
-        qDebug() << "Error4.";
+        QMessageBox::critical(this, "Error with File", "day4.txt did not load properly.\nPlease try again.");
     }
     if(!UpdateDataFromFile("Texts\\day5.txt"))   {
-        qDebug() << "Error5.";
+        QMessageBox::critical(this, "Error with File", "day5.txt did not load properly.\nPlease try again.");
     }
 
 
@@ -187,7 +187,6 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         QString tempAmt;
         QString tempName;
         QString tempDate;
-        QVector<item*> tempReceipt;
         int tempId;
         item *tempItem;
         bool found;
@@ -279,6 +278,13 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         }
         // it returns true because the function is called in an if-statement
         // Pretty much saying, it returns true if the function worked
+        if(fileName != "Texts\\warehouse shoppers.txt" &&
+           fileName != "Texts\\day1.txt" &&
+           fileName != "Texts\\day2.txt" &&
+           fileName != "Texts\\day3.txt" &&
+           fileName != "Texts\\day4.txt" &&
+           fileName != "Texts\\day5.txt")
+        QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
         return true;
     }
     // Returns false if the function did not work, meaning the file didnt exist
@@ -396,7 +402,7 @@ void MainWindow::on_backButton_upgrade_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(LOGIN_PAGE);
+    ui->pages->setCurrentIndex(ADMIN_LOGIN);
 }
 //----------------------------------------------------------------------
 
@@ -692,6 +698,8 @@ void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
     ui->pages->setCurrentIndex(ADMIN_LOGIN);
+    ui->enterUserName->clear();
+    ui->enterPassword->clear();
 }
 //----------------------------------------------------------------------
 
