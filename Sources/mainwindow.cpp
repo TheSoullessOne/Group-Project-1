@@ -531,7 +531,7 @@ void MainWindow::on_enterPassword_returnPressed()
     bool exists = false;
     bool deleted = false;
     bool exec = false;
-    int index = 0;
+    int  index = 0;
     QString date;
     QString name;
     QString typeString;
@@ -613,10 +613,10 @@ void MainWindow::on_enterPassword_returnPressed()
         // Jump to member info page if password and id are correct
         if(exec)    {
             // Sets predefined variables
-            name = myMembers.execVec[index]->getName();
-            num =  myMembers.execVec[index]->getNum();
-            total =myMembers.execVec[index]->getTotal();
-            date = myMembers.execVec[index]->getExpiry().printDate();
+            name  = myMembers.execVec[index]->getName();
+            num   = myMembers.execVec[index]->getNum();
+            total = myMembers.execVec[index]->getTotal();
+            date  = myMembers.execVec[index]->getExpiry().printDate();
             typeString = "Executive Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
@@ -630,15 +630,15 @@ void MainWindow::on_enterPassword_returnPressed()
                 if(i < 4)
                 ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i + 1]->getShopDate().printDate());
 
-            }   // end-for(int i
+            }   // end-for(int i)
         }
         else
         {
             // Sets predefined variables
-            name = myMembers.memberVec[index]->getName();
-            num =  myMembers.memberVec[index]->getNum();
-            total =myMembers.memberVec[index]->getTotal();
-            date = myMembers.memberVec[index]->getExpiry().printDate();
+            name  = myMembers.memberVec[index]->getName();
+            num   = myMembers.memberVec[index]->getNum();
+            total = myMembers.memberVec[index]->getTotal();
+            date  = myMembers.memberVec[index]->getExpiry().printDate();
             typeString = "Regular Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
