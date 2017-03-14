@@ -10,9 +10,9 @@ using namespace std;
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
-    QVector<item*> ourStock;
-    QVector<int> deletedMemberIds;
-    QVector<QString> deletedItemNames;
+    QVector<item*>      ourStock;
+    QVector<int>        deletedMemberIds;
+    QVector<QString>    deletedItemNames;
 };
 
 
