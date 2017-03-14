@@ -22,6 +22,11 @@ enum PAGES{
     ADD_MEMBER          //12
 
 };
+enum REPORT_PAGES{
+    MAIN_REPORT_PAGE,   //0
+    FILTER_PAGE,        //1
+    REPORT_DISPLAY_PAGE //2
+};
 
 //----------------------------------------------------------------------
 MainWindow::MainWindow(QWidget *parent) :
@@ -100,6 +105,7 @@ void MainWindow::on_upgrade_clicked()
 void MainWindow::on_reportsSearch_clicked()
 {
     ui->pages->setCurrentIndex(REPORTS);
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
     //Here we need to link to another menu that helps decide
     //what kind search they want to do
 }
@@ -401,7 +407,7 @@ void MainWindow::on_backButton_upgrade_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_backButton_search_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);
+    ui->pages->setCurrentIndex(MAIN_MENU);
 }
 //----------------------------------------------------------------------
 
@@ -448,7 +454,7 @@ void MainWindow::on_readInButton_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_purchases_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN); //takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE); //takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
@@ -456,7 +462,7 @@ void MainWindow::on_purchases_rep_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_sales_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
@@ -464,17 +470,18 @@ void MainWindow::on_sales_rep_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_quantity_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------
+//************************************************************************************************************************
 void MainWindow::on_rebate_rep_clicked()
 {
-    ui->pages->setCurrentIndex(ADMIN_LOGIN);//takes you to page to input the string
+    ui->pages->setCurrentIndex(UPGRADE);//takes you to page to input the string
 }
-//----------------------------------------------------------------------
+//----------------------------------------------------------------------****************************************************
 
 
 //----------------------------------------------------------------------
@@ -879,3 +886,14 @@ void MainWindow::on_backButton_deleteInput_clicked()
     ui->pages->setCurrentIndex(DELETE);
 }
 //----------------------------------------------------------------------
+
+void MainWindow::on_backButton_reports_3_clicked()
+{
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+}
+
+void MainWindow::on_backButton_reports_2_clicked()
+{
+
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+}

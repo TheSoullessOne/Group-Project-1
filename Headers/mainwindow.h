@@ -134,6 +134,10 @@ private slots:
 
     void on_backButton_deleteInput_clicked();
 
+    void on_backButton_reports_3_clicked();
+
+    void on_backButton_reports_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
