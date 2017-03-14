@@ -290,12 +290,12 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         // it returns true because the function is called in an if-statement
         // Pretty much saying, it returns true if the function worked
         if(fileName != "Texts\\warehouse shoppers.txt" &&
-           fileName != "Texts\\day1.txt" &&
-           fileName != "Texts\\day2.txt" &&
-           fileName != "Texts\\day3.txt" &&
-           fileName != "Texts\\day4.txt" &&
-           fileName != "Texts\\day5.txt")
-        QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
+                fileName != "Texts\\day1.txt" &&
+                fileName != "Texts\\day2.txt" &&
+                fileName != "Texts\\day3.txt" &&
+                fileName != "Texts\\day4.txt" &&
+                fileName != "Texts\\day5.txt")
+            QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
         return true;
     }
     // Returns false if the function did not work, meaning the file didnt exist
@@ -450,63 +450,6 @@ void MainWindow::on_expiring_rep_clicked()
 void MainWindow::on_create_report_button_clicked()
 {
 
-
-//    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
-
-//    bool id_search       = ui->ID_CB->isChecked();
-//    bool userName_search = ui->USERNAME_CB->isChecked();
-//    bool date_search     = ui->DATE_CB->isChecked();
-//    bool itemName_search = ui->PRODUCT_CB->isChecked();
-//    int index;
-
-
-
-//    QString search_string = ui->SEARCH_INPUT_LINE->text();
-
-//    if(id_search ){
-
-//        int tempId = search_string.toInt();
-//        int index;
-
-//        //searching by id
-//        while(index < myMembers.execVec.size()){
-//            for(int i = 0; i < memberIds[index];i++){
-
-//                ui->reportDisplay->setText(memberId[index]);
-
-//            }
-//        }
-
-//        name  = myMembers.execVec[index]->getName();
-//        num   = myMembers.execVec[index]->getNum();
-//        total = myMembers.execVec[index]->getTotal();
-//        date  = myMembers.execVec[index]->getExpiry().printDate();
-
-
-//        name  = myMembers.memberVec[index]->getName();
-//        num   = myMembers.memberVec[index]->getNum();
-//        total = myMembers.memberVec[index]->getTotal();
-//        date  = myMembers.memberVec[index]->getExpiry().printDate();
-
-//    }else if(userName_search == true){
-
-//        //searching by userName
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-
-//    }else if(date_search == true){
-
-//        //searching by date
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-
-//    }else {
-
-
-//        //searching by itemName
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-//    }
 
 
 
@@ -784,7 +727,7 @@ void MainWindow::on_enterPassword_returnPressed()
             typeString = "Executive Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
-   if(myMembers.execVec[index]->getReceipt().size() > 0){
+            if(myMembers.execVec[index]->getReceipt().size() > 0){
                 ui->Member_Info_Receipt->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
                 for(int i = 0; i < myMembers.execVec[index]->getReceipt().size(); ++i)  {
                     ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i]->getItemName());
