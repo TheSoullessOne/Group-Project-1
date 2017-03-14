@@ -13,9 +13,6 @@ void MainWindow::upgrade(int id){
     double rebate = 0;
     int i = 0;
 
-    //here, set executive equal to true/false based on
-    //the search function above
-
     while(!found && i < myMembers.execVec.size()){
         if(id == myMembers.execVec[i]->getNum()){
             found = true;
