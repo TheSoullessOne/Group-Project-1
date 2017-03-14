@@ -446,74 +446,80 @@ void MainWindow::on_expiring_rep_clicked()
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------****************************************************************************************DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 void MainWindow::on_create_report_button_clicked()
 {
 
 
 //    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
 
-//    QCheckBox id_search       = ui->ID_CB->isChecked();
-//    QCheckBox userName_search = ui->USERNAME_CB->isChecked();
-//    QCheckBox date_search     = ui->DATE_CB->isChecked();
-//    QCheckBox itemName_search = ui->PRODUCT_CB->isChecked();
+//    bool id_search       = ui->ID_CB->isChecked();
+//    bool userName_search = ui->USERNAME_CB->isChecked();
+//    bool date_search     = ui->DATE_CB->isChecked();
+//    bool itemName_search = ui->PRODUCT_CB->isChecked();
+//    int index;
 
 
 
 //    QString search_string = ui->SEARCH_INPUT_LINE->text();
 
 //    if(id_search ){
+
+//        int tempId = search_string.toInt();
+//        int index;
+
 //        //searching by id
+//        while(index < myMembers.execVec.size()){
+//            for(int i = 0; i < memberIds[index];i++){
+
+//                ui->reportDisplay->setText(memberId[index]);
+
+//            }
+//        }
+
+//        name  = myMembers.execVec[index]->getName();
+//        num   = myMembers.execVec[index]->getNum();
+//        total = myMembers.execVec[index]->getTotal();
+//        date  = myMembers.execVec[index]->getExpiry().printDate();
+
+
+//        name  = myMembers.memberVec[index]->getName();
+//        num   = myMembers.memberVec[index]->getNum();
+//        total = myMembers.memberVec[index]->getTotal();
+//        date  = myMembers.memberVec[index]->getExpiry().printDate();
 
 //    }else if(userName_search == true){
+
 //        //searching by userName
+//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
+
 
 //    }else if(date_search == true){
+
 //        //searching by date
+//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
+
 
 //    }else {
+
+
 //        //searching by itemName
+//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
+
 //    }
 
 
 
 
-    //this vector will contain all of the members
-    vector<member*> memberSearch;//add infor for members. This vector holds all the members
-    for(int i = 0; i < myMembers.memberVec.size(); i++)
-    {
-        memberSearch.push_back(myMembers.memberVec[i]);
-    }
-    for(int j = 0; j < myMembers.execVec.size(); j++)
-    {
-        memberSearch.push_back(myMembers.execVec[j]);
-    }
-    //this vector will contain all of the expired members it is set to be the same size as the member search vector
-    vector<member*> expiringMember (memberSearch.size());
-
-    //this is the expiring month that we will be getting from the user
-    QString tempMonth= ui->search_line_edit->text();
-    int expiringMonth = tempMonth.toInt();
-
-    auto it = copy_if (memberSearch.begin(), memberSearch.end(),
-                       expiringMember.begin(), checkExperation(expiringMonth));
-
-    expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
-
-    ui->Output_ExpiredMembers->setText("Expiring members contains:\n" );   // need to replace cout eventually
-    //for loop is for showing the contains of expiringMember
-    //this for loop looks confusin but all it is doing is looping over the vector.
-    for (member* x: expiringMember)
-    {
-        ui->Output_ExpiredMembers->append(x->getName() +"\n");
-
-    }
-
 }
-//----------------------------------------------------------------------*******************************************************************************************DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 
 
+<<<<<<< HEAD
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+=======
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+>>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -521,17 +527,22 @@ void MainWindow::on_delete_user_clicked()
 //----------------------------------------------------------------------
 
 
+<<<<<<< HEAD
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+=======
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+>>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
-//----------------------------------------------------------------------
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
 
 
 //----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAAVCARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
 void MainWindow::on_add_user_clicked()
 {
+<<<<<<< HEAD
     ui->pages->setCurrentIndex(SEARCH);
 
     /***   Declarations   ***/
@@ -676,6 +687,9 @@ void MainWindow::on_add_user_clicked()
         // Set Annual Dues
         myMembers.memberVec[ind1]->setAnnual(95.00);
     }
+=======
+    ui->pages->setCurrentIndex(ADD_MEMBER);
+>>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
 }
 //----------------------------------------------------------------------
 
@@ -1127,3 +1141,14 @@ void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+void MainWindow::on_backButtonForAddItem_clicked()
+{
+    ui->pages->setCurrentIndex(ADD_MENU);
+}
+
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
