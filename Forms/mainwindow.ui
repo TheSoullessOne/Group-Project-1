@@ -17,8 +17,8 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>0</y>
+      <x>10</x>
+      <y>10</y>
       <width>731</width>
       <height>441</height>
      </rect>
@@ -304,7 +304,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -382,7 +382,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ff5500;&quot;&gt;What would you like to use to search for the report?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="INPUT_LINE">
+       <widget class="QLineEdit" name="SEARCH_INPUT_LINE_2">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -456,6 +456,19 @@
         </property>
         <property name="text">
          <string>BACK TO REPORT MENU</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="create_report_button">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>190</y>
+          <width>91</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Create Report</string>
         </property>
        </widget>
       </widget>
@@ -660,8 +673,8 @@
      <widget class="QPushButton" name="backButton_upgrade">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>390</y>
+        <x>460</x>
+        <y>330</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -696,14 +709,14 @@
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>100</y>
-        <width>47</width>
-        <height>13</height>
+        <x>260</x>
+        <y>80</y>
+        <width>51</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>ENTER ID</string>
+       <string>ENTER ID:</string>
       </property>
      </widget>
      <widget class="QTextBrowser" name="textBrowser_12">
@@ -711,8 +724,8 @@
        <rect>
         <x>110</x>
         <y>160</y>
-        <width>411</width>
-        <height>71</height>
+        <width>431</width>
+        <height>31</height>
        </rect>
       </property>
      </widget>
@@ -720,7 +733,7 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>130</y>
+        <y>120</y>
         <width>471</width>
         <height>31</height>
        </rect>
@@ -732,8 +745,8 @@
      <widget class="QCheckBox" name="checkBox_2">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>240</y>
+        <x>260</x>
+        <y>200</y>
         <width>70</width>
         <height>17</height>
        </rect>
@@ -745,8 +758,8 @@
      <widget class="QCheckBox" name="checkBox_3">
       <property name="geometry">
        <rect>
-        <x>429</x>
-        <y>240</y>
+        <x>260</x>
+        <y>220</y>
         <width>91</width>
         <height>20</height>
        </rect>
@@ -758,8 +771,8 @@
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>280</x>
-        <y>290</y>
+        <x>260</x>
+        <y>270</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -771,8 +784,8 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>270</y>
+        <x>220</x>
+        <y>250</y>
         <width>181</width>
         <height>16</height>
        </rect>
