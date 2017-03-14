@@ -515,11 +515,11 @@ void MainWindow::on_create_report_button_clicked()
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 
 
-<<<<<<< HEAD
+
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
-=======
+
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
->>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
+
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -527,11 +527,11 @@ void MainWindow::on_delete_user_clicked()
 //----------------------------------------------------------------------
 
 
-<<<<<<< HEAD
+
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
-=======
+
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
->>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
+
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -539,10 +539,9 @@ void MainWindow::on_delete_item_clicked()
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
 
 
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAAVCARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
+//----------------------------------------------------------------------
 void MainWindow::on_add_user_clicked()
 {
-<<<<<<< HEAD
     ui->pages->setCurrentIndex(SEARCH);
 
     /***   Declarations   ***/
@@ -687,9 +686,9 @@ void MainWindow::on_add_user_clicked()
         // Set Annual Dues
         myMembers.memberVec[ind1]->setAnnual(95.00);
     }
-=======
+
     ui->pages->setCurrentIndex(ADD_MEMBER);
->>>>>>> b6a6eaccc316f54f31a0dd6cb7565f287d189a57
+
 }
 //----------------------------------------------------------------------
 

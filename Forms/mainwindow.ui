@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>12</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -1142,7 +1142,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="executive_yes_checkBox">
+     <widget class="QCheckBox" name="executive_checkBox">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -1192,19 +1192,6 @@
       </property>
       <property name="text">
        <string>ENTER</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="executive_no_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>160</y>
-        <width>70</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>NO</string>
       </property>
      </widget>
     </widget>
@@ -1303,7 +1290,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
