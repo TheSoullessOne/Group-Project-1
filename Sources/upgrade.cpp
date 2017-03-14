@@ -6,29 +6,46 @@
 #include <QChar>
 #include <QDebug>
 
-void upgrade(QString id){
-    //utilize same search function as before
-    bool executive = true;
+void MainWindow::upgrade(int id){
 
-    //here, set executive equal to true/false based on
-    //the search function above
+    bool executive = false;
+    bool found = true;
+    double rebate = 0;
+    double total = 0;
+    int i = 0;
+
+    const int PRICE_DIFFERENCE = 10; //the difference in price between
+                                     //a regular member and an executive
+    const float REBATE_RATE = .0325;
+
+
+    while(!found && i < myMembers.execVec.size()){
+        if(id == myMembers.execVec[i]->getNum()){
+            found = true;
+            executive = true;
+            total = myMembers.execVec[i]->getTotal();
+        }
+        i++;
+    }
+
+    rebate = memberRebate(id);
 
     if(executive == true){
-        //if(rebate < 10){
+        if(rebate < PRICE_DIFFERENCE){
         //  the member should downgrade to save money
-        //}
-        //else{
+        }
+        else{
         //  the member should remain an executive
-        //}
+        }
     }
     else{   //this would be for regular members
-        //if(totalSubTotal > 307.69){
+        if(total > (PRICE_DIFFERENCE/REBATE_RATE)){
         //  the member should upgrade to executive to
         //  save money
-        //}
-        //else{
+        }
+        else{
         //  the member should remain a regular member
-        //}
+        }
     }
 
 

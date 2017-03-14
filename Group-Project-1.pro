@@ -31,7 +31,6 @@ SOURCES += Sources\main.cpp\
     Sources\submenu.cpp \
     Sources\member.cpp \
     Sources\date.cpp \
-    Sources\vectors.cpp \
     Sources\item.cpp \
     Sources\upgrade.cpp
 

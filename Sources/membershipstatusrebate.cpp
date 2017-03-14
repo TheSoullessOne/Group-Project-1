@@ -6,32 +6,55 @@
 #include <QChar>
 #include <QDebug>
 
-//pass in id - QString
-void membershipStatus(QString id){
+//pass in id
+
+double MainWindow::memberRebate(int id){
 
     bool executive_yes = false;
+    bool found = true;
+    double rebate = 0;
+    double totalAnnualCost = 0;
+    double subtotal = 0;
+    int annualCharge = 0;
+    int i = 0;
+
+    const float REBATE_RATE = .0325;
+    const int   ANNUAL_EXEC_FEE = 95;
+    const int   ANNUAL_REG_FEE = 85;
+
+    //using a search function using the member's id
+    //to determine what kind of member they are
+    //(regular or executive)
+    while(!found && i < myMembers.execVec.size()){
+        if(id == myMembers.execVec[i]->getNum()){
+            found = true;
+            executive_yes = true;
+            subtotal = myMembers.memberVec[i]->getTotal();
+        }
+        i++;
+    }
+
     //rebate is based off of total purchases for year
     //so we need a running total variable for purchases
 
-    //use a search function using the member's id
-    //to determine what kind of member they are
-    //(regular or executive)
+    if(executive_yes == true){
+        annualCharge = ANNUAL_EXEC_FEE;
 
-
-    if(executive_yes = true){
-        //annual executive membership is $95
         //the rebate will be subtracted from this charge
-        //rebate = 3.25% * subtotal (before tax)
-        //if(month is Dec){
-        //  rebate will be paid out
-        //}
-        //use a for loop to add the totals from each month
-        //to create a yearly total?
+        rebate = REBATE_RATE * subtotal;
+
+        totalAnnualCost = annualCharge - rebate;
+
+        //output to user their total payment for the year
 
     }
-    else if(executive_yes = false){
-        //annual regular membership is $85
-        //there is no rebate
+    else{
+        annualCharge = ANNUAL_REG_FEE;
+
+        totalAnnualCost = annualCharge;
+        //output to user their total payment for the year
+
     }
 
+ return rebate;
 }
