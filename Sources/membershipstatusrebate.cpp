@@ -18,6 +18,9 @@ double MainWindow::memberRebate(int id){
     int annualCharge = 0;
     int i = 0;
 
+    const float REBATE_RATE = .0325;
+    const int   ANNUAL_EXEC_FEE = 95;
+    const int   ANNUAL_REG_FEE = 85;
 
     //using a search function using the member's id
     //to determine what kind of member they are
@@ -35,10 +38,10 @@ double MainWindow::memberRebate(int id){
     //so we need a running total variable for purchases
 
     if(executive_yes == true){
-        annualCharge = 95;
+        annualCharge = ANNUAL_EXEC_FEE;
 
         //the rebate will be subtracted from this charge
-        rebate = 3.25 * subtotal;
+        rebate = REBATE_RATE * subtotal;
 
         totalAnnualCost = annualCharge - rebate;
 
@@ -46,7 +49,7 @@ double MainWindow::memberRebate(int id){
 
     }
     else{
-        annualCharge = 85;
+        annualCharge = ANNUAL_REG_FEE;
 
         totalAnnualCost = annualCharge;
         //output to user their total payment for the year

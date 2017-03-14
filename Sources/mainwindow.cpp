@@ -821,7 +821,7 @@ bool MainWindow::deleteItemOrName(QString searchItem)  {
     }
     while(!found && i < myMembers.ourStock.size())    {
         if(searchItem == myMembers.ourStock[i]->getItemName()) {
-            found == true;
+            found = true;
             myMembers.deletedItemNames.push_back(myMembers.ourStock[i]->getItemName());
         }
         else
