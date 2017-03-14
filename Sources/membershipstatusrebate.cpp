@@ -6,7 +6,7 @@
 #include <QChar>
 #include <QDebug>
 
-//pass in id - QString
+//pass in id
 
 double MainWindow::memberRebate(int id){
 
@@ -14,16 +14,22 @@ double MainWindow::memberRebate(int id){
     bool found = true;
     double rebate = 0;
     double totalAnnualCost = 0;
+    double subtotal = 0;
     int annualCharge = 0;
     int i = 0;
 
-    //use a search function using the member's id
+    const float REBATE_RATE = .0325;
+    const int   ANNUAL_EXEC_FEE = 95;
+    const int   ANNUAL_REG_FEE = 85;
+
+    //using a search function using the member's id
     //to determine what kind of member they are
     //(regular or executive)
     while(!found && i < myMembers.execVec.size()){
         if(id == myMembers.execVec[i]->getNum()){
             found = true;
             executive_yes = true;
+            subtotal = myMembers.memberVec[i]->getTotal();
         }
         i++;
     }
@@ -32,10 +38,10 @@ double MainWindow::memberRebate(int id){
     //so we need a running total variable for purchases
 
     if(executive_yes == true){
-        annualCharge = 95;
+        annualCharge = ANNUAL_EXEC_FEE;
 
         //the rebate will be subtracted from this charge
-        //rebate = 3.25% * subtotal (before tax)
+        rebate = REBATE_RATE * subtotal;
 
         totalAnnualCost = annualCharge - rebate;
 
@@ -43,7 +49,7 @@ double MainWindow::memberRebate(int id){
 
     }
     else{
-        annualCharge = 85;
+        annualCharge = ANNUAL_REG_FEE;
 
         totalAnnualCost = annualCharge;
         //output to user their total payment for the year
