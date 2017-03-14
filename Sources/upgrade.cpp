@@ -6,6 +6,14 @@
 #include <QChar>
 #include <QDebug>
 
+/*************************************************************
+ * This function will determine if it is more money savy to
+ * either upgrade or downgrade their membership. It will also
+ * show their total amount due for the year. This includes
+ * the annual membership fee (based on member status i.e.
+ * regular/executive) and the rebate if they are an executive
+ * member (based off of their total spending for the year)
+ *************************************************************/
 void MainWindow::upgrade(int id){
 
     bool executive = false;
