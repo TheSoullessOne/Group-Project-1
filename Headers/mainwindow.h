@@ -140,6 +140,8 @@ private slots:
 
     void on_create_report_button_clicked();
 
+    void on_backButtonForAddItem_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
