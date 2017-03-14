@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -1084,15 +1084,9 @@
      <widget class="QLabel" name="enterMonthLabel">
       <property name="geometry">
        <rect>
-<!--<<<<<< HEAD
-        <x>0</x>
-        <y>0</y>
-        <width>321</width>
-======= -->
         <x>20</x>
         <y>50</y>
         <width>311</width>
-<!-->>>>>>> 65bcd271fda0dbc55bf672ed679c9bca61bfea98 -->
         <height>21</height>
        </rect>
       </property>

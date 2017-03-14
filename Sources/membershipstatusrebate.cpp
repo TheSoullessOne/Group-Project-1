@@ -6,8 +6,15 @@
 #include <QChar>
 #include <QDebug>
 
-//pass in id
+/**************************************************
+ * This function will search the executive
+ * member vector to locate a specified
+ * id number, and then output the rebate for
+ * that member (based on their total spending for
+ * the year
+ *************************************************/
 
+//pass in id
 double MainWindow::memberRebate(int id){
 
     bool executive_yes = false;
@@ -36,7 +43,6 @@ double MainWindow::memberRebate(int id){
 
     //rebate is based off of total purchases for year
     //so we need a running total variable for purchases
-
     if(executive_yes == true){
         annualCharge = ANNUAL_EXEC_FEE;
 
