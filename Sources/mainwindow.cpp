@@ -287,12 +287,12 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         // it returns true because the function is called in an if-statement
         // Pretty much saying, it returns true if the function worked
         if(fileName != "Texts\\warehouse shoppers.txt" &&
-           fileName != "Texts\\day1.txt" &&
-           fileName != "Texts\\day2.txt" &&
-           fileName != "Texts\\day3.txt" &&
-           fileName != "Texts\\day4.txt" &&
-           fileName != "Texts\\day5.txt")
-        QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
+                fileName != "Texts\\day1.txt" &&
+                fileName != "Texts\\day2.txt" &&
+                fileName != "Texts\\day3.txt" &&
+                fileName != "Texts\\day4.txt" &&
+                fileName != "Texts\\day5.txt")
+            QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
         return true;
     }
     // Returns false if the function did not work, meaning the file didnt exist
@@ -448,29 +448,29 @@ void MainWindow::on_create_report_button_clicked()
 {
 
 
-//    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
+    //    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
 
-//    QCheckBox id_search       = ui->ID_CB->isChecked();
-//    QCheckBox userName_search = ui->USERNAME_CB->isChecked();
-//    QCheckBox date_search     = ui->DATE_CB->isChecked();
-//    QCheckBox itemName_search = ui->PRODUCT_CB->isChecked();
+    //    QCheckBox id_search       = ui->ID_CB->isChecked();
+    //    QCheckBox userName_search = ui->USERNAME_CB->isChecked();
+    //    QCheckBox date_search     = ui->DATE_CB->isChecked();
+    //    QCheckBox itemName_search = ui->PRODUCT_CB->isChecked();
 
 
 
-//    QString search_string = ui->SEARCH_INPUT_LINE->text();
+    //    QString search_string = ui->SEARCH_INPUT_LINE->text();
 
-//    if(id_search ){
-//        //searching by id
+    //    if(id_search ){
+    //        //searching by id
 
-//    }else if(userName_search == true){
-//        //searching by userName
+    //    }else if(userName_search == true){
+    //        //searching by userName
 
-//    }else if(date_search == true){
-//        //searching by date
+    //    }else if(date_search == true){
+    //        //searching by date
 
-//    }else {
-//        //searching by itemName
-//    }
+    //    }else {
+    //        //searching by itemName
+    //    }
 
 
 
@@ -625,7 +625,7 @@ void MainWindow::on_enterPassword_returnPressed()
             typeString = "Executive Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
-   if(myMembers.execVec[index]->getReceipt().size() > 0){
+            if(myMembers.execVec[index]->getReceipt().size() > 0){
                 ui->Member_Info_Receipt->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
                 for(int i = 0; i < myMembers.execVec[index]->getReceipt().size(); ++i)  {
                     ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i]->getItemName());
