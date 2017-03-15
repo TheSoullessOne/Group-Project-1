@@ -46,7 +46,7 @@ class item
 
   private:
     QString name;
-    double price;
+    double  price;
     int     amtBought;
     date    shopping_day;
 };

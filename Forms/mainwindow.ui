@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -1155,7 +1155,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="executive_yes_checkBox">
+     <widget class="QCheckBox" name="executive_checkBox">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -1197,7 +1197,7 @@
      <widget class="QPushButton" name="enterButtonForAddMember">
       <property name="geometry">
        <rect>
-        <x>550</x>
+        <x>330</x>
         <y>200</y>
         <width>75</width>
         <height>23</height>
@@ -1207,17 +1207,27 @@
        <string>ENTER</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="executive_no_checkBox">
+     <widget class="QTextBrowser" name="informUserID">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>160</y>
-        <width>70</width>
-        <height>17</height>
+        <x>310</x>
+        <y>260</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>240</y>
+        <width>91</width>
+        <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>NO</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;New User ID #:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
@@ -1248,8 +1258,8 @@
      <widget class="QLabel" name="enter_item_price">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>90</y>
+        <x>150</x>
+        <y>80</y>
         <width>121</width>
         <height>16</height>
        </rect>
@@ -1261,7 +1271,7 @@
      <widget class="QLabel" name="enterItemNameLabel">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>150</x>
         <y>120</y>
         <width>121</width>
         <height>16</height>
