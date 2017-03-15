@@ -6,14 +6,11 @@
 #include <QList>
 #include <QSortFilterProxyModel>
 #include <QStringList>
-<<<<<<< HEAD
 #include <QStandardItemModel>
 #include "Headers/salesreport.h"
-=======
 #include <QtGlobal>
 #include <time.h>
 #include <QDate>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 using namespace std;
 
 /**
@@ -541,54 +538,54 @@ void MainWindow::on_sales_rep_clicked()
 
     QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
 
-    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
+//    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
 
-    for(int i = 0; i < sortedItems.size(); ++i) {
-        totalRevenue = 0;
-        execCounter = 0;
-        memCounter = 0;
-        ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
-        for(int j = 0; j < myMembers.execVec.size(); ++j)   {
-            found  =false;
-            for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
-                if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
-                    found = true;
-                    totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
-                                     myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
-                    ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
-                                                    " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
-                }
+//    for(int i = 0; i < sortedItems.size(); ++i) {
+//        totalRevenue = 0;
+//        execCounter = 0;
+//        memCounter = 0;
+//        ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
+//        for(int j = 0; j < myMembers.execVec.size(); ++j)   {
+//            found  =false;
+//            for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
+//                if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found = true;
+//                    totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
 
-            }
-            if(found)   {
-                ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
-                ++execCounter;
-            }
-        }
-        for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
-            for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
-                found = false;
-                if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
-                    found  =true;
-                    totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
-                                     myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
-                    ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
-                                                    " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
-                }
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
+//                ++execCounter;
+//            }
+//        }
+//        for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
+//            for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
+//                found = false;
+//                if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found  =true;
+//                    totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
 
-            }
-            if(found)   {
-                ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
-                ++memCounter;
-            }
-        }
-        ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
-        ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
-        ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
+//                ++memCounter;
+//            }
+//        }
+//        ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
+//        ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
+//        ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
 
 
 
-    }
+//    }
 
 
 }
@@ -1369,7 +1366,6 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 //----------------------------------------------------------------------
 
-<<<<<<< HEAD
 void MainWindow::on_pushButton_2_clicked()
 {
     /*ints that are gathering information from the calender widget
@@ -1422,7 +1418,7 @@ void MainWindow::on_pushButton_2_clicked()
     }
 
 
-=======
+}
 /**
  * @brief MainWindow::on_enterButtonForAddMember_clicked
  */
@@ -1612,6 +1608,5 @@ void MainWindow::on_backButton_reports_4_clicked()
 {
 
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 }
