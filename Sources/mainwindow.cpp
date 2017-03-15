@@ -6,6 +6,8 @@
 #include <QList>
 #include <QSortFilterProxyModel>
 #include <QStringList>
+#include <QStandardItemModel>
+#include "Headers/salesreport.h"
 #include <QtGlobal>
 #include <time.h>
 #include <QDate>
@@ -459,42 +461,85 @@ void MainWindow::on_purchases_rep_clicked()
     ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT); //takes you to page to input the string
 
     bool found = false;
+    bool exec = false;
     int index;
     int tempIndexAr[myMembers.memberVec.size()];
 
     std::sort(memberIds.begin(),memberIds.end());
 
+//<<<<<<< HEAD
 
-        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
+//        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
-        for(int i = 0; i<myMembers.memberVec.size();i++){
+//        for(int i = 0; i<myMembers.memberVec.size();i++){
+//=======
+    for(int i = 0; i<myMembers.memberVec.size();i++){
 
-            index = 0;
+        index = 0;
 
-            ui->productReportDisplay->append("\n\n");
+        ui->productReportDisplay->append("\n\n");
 
-            while(!found && i < myMembers.memberVec.size()){
+        while(!found && i < myMembers.memberVec.size()){
 
-                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
-                    found = true;
-                    index = i;
-                }
-                else{
-                     ++i;
-                }
+//<<<<<<< HEAD
+//                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+//                    found = true;
+//                    index = i;
+//                }
+//                else{
+//                     ++i;
+//                }
+//            }
+
+//            ui->productReportDisplay->append(QString::number(memberIds[i]) + " " + myMembers.memberVec[index]->getName());
+
+//            for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size();i++){
+
+//                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
+//                                          + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
+//                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " ");
+//=======
+            if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+                found = true;
+                index = i;
+                exec = false;
+
             }
+            else if(memberIds[i] == myMembers.execVec[i]->getNum()){
+                found = true;
+                index = i;
+                exec = true;
+            }
+        }
 
-            ui->productReportDisplay->append(QString::number(memberIds[i]) + " " + myMembers.memberVec[index]->getName());
 
-            for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size();i++){
+        if(exec){
+            ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.execVec[index]->getName());
 
-                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
-                                          + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
-                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " ");
+            for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+
+                ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
+                                                 + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                 + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+
+            }
+            ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.execVec[index]->getTotal()));
+        }
+        else{
+
+            ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.memberVec[index]->getName());
+
+            for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
+
+                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
+                                                 + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                 + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
 
             }
             ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
         }
+
+    }
 }
 //----------------------------------------------------------------------
 
@@ -506,6 +551,63 @@ void MainWindow::on_purchases_rep_clicked()
 void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
+
+    int execCounter = 0;
+    int memCounter = 0;
+    double totalRevenue = 0;
+    bool found;
+
+    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
+
+//    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
+
+//    for(int i = 0; i < sortedItems.size(); ++i) {
+//        totalRevenue = 0;
+//        execCounter = 0;
+//        memCounter = 0;
+//        ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
+//        for(int j = 0; j < myMembers.execVec.size(); ++j)   {
+//            found  =false;
+//            for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
+//                if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found = true;
+//                    totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
+
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
+//                ++execCounter;
+//            }
+//        }
+//        for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
+//            for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
+//                found = false;
+//                if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found  =true;
+//                    totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
+
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
+//                ++memCounter;
+//            }
+//        }
+//        ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
+//        ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
+//        ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
+
+
+
+//    }
+
 
 }
 //----------------------------------------------------------------------
@@ -529,13 +631,16 @@ void MainWindow::on_quantity_rep_clicked()
     QVector<std::string> sortedItems;
 
 
-//    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
+    //    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
 
     for(int i =0; i<myMembers.ourStock.size();i++){
         sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
+//<<<<<<< HEAD
 
-    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
-}
+//    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+//}
+//=======
+    }
 
     std::sort(sortedItems.begin(), sortedItems.end());
     for(int i =0; i< sortedItems.size();i++){
@@ -825,7 +930,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     password = password.toLower();
 
     if(username == "admin"  &&
-       password == "password")  {
+            password == "password")  {
         ui->pages->setCurrentIndex(MAIN_MENU);
         ui->Admin_Username_line_edit->clear();
         ui->Admin_Password_line_edit->clear();
@@ -1155,7 +1260,7 @@ void MainWindow::on_id_enter_button_clicked()
     const int EXEC_ANNUAL_FEE = 95;
     const int REG_ANNUAL_FEE = 85;
     const int PRICE_DIFFERENCE = 10; //the difference in price between
-                                     //a regular member and an executive
+    //a regular member and an executive
     const float REBATE_RATE = .0325;
 
     int idTemp = idTempString.toInt();
@@ -1279,7 +1384,8 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         // Push it to the Back
         myMembers.execVec.push_back(tempExec);
 
-//        myMembers.memberVec.remove(reg_index);
+        //      myMembers.memberVec.remove(reg_index);
+
     }
 
     if(downgrade && executive_yes){
@@ -1290,7 +1396,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         // Push it to the Back
         myMembers.memberVec.push_back(tempMember);
 
-//      myMembers.execVec.remove(exec_index);
+        //      myMembers.execVec.remove(exec_index);
     }
 
 
@@ -1311,7 +1417,59 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 
 //----------------------------------------------------------------------
+void MainWindow::on_pushButton_2_clicked()
+{
+    /*ints that are gathering information from the calender widget
+     * acting as a user input*/
+    int day = ui->dateEdit->date().day();
+    int month = ui->dateEdit->date().month();
+    int year = ui->dateEdit->date().year();
 
+    /*this is the master vector behold and tremble
+       its the vector that holds the sales report*/
+    vector<salesReport*> report (myMembers.sales.size());
+    /*degub testing*/
+    qDebug() << "There are " << myMembers.sales.size() << " sales records";
+   /* auto in order to copy the vector into a new vector and the resize to slim it down
+      because its chuby, but really in order to make the vector the size its suppose to be*/
+    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+                       report.begin(), salesCheck(day,month,year));
+    report.resize(distance(report.begin(),it));
+
+    qDebug() << "On " << month << "/" << day << "/" << year
+             << " there were " << report.size() << " sales";
+
+    /* magical code used to creat the table*/
+    QStandardItemModel *m = new QStandardItemModel();
+    ui->SalesReportTable->setModel(m);
+    /* this is how to use a QT table I honestly really disliked it because
+     * it took me a stupid amount of time to learn, and even thought I spent
+     * time trying to learn I am still uterly confused.*/
+    m->setColumnCount(4);
+    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+
+    m->setRowCount(report.size());
+    /*for loop in order to print out the table*/
+      for (unsigned int i = 0; i < report.size(); i++)
+    {
+          salesReport* x = report[i];
+        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+        m->setItem(i, 1, new QStandardItem(
+                       QString("%1/%2/%3")
+                       .arg(x->getDate().getMonth())
+                       .arg(x->getDate().getDay())
+                       .arg( x->getDate().getYear())));
+        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
+
+
+    }
+
+
+}
 /**
  * @brief MainWindow::on_enterButtonForAddMember_clicked
  */
@@ -1343,7 +1501,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
     if(check)
     {
-    /***   Handle Vector   ****/
+        /***   Handle Vector   ****/
         // Create New Exec
         tempE = new executive;
 
@@ -1353,7 +1511,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         // Initialize ind0 to Working Index
         ind0 = myMembers.execVec.size() - 1;
 
-    /***   Handle Information   ***/
+        /***   Handle Information   ***/
         // Set Member Name
         myMembers.execVec[ind0]->setName(strQ);
 
@@ -1407,7 +1565,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
     }
     else
     {
-    /***   Handle Vector   ****/
+        /***   Handle Vector   ****/
         // Create New Member
         tempM = new member;
 
@@ -1417,7 +1575,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         // Initialize ind0 to Working Index
         ind1 = myMembers.memberVec.size() - 1;
 
-    /***   Handle Information   ***/
+        /***   Handle Information   ***/
         // Set Member Name
         myMembers.memberVec[ind1]->setName(strQ);
 
@@ -1466,13 +1624,13 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         myMembers.memberVec[ind1]->setAnnual(95.00);
 
         // Inform User of New ID #
-         ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
+        ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
 
 
 
     }
-//    for(int i = 0; i < memberIds.size(); ++i)   {
-//    }
+    //    for(int i = 0; i < memberIds.size(); ++i)   {
+    //    }
     ui->nameInputLine->clear();
     ui->executive_checkBox->setChecked(false);
 }

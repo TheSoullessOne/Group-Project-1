@@ -423,10 +423,33 @@
        <widget class="QDateEdit" name="dateEdit">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>60</y>
-          <width>621</width>
-          <height>271</height>
+          <x>220</x>
+          <y>110</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>120</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="SalesReportTable">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>140</y>
+          <width>611</width>
+          <height>191</height>
          </rect>
         </property>
        </widget>
