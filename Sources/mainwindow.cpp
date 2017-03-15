@@ -1107,5 +1107,5 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
 void MainWindow::on_enterButtonAddItem_clicked()
 {
-    std::sort(memberIds.begin(), memberIds.end());
+
 }
