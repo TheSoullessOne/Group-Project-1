@@ -469,7 +469,6 @@ void MainWindow::on_purchases_rep_clicked()
     bool exec;
     bool found = false;
     int index =0;
-    int i =0;
     //    int tempIndexAr[myMembers.memberVec.size()];
 
     std::sort(memberIds.begin(),memberIds.end());
@@ -480,7 +479,8 @@ void MainWindow::on_purchases_rep_clicked()
 
     for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
         ui->productReportDisplay->append("\n\n");
-
+        int i =0;
+        bool found = false;
         index = 0;
         while(!found && i < myMembers.memberVec.size()){
             if(memberIds[idIndex] == myMembers.memberVec[i]->getNum()){
