@@ -466,14 +466,12 @@ void MainWindow::on_purchases_rep_clicked()
 
     std::sort(memberIds.begin(),memberIds.end());
 
-        for(int i = 0; i<myMembers.memberVec.size();i++){
-
-            index = 0;
 
             ui->productReportDisplay->append("\n\n");
 
             while(!found && i < myMembers.memberVec.size()){
 
+                for(int i =0; i< myMembers.memberVec.size();i++){
                 if(memberIds[i] == myMembers.memberVec[i]->getNum()){
                     found = true;
                     index = i;
@@ -485,6 +483,7 @@ void MainWindow::on_purchases_rep_clicked()
                     index = i;
                     exec = true;
              }
+
             }
 
 
@@ -558,7 +557,7 @@ void MainWindow::on_quantity_rep_clicked()
 
     std::sort(sortedItems.begin(), sortedItems.end());
 
-    ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY ITEM NAME\n\n");
+    ui->quantityReportDisplay->setText("DISPLAYING QUANTITY REPORT SORTED BY ITEM NAME\n\n");
 
     for(int i =0; i< sortedItems.size();i++){
         totalSold = 0;
