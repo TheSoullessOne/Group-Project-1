@@ -327,9 +327,17 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             // Then it will create the item and push it to the back fo the vector
             if(!otherFound)  {
                 myMembers.ourStock.push_back(tempItem);
-                myMembers.sales.push_back(new salesReport(tempItem, myMembers.memberVec[i],
-                                                          tempItem->getItemPrice(),
-                                                          tempItem->getShopDate()));
+                if(execBool)    {
+                    myMembers.sales.push_back(new salesReport(tempItem, myMembers.execVec[i],
+                                                              tempItem->getItemPrice(),
+                                                              tempItem->getShopDate()));
+                }
+                else
+                {
+                    myMembers.sales.push_back(new salesReport(tempItem, myMembers.memberVec[i],
+                                                              tempItem->getItemPrice(),
+                                                              tempItem->getShopDate()));
+                }
             }
         }
         // it returns true because the function is called in an if-statement
@@ -478,7 +486,7 @@ void MainWindow::on_purchases_rep_clicked()
     for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
         ui->productReportDisplay->append("\n\n");
         int i =0;
-        bool found = false;
+        found = false;
         index = 0;
         while(!found && i < myMembers.memberVec.size()){
             if(memberIds[idIndex] == myMembers.memberVec[i]->getNum()){
@@ -1354,6 +1362,8 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
             exec_index++;
         }
     }
+    qDebug() << "reg index " + QString::number(reg_index);
+    qDebug() << "exec index " + QString::number(exec_index);
 
     //if the user chooses to upgrade, all of their information will be
     //added to the executive vector and deleted from the regular vector
@@ -1364,6 +1374,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         double tempTotal = myMembers.memberVec[reg_index]->getTotal();
         double tempAnnualDues = myMembers.memberVec[reg_index]->getAnnual();
         int index0;
+        item* tempItem;
 
         QDate      today;  // to retrieve today's date
         int        year;   // to translate QDate to date
@@ -1383,6 +1394,10 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         myMembers.execVec[index0]->setType(true);
         myMembers.execVec[index0]->setTotal(tempTotal);
         myMembers.execVec[index0]->setAnnual(tempAnnualDues);
+        for(int i = 0; i < myMembers.memberVec[reg_index]->getReceipt().size(); ++i)   {
+            tempItem = myMembers.memberVec[reg_index]->getReceipt()[i];
+            myMembers.execVec[index0]->setReceipt(tempItem);
+        }
 
         // Set Expiry
         today = QDate::currentDate();
@@ -1393,19 +1408,19 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
 
         myMembers.execVec[index0]->setExpiry(day, month, year);
 
-//        myMembers.memberVec.remove(reg_index);
-
+        myMembers.memberVec.removeAt(reg_index);
     }
 
     //if the user chooses to downgrade, all of their information will be
     //added to the regular vector and deleted from the executive vector
     if(downgrade && executive_yes){
         member *tempMember;
-        QString tempName = myMembers.execVec[reg_index]->getName();
-        int tempId = myMembers.execVec[reg_index]->getNum();
-        double tempTotal = myMembers.execVec[reg_index]->getTotal();
-        double tempAnnualDues = myMembers.execVec[reg_index]->getAnnual();
+        QString tempName = myMembers.execVec[exec_index]->getName();
+        int tempId = myMembers.execVec[exec_index]->getNum();
+        double tempTotal = myMembers.execVec[exec_index]->getTotal();
+        double tempAnnualDues = myMembers.execVec[exec_index]->getAnnual();
         int index1;
+        item* tempItem;
 
         QDate      today;  // to retrieve today's date
         int        year;   // to translate QDate to date
@@ -1417,14 +1432,19 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         // Push it to the Back
         myMembers.memberVec.push_back(tempMember);
 
-        // Initialize ind0 to Working Index
+        // Initialize ind1 to Working Index
         index1 = myMembers.memberVec.size() - 1;
 
         myMembers.memberVec[index1]->setName(tempName);
         myMembers.memberVec[index1]->setNum(tempId);
-        myMembers.memberVec[index1]->setType(true);
+        myMembers.memberVec[index1]->setType(false);
         myMembers.memberVec[index1]->setTotal(tempTotal);
         myMembers.memberVec[index1]->setAnnual(tempAnnualDues);
+        for(int i = 0; i < myMembers.execVec[exec_index]->getReceipt().size(); ++i)  {
+            tempItem = myMembers.execVec[exec_index]->getReceipt()[i];
+            myMembers.memberVec[index1]->setReceipt(tempItem);
+        }
+
 
         // Set Expiry
         today = QDate::currentDate();
@@ -1435,7 +1455,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
 
         myMembers.memberVec[index1]->setExpiry(day, month, year);
 
-//        myMembers.execVec.remove(exec_index);
+        myMembers.execVec.removeAt(exec_index);
 
     }
 
