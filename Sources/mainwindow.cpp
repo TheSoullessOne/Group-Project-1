@@ -1018,6 +1018,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         }while(check);
 
         myMembers.execVec[ind0]->setNum(rando);
+        memberIds.push_back(rando);
 
         // Set type
         myMembers.execVec[ind0]->setType(true);
@@ -1081,6 +1082,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         }while(check);
 
         myMembers.memberVec[ind1]->setNum(rando);
+        memberIds.push_back(rando);
 
         // Set type
         myMembers.memberVec[ind1]->setType(false);
