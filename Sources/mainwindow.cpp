@@ -457,7 +457,7 @@ void MainWindow::on_purchases_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT); //takes you to page to input the string
 
-    bool found;
+    bool found = false;
     int index;
     int tempIndexAr[myMembers.memberVec.size()];
 
@@ -467,6 +467,8 @@ void MainWindow::on_purchases_rep_clicked()
         ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
         for(int i = 0; i<myMembers.memberVec.size();i++){
+
+            index = 0;
 
             ui->productReportDisplay->append("\n\n");
             ui->productReportDisplay->append(QString::number(memberIds[i]));
@@ -480,16 +482,16 @@ void MainWindow::on_purchases_rep_clicked()
                 else{
                      ++i;
                 }
-
             }
 
-            for(int i = 0; i<myMembers.memberVec[index]->getReceipt().size();i++){
+            for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size();i++){
 
                 ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
                                           + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
-                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " "
-                                          + " TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
+                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " ");
+
             }
+            ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
         }
 }
 //----------------------------------------------------------------------
