@@ -3,6 +3,8 @@
 #include <QDebug>
 #include <algorithm>
 #include <QFile>
+#include <QList>
+#include <QSortFilterProxyModel>
 #include <QStringList>
 using namespace std;
 
@@ -23,9 +25,10 @@ enum PAGES{
 
 };
 enum REPORT_PAGES{
-    MAIN_REPORT_PAGE,   //0
-    FILTER_PAGE,        //1
-    REPORT_DISPLAY_PAGE //2
+    MAIN_REPORT_PAGE,  //0
+    PRODUCT_REPORT,    //1
+    SALES_REPORT,      //2
+    QUANTITY_REPORT     //3
 };
 
 //----------------------------------------------------------------------
@@ -397,26 +400,40 @@ void MainWindow::SaveToFile(QString fileName)   {
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------
-//void MainWindow::on_readInButton_clicked()
-//{
-//    //This is for the first way of reading in file
-//}
-//----------------------------------------------------------------------
-
-
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 void MainWindow::on_purchases_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE); //takes you to page to input the string
-}
+    ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT); //takes you to page to input the string
+
+    int index;
+    int tempIndexAr[myMembers.memberVec.size()];
+
+    std::sort(memberIds.begin(),memberIds.end());
+
+//    while(index < myMembers.memberVec.size()){
+
+        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID \n\n");
+        ui->productReportDisplay->append("this sucks");
+
+
+//        for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size(); ++i)  {
+//            ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName());
+//            ui->productReportDisplay->append( QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())
+//                                             + " @ " + "$" +QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())
+//                                             + " ea. ");\
+//            ui->productReportDisplay->append("\n");
+//            if(i < myMembers.memberVec[index]->getReceipt().size() - 1)
+//                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i + 1]->getShopDate().printDate());
+//        }
+ }
+
 //----------------------------------------------------------------------
 
 
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 void MainWindow::on_sales_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
@@ -424,7 +441,7 @@ void MainWindow::on_sales_rep_clicked()
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 void MainWindow::on_quantity_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(QUANTITY_REPORT);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
@@ -441,19 +458,6 @@ void MainWindow::on_expiring_rep_clicked()
     ui->pages->setCurrentIndex(SEARCH_EXPIRED);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-void MainWindow::on_create_report_button_clicked()
-{
-
-
-
-
-
-}
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-
 
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
 void MainWindow::on_delete_user_clicked()
@@ -937,3 +941,18 @@ void MainWindow::on_backButtonForAddItem_clicked()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+
+void MainWindow::on_create_product_report_clicked()
+{
+
+}
+
+void MainWindow::on_backButton_reports_4_clicked()
+{
+       ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+}
+
+void MainWindow::on_backButton_reports_5_clicked()
+{
+       ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+}
