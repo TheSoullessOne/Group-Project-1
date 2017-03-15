@@ -1334,7 +1334,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
 
     int idTemp = idTempString.toInt();
 
-
+    //search for regular member
     while(!reg_found && reg_index < myMembers.memberVec.size()){
         if(idTemp == myMembers.memberVec[reg_index]->getNum()){
             reg_found = true;
@@ -1345,6 +1345,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         }
     }
 
+    //search for executive member
     while(!exec_found && exec_index < myMembers.execVec.size()){
         if(idTemp == myMembers.execVec[exec_index]->getNum()){
             exec_found = true;
@@ -1355,14 +1356,20 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         }
     }
 
+    //if the user chooses to upgrade, all of their information will be
+    //added to the executive vector and deleted from the regular vector
     if(upgrade && !executive_yes){
         executive *tempExec;
         QString tempName = myMembers.memberVec[reg_index]->getName();
         int tempId = myMembers.memberVec[reg_index]->getNum();
-        int index0;
-        //        date tempExpiry = myMembers.memberVec[reg_index]->getExpiry();
         double tempTotal = myMembers.memberVec[reg_index]->getTotal();
         double tempAnnualDues = myMembers.memberVec[reg_index]->getAnnual();
+        int index0;
+
+        QDate      today;  // to retrieve today's date
+        int        year;   // to translate QDate to date
+        int        month;  //
+        int        day;    //
 
         tempExec = new executive;
 
@@ -1375,22 +1382,36 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         myMembers.execVec[index0]->setName(tempName);
         myMembers.execVec[index0]->setNum(tempId);
         myMembers.execVec[index0]->setType(true);
-        //        myMembers.execVec[index0]->setExpiry(tempExpiry);
         myMembers.execVec[index0]->setTotal(tempTotal);
         myMembers.execVec[index0]->setAnnual(tempAnnualDues);
 
-        //      myMembers.memberVec.remove(reg_index);
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.execVec[index0]->setExpiry(day, month, year);
+
+//        myMembers.memberVec.remove(reg_index);
 
     }
 
+    //if the user chooses to downgrade, all of their information will be
+    //added to the regular vector and deleted from the executive vector
     if(downgrade && executive_yes){
         member *tempMember;
         QString tempName = myMembers.execVec[reg_index]->getName();
         int tempId = myMembers.execVec[reg_index]->getNum();
-        int index0;
-        //        date tempExpiry = myMembers.execVec[reg_index]->getExpiry();
         double tempTotal = myMembers.execVec[reg_index]->getTotal();
         double tempAnnualDues = myMembers.execVec[reg_index]->getAnnual();
+        int index1;
+
+        QDate      today;  // to retrieve today's date
+        int        year;   // to translate QDate to date
+        int        month;  //
+        int        day;    //
 
         tempMember = new member;
 
@@ -1398,19 +1419,31 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
         myMembers.memberVec.push_back(tempMember);
 
         // Initialize ind0 to Working Index
-        index0 = myMembers.memberVec.size() - 1;
+        index1 = myMembers.memberVec.size() - 1;
 
-        myMembers.memberVec[index0]->setName(tempName);
-        myMembers.memberVec[index0]->setNum(tempId);
-        myMembers.memberVec[index0]->setType(true);
-        //        myMembers.memberVec[index0]->setExpiry(tempExpiry);
-        myMembers.memberVec[index0]->setTotal(tempTotal);
-        myMembers.memberVec[index0]->setAnnual(tempAnnualDues);
+        myMembers.memberVec[index1]->setName(tempName);
+        myMembers.memberVec[index1]->setNum(tempId);
+        myMembers.memberVec[index1]->setType(true);
+        myMembers.memberVec[index1]->setTotal(tempTotal);
+        myMembers.memberVec[index1]->setAnnual(tempAnnualDues);
 
-        //      myMembers.execVec.remove(exec_index);
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.memberVec[index1]->setExpiry(day, month, year);
+
+//        myMembers.execVec.remove(exec_index);
+
     }
 
-
+    ui->id_enter_box->clear();
+    ui->total_rebate_display->clear();
+    ui->upgrade_checkBox_2->setChecked( false );
+    ui->downgrade_checkBox_3->setChecked(false);
 }
 //------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
 
