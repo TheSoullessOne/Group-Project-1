@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -222,7 +222,7 @@
        <item>
         <widget class="QPushButton" name="add_purchase">
          <property name="text">
-          <string>ADD PURCHASE</string>
+          <string>ADD ITEM TO STOCK</string>
          </property>
         </widget>
        </item>

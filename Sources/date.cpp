@@ -2,6 +2,9 @@
 #include <QString>
 
 // Default contructor sets the date to 0, 0, 0000
+/**
+ * @brief date::date
+ */
 date::date()    {
     day = 0;
     month = 0;
@@ -9,12 +12,22 @@ date::date()    {
 }
 
 // Specific Constructor
+/**
+ * @brief date::date
+ * @param tempDay
+ * @param tempMonth
+ * @param tempYear
+ */
 date::date(int tempDay, int tempMonth, int tempYear)   {
     day = tempDay;
     month = tempMonth;
     year = tempYear;
 }
 
+/**
+ * @brief date::printDate
+ * @return
+ */
 QString date::printDate()  {
     QString tempDate;
 

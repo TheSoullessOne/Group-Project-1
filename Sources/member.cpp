@@ -1,6 +1,9 @@
 #include "Headers\member.h"
 
 // Default Constructor Sets everything to NULL or 0
+/**
+ * @brief member::member
+ */
 member::member()    {
     name = "";
     num = 0;
@@ -13,6 +16,18 @@ member::member()    {
 }
 
 // Specific constructor
+/**
+ * @brief member::member
+ * @param tempName
+ * @param tempNum
+ * @param tempType
+ * @param tempDay
+ * @param tempMonth
+ * @param tempYear
+ * @param tempTotal
+ * @param tempDues
+ * @param tempReceipt
+ */
 member::member(QString        tempName,
                int            tempNum,
                bool           tempType,

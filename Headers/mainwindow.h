@@ -7,6 +7,9 @@
 #include <QMessageBox>
 using namespace std;
 
+/**
+ * @brief The memberStruct struct
+ */
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
@@ -17,6 +20,9 @@ struct memberStruct {
 
 
 /**This struct is a functor which is a struct that has the function call operator*/
+/**
+ * @brief The checkExperation struct
+ */
 struct checkExperation
 {
     int theMonth;
@@ -34,10 +40,16 @@ struct checkExperation
     }
 };
 
+/**
+ *
+ */
 namespace Ui {
 class MainWindow;
 }
 
+/**
+ * @brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

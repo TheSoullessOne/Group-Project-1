@@ -27,7 +27,8 @@ enum PAGES{
     MEMBER_INFO,        //9
     ENTER_DELETE_INFO,  //10
     SEARCH_EXPIRED,     //11
-    ADD_MEMBER          //12
+    ADD_MEMBER,          //12
+    ADD_ITEM            //13
 
 };
 /**
@@ -577,7 +578,7 @@ void MainWindow::on_add_user_clicked()
  */
 void MainWindow::on_add_purchase_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
+    ui->pages->setCurrentIndex(ADD_ITEM);
 }
 //----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
 
@@ -1249,8 +1250,8 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
 
     }
-    for(int i = 0; i < memberIds.size(); ++i)   {
-    }
+//    for(int i = 0; i < memberIds.size(); ++i)   {
+//    }
     ui->nameInputLine->clear();
     ui->executive_checkBox->setChecked(false);
 }
