@@ -525,6 +525,7 @@ void MainWindow::on_quantity_rep_clicked()
 
     bool found;
     int index;
+    int totalSold;
     int tempIndexAr[myMembers.memberVec.size()];
     QVector<std::string> sortedItems;
 
@@ -536,10 +537,18 @@ void MainWindow::on_quantity_rep_clicked()
 }
     ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
 
-
     std::sort(sortedItems.begin(), sortedItems.end());
+
+    ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY ITEM NAME\n\n");
+
     for(int i =0; i< sortedItems.size();i++){
-        qDebug() << QString::fromStdString(sortedItems[i]);
+        totalSold = 0;
+        for(int j = 0; j < myMembers.ourStock.size(); ++j)  {
+            if(sortedItems[i] == myMembers.ourStock[j]->getItemName())  {
+                totalSold += myMembers.ourStock[j]->getAmtBought();
+            }
+        }
+        ui->productReportDisplay->append(QString::fromStdString(sortedItems[i]) + [i]QString::number(totalSold));
     }
 //        ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
