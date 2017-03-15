@@ -533,9 +533,9 @@ void MainWindow::on_quantity_rep_clicked()
 
     for(int i =0; i<myMembers.ourStock.size();i++){
         sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
-}
-    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
 
+    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+}
 
     std::sort(sortedItems.begin(), sortedItems.end());
     for(int i =0; i< sortedItems.size();i++){
