@@ -284,13 +284,8 @@
      <widget class="QLabel" name="Reports_label">
       <property name="geometry">
        <rect>
-<<<<<<< HEAD
         <x>320</x>
         <y>0</y>
-=======
-        <x>300</x>
-        <y>-10</y>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
         <width>111</width>
         <height>61</height>
        </rect>
@@ -302,23 +297,14 @@
      <widget class="QStackedWidget" name="REPORTS_PAGES">
       <property name="geometry">
        <rect>
-<<<<<<< HEAD
-        <x>50</x>
-        <y>-10</y>
-=======
         <x>20</x>
         <y>40</y>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
         <width>701</width>
         <height>381</height>
        </rect>
       </property>
       <property name="currentIndex">
-<<<<<<< HEAD
        <number>2</number>
-=======
-       <number>0</number>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -424,30 +410,19 @@
        <widget class="QLabel" name="SearchLabe_2">
         <property name="geometry">
          <rect>
-<<<<<<< HEAD
-          <x>-10</x>
-          <y>70</y>
-          <width>661</width>
-=======
           <x>280</x>
           <y>20</y>
           <width>121</width>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
           <height>21</height>
          </rect>
         </property>
         <property name="text">
-<<<<<<< HEAD
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ff5500;&quot;&gt;Please enter a day in order to get your Sales Report&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-=======
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ff5500;&quot;&gt;Sales report&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
         </property>
        </widget>
        <widget class="QDateEdit" name="dateEdit">
         <property name="geometry">
          <rect>
-<<<<<<< HEAD
           <x>220</x>
           <y>110</y>
           <width>141</width>
@@ -475,12 +450,6 @@
           <y>140</y>
           <width>611</width>
           <height>191</height>
-=======
-          <x>60</x>
-          <y>60</y>
-          <width>621</width>
-          <height>271</height>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
          </rect>
         </property>
        </widget>
