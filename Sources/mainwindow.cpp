@@ -485,153 +485,7 @@ void MainWindow::on_delete_item_clicked()
 //----------------------------------------------------------------------
 void MainWindow::on_add_user_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
-
-    /***   Declarations   ***/
-    QString    strQ;
-    bool       check;  // check checkbox, check R#G
-    int        rando;  // R#
-
-    QDate      today;  // to retrieve today's date
-    int       *year;   // to translate QDate to date
-    int       *month;  // ditto ^
-    int       *day;    // ditto ^^
-
-    executive *tempE;
-    int        ind0;
-
-    member    *tempM;
-    int        ind1;
-
-    /***************************************************************/
-    // Initialize
-    srand(time(NULL));
-    year  = NULL;
-    month = NULL;
-    day   = NULL;
-
-    // Receive Input
-    strQ  = ui->nameInputLine->text();
-    check = ui->executive_checkBox->isChecked();
-
-    if(check)
-    {
-    /***   Handle Vector   ****/
-        // Create New Exec
-        tempE = new executive;
-
-        // Push it to the Back
-        myMembers.execVec.push_back(tempE);
-
-        // Initialize ind0 to Working Index
-        ind0 = myMembers.execVec.size() - 1;
-
-    /***   Handle Information   ***/
-        // Set Member Name
-        myMembers.execVec[ind0]->setName(strQ);
-
-        // Set ID Number
-        do
-        {
-            rando = rand() % 99999 + 10000;
-
-            check = false;
-
-            // Use Range-Based For-Loop to Ensure Unique ID #
-            for(executive *eTemp : myMembers.execVec)
-            {
-                if(eTemp->getNum() == rando)
-                {
-                    check = true;
-                }
-            }
-
-            for(member *mTemp : myMembers.memberVec)
-            {
-                if(mTemp->getNum() == rando)
-                {
-                    check = true;
-                }
-            }
-
-        }while(check);
-
-        myMembers.execVec[ind0]->setNum(rando);
-
-        // Set type
-        myMembers.execVec[ind0]->setType(true);
-
-        // Set Expiry
-        today = QDate::currentDate();
-        today.addYears(1);
-        today.getDate(year, month, day);
-
-        myMembers.execVec[ind0]->setExpiry(*day, *month, *year);
-
-        // Set Annual Dues
-        myMembers.memberVec[ind0]->setAnnual(95.00);
-
-    }
-    else
-    {
-    /***   Handle Vector   ****/
-        // Create New Member
-        tempM = new member;
-
-        // Push it to the Back
-        myMembers.memberVec.push_back(tempM);
-
-        // Initialize ind0 to Working Index
-        ind1 = myMembers.memberVec.size() - 1;
-
-    /***   Handle Information   ***/
-        // Set Member Name
-        myMembers.memberVec[ind1]->setName(strQ);
-
-        // Set ID Number
-        do
-        {
-            rando = rand() % 99999 + 10000;
-
-            check = false;
-
-            // Use Range-Based For-Loop to Ensure Unique ID #
-            for(executive *eTemp : myMembers.execVec)
-            {
-                if(eTemp->getNum() == rando)
-                {
-                    check = true;
-                }
-            }
-
-            for(member *mTemp : myMembers.memberVec)
-            {
-                if(mTemp->getNum() == rando)
-                {
-                    check = true;
-                }
-            }
-
-        }while(check);
-
-        myMembers.memberVec[ind1]->setNum(rando);
-
-        // Set type
-        myMembers.memberVec[ind1]->setType(false);
-
-        // Set Expiry
-        today = QDate::currentDate();
-        today.addYears(1);
-        today.getDate(year, month, day);
-
-        myMembers.memberVec[ind1]->setExpiry(*day, *month, *year);
-
-        // Set Annual Dues
-        myMembers.memberVec[ind1]->setAnnual(95.00);
-    }
-
     ui->pages->setCurrentIndex(ADD_MEMBER);
-
 }
 //----------------------------------------------------------------------
 
@@ -1094,3 +948,156 @@ void MainWindow::on_backButtonForAddItem_clicked()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+
+void MainWindow::on_enterButtonForAddMember_clicked()
+{
+    /***   Declarations   ***/
+    QString    strQ;
+    bool       check;  // check checkbox, check R#G
+    int        rando;  // R#
+
+    QDate      today;  // to retrieve today's date
+    int        year;   // to translate QDate to date
+    int        month;  // ditto ^
+    int        day;    // ditto ^^
+
+    executive *tempE;
+    int        ind0;
+
+    member    *tempM;
+    int        ind1;
+
+    /***************************************************************/
+    // Initialize
+    srand(time(NULL));
+
+    // Receive Input
+    strQ  = ui->nameInputLine->text();
+    check = ui->executive_checkBox->isChecked();
+
+    if(check)
+    {
+    /***   Handle Vector   ****/
+        // Create New Exec
+        tempE = new executive;
+
+        // Push it to the Back
+        myMembers.execVec.push_back(tempE);
+
+        // Initialize ind0 to Working Index
+        ind0 = myMembers.execVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.execVec[ind0]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.execVec[ind0]->setNum(rando);
+
+        // Set type
+        myMembers.execVec[ind0]->setType(true);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.execVec[ind0]->setExpiry(day, month, year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind0]->setAnnual(95.00);
+
+        // Inform User of New ID #
+        ui->informUserID->setText(QString::number(myMembers.execVec[ind0]->getNum()));
+
+    }
+    else
+    {
+    /***   Handle Vector   ****/
+        // Create New Member
+        tempM = new member;
+
+        // Push it to the Back
+        myMembers.memberVec.push_back(tempM);
+
+        // Initialize ind0 to Working Index
+        ind1 = myMembers.memberVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.memberVec[ind1]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.memberVec[ind1]->setNum(rando);
+
+        // Set type
+        myMembers.memberVec[ind1]->setType(false);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.memberVec[ind1]->setExpiry(day, month, year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind1]->setAnnual(95.00);
+
+        // Inform User of New ID #
+         ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
+    }
+}
