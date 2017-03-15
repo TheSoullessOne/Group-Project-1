@@ -526,6 +526,7 @@ void MainWindow::on_quantity_rep_clicked()
     bool found;
     int index;
     int totalSold;
+    double price;
     int tempIndexAr[myMembers.memberVec.size()];
     QVector<std::string> sortedItems;
 
@@ -535,7 +536,6 @@ void MainWindow::on_quantity_rep_clicked()
     for(int i =0; i<myMembers.ourStock.size();i++){
         sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
 }
-    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
 
     std::sort(sortedItems.begin(), sortedItems.end());
 
@@ -544,40 +544,14 @@ void MainWindow::on_quantity_rep_clicked()
     for(int i =0; i< sortedItems.size();i++){
         totalSold = 0;
         for(int j = 0; j < myMembers.ourStock.size(); ++j)  {
-            if(sortedItems[i] == myMembers.ourStock[j]->getItemName())  {
+            if(QString::fromStdString(sortedItems[i]) == myMembers.ourStock[j]->getItemName())  {
                 totalSold += myMembers.ourStock[j]->getAmtBought();
+                price = myMembers.ourStock[j]->getItemPrice();
             }
         }
-        ui->productReportDisplay->append(QString::fromStdString(sortedItems[i]) + [i]QString::number(totalSold));
+        ui->quantityReportDisplay->append(QString::fromStdString(sortedItems[i]) + " X " + QString::number(totalSold)
+                                          + " @ " +  QString::number(price) + " ea.  Total of $" + QString::number(price * double(totalSold)) );
     }
-//        ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
-
-//        for(int i = 0; i<myMembers.memberVec.size();i++){
-
-//            ui->productReportDisplay->append("\n\n");
-//            ui->productReportDisplay->append(QString::number(memberIds[i]));
-
-//            while(!found && i < myMembers.memberVec.size()){
-
-//                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
-//                    found = true;
-//                    index = i;
-//                }
-//                else{
-//                     ++i;
-//                }
-
-//            }
-
-//            for(int i = 0; i<myMembers.memberVec[index]->getReceipt().size();i++){
-
-//                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
-//                                          + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
-//                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " "
-//                                          + " TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
-//            }
-//        }
-
 }
 //----------------------------------------------------------------------
 

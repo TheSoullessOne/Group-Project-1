@@ -150,13 +150,13 @@ private slots:
 
 //    void on_create_report_button_clicked();
 
-    void on_pushButton_clicked();
+//    void on_pushButton_clicked();
 
     void on_id_enter_button_clicked();
 
     void on_upgrade_downgrade_button_clicked();
 
-    void on_upgrade_checkBox_2_clicked();
+//    void on_upgrade_checkBox_2_clicked();
 
     void on_backButtonForAddItem_clicked();
 
