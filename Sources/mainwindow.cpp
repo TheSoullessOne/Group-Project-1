@@ -449,7 +449,7 @@ void MainWindow::SaveToFile(QString fileName)   {
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_purchases_rep_clicked
  */
@@ -464,10 +464,11 @@ void MainWindow::on_purchases_rep_clicked()
     std::sort(memberIds.begin(),memberIds.end());
 
 
-        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID \n\n");
+        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
         for(int i = 0; i<myMembers.memberVec.size();i++){
 
+            ui->productReportDisplay->append("\n\n");
             ui->productReportDisplay->append(QString::number(memberIds[i]));
 
             while(!found && i < myMembers.memberVec.size()){
@@ -494,28 +495,70 @@ void MainWindow::on_purchases_rep_clicked()
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_sales_rep_clicked
  */
 void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
+
 }
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_quantity_rep_clicked
  */
 void MainWindow::on_quantity_rep_clicked()
 {
+
+    //3.	A report that prints out the quantity of each item sold sorted by item name and the total revenue for each item.
+
+
     ui->REPORTS_PAGES->setCurrentIndex(QUANTITY_REPORT);//takes you to page to input the string
+
+    bool found;
+    int index;
+    int tempIndexAr[myMembers.memberVec.size()];
+
+    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
+    for(int i =0; i<myMembers.memberVec.size();i++){
+    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+}
+//        ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
+
+//        for(int i = 0; i<myMembers.memberVec.size();i++){
+
+//            ui->productReportDisplay->append("\n\n");
+//            ui->productReportDisplay->append(QString::number(memberIds[i]));
+
+//            while(!found && i < myMembers.memberVec.size()){
+
+//                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+//                    found = true;
+//                    index = i;
+//                }
+//                else{
+//                     ++i;
+//                }
+
+//            }
+
+//            for(int i = 0; i<myMembers.memberVec[index]->getReceipt().size();i++){
+
+//                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
+//                                          + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
+//                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " "
+//                                          + " TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
+//            }
+//        }
+
 }
 //----------------------------------------------------------------------
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_rebate_rep_clicked
  */
@@ -523,8 +566,7 @@ void MainWindow::on_rebate_rep_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);//takes you to page to input the string
 }
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-
+//----------------------------------------------------------------------
 //----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_expiring_rep_clicked
@@ -535,7 +577,7 @@ void MainWindow::on_expiring_rep_clicked()
 }
 //----------------------------------------------------------------------
 
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_delete_user_clicked
  */
@@ -547,9 +589,9 @@ void MainWindow::on_delete_user_clicked()
 
 
 
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+//----------------------------------------------------------------------
 
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+//----------------------------------------------------------------------
 /**
  * @brief MainWindow::on_delete_item_clicked
  */
@@ -557,8 +599,7 @@ void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
-
+//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 /**
@@ -579,8 +620,7 @@ void MainWindow::on_add_purchase_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
 }
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
-
+//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 /**
@@ -1293,4 +1333,11 @@ void MainWindow::on_enterButtonAddItem_clicked()
     QMessageBox::information(this, "Item Added", "Congratulations, your item has been added.");
     ui->ItemNameInputLine->clear();
     ui->itemPriceInputLine->clear();
+}
+
+void MainWindow::on_backButton_reports_4_clicked()
+{
+
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+
 }

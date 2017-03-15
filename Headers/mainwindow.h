@@ -152,6 +152,8 @@ private slots:
     void on_enterButtonForAddMember_clicked();
 
     void on_enterButtonAddItem_clicked();
+    void on_backButton_reports_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
