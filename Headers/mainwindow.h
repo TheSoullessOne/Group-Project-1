@@ -5,6 +5,7 @@
 #include "executive.h"
 #include <QVector>
 #include <QMessageBox>
+#include "salesreport.h"
 using namespace std;
 
 struct memberStruct {
@@ -13,6 +14,7 @@ struct memberStruct {
     QVector<item*> ourStock;
     QVector<int> deletedMemberIds;
     QVector<QString> deletedItemNames;
+    QVector<salesReport*> sales;
 };
 
 
@@ -141,6 +143,8 @@ private slots:
     void on_create_report_button_clicked();
 
     void on_backButtonForAddItem_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;

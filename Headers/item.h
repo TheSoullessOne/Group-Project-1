@@ -44,6 +44,7 @@ class item
         return amtBought;
     }
 
+
   private:
     QString name;
     double price;
