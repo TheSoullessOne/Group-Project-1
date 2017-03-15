@@ -981,3 +981,160 @@ void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
+
+
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+void MainWindow::on_id_enter_button_clicked()
+{
+    /******************************************************************
+     * This portion of code will determine if it is more money savy to
+     * either upgrade or downgrade their membership. It will also
+     * show their total amount due for the year. This includes
+     * the annual membership fee (based on member status i.e.
+     * regular/executive) and the rebate if they are an executive
+     * member (based off of their total spending for the year)
+     *****************************************************************/
+    QString idTempString = ui->id_enter_box->text();
+    bool executive = false;
+    bool reg_found = false;
+    bool exec_found = false;
+    double rebate = 0;
+    double total = 0;
+    double annualTotal = 0;
+    int exec_index = 0;
+    int reg_index = 0;
+
+    const int EXEC_ANNUAL_FEE = 95;
+    const int REG_ANNUAL_FEE = 85;
+    const int PRICE_DIFFERENCE = 10; //the difference in price between
+                                     //a regular member and an executive
+    const float REBATE_RATE = .0325;
+
+    int idTemp = idTempString.toInt();
+
+    while(!reg_found && reg_index < myMembers.memberVec.size()){
+        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+            reg_found = true;
+            executive = false;
+            total = myMembers.memberVec[reg_index]->getTotal();
+        }
+        else{
+            reg_index++;
+        }
+    }
+
+    while(!exec_found && exec_index < myMembers.execVec.size()){
+        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+            exec_found = true;
+            executive = true;
+            total = myMembers.execVec[exec_index]->getTotal();
+        }
+        else{
+            exec_index++;
+        }
+    }
+
+
+    rebate = memberRebate(idTemp);
+
+    if(executive){
+        annualTotal = (EXEC_ANNUAL_FEE - rebate);
+
+        //output to the member their total for the year
+        QString memberTotal = "The rebate you received was ";
+        ui->total_rebate_display->setText("Your annual total dues is ");
+        ui->total_rebate_display->append(QString::number(annualTotal));
+        ui->total_rebate_display->append("\n");
+        ui->total_rebate_display->append(memberTotal);
+        ui->total_rebate_display->append(QString::number(rebate));
+
+        if(rebate < PRICE_DIFFERENCE){
+            //  the member should downgrade to save money
+            ui->total_rebate_display->append("\nTo save money, you should downgrade");
+        }
+        else{
+            //  the member should remain an executive
+            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+        }
+    }
+    else{   //this would be for regular members
+        annualTotal = REG_ANNUAL_FEE;
+        //output to the member their total for the year
+        ui->total_rebate_display->setText("Your annual total dues is ");
+        ui->total_rebate_display->append(QString::number(annualTotal));
+        ui->total_rebate_display->append("\n");
+
+        if(total > (PRICE_DIFFERENCE/REBATE_RATE)){
+            //  the member should upgrade to executive to
+            //  save money
+            ui->total_rebate_display->append("\nTo save money, you should upgrade");
+        }
+        else{
+            //  the member should remain a regular member
+            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+        }
+    }
+}
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+
+
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+void MainWindow::on_upgrade_downgrade_button_clicked()
+{
+
+    /******************************************************************
+     * This portion of code will determine if it is more money savy to
+     * either upgrade or downgrade their membership. It will also
+     * show their total amount due for the year. This includes
+     * the annual membership fee (based on member status i.e.
+     * regular/executive) and the rebate if they are an executive
+     * member (based off of their total spending for the year)
+     *****************************************************************/
+    bool upgrade = ui->upgrade_checkBox_2->isChecked();
+    bool downgrade = ui->downgrade_checkBox_3->isChecked();
+    bool executive = false;
+    bool exec_found = false;
+    bool reg_found = false;
+    int exec_index = 0;
+    int reg_index = 0;
+
+    QString idTempString = ui->id_enter_box->text();
+
+    int idTemp = idTempString.toInt();
+
+
+    while(!reg_found && reg_index < myMembers.memberVec.size()){
+        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+            reg_found = true;
+            executive = false;
+        }
+        else{
+            reg_index++;
+        }
+    }
+
+    while(!exec_found && exec_index < myMembers.execVec.size()){
+        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+            exec_found = true;
+            executive = true;
+        }
+        else{
+            exec_index++;
+        }
+    }
+
+    if(upgrade && !executive){
+        myMembers.memberVec[reg_index]->setType(true);
+
+//      myMembers.memberVec.remove(reg_index);
+    }
+
+    if(downgrade && executive){
+        myMembers.execVec[exec_index]->setType(false);
+
+//      myMembers.execVec.remove(exec_index);
+    }
+
+
+}
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
