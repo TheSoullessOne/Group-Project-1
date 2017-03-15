@@ -1,6 +1,9 @@
 #include "Headers\member.h"
 
 // Default Constructor Sets everything to NULL or 0
+/**
+ * @brief member::member
+ */
 member::member()    {
     name = "";
     num = 0;
@@ -13,24 +16,36 @@ member::member()    {
 }
 
 // Specific constructor
-member::member(QString tempName,
-               int tempNum,
-               bool tempType,
-               int tempDay,
-               int tempMonth,
-               int tempYear,
-               double tempTotal,
-               double tempDues,
+/**
+ * @brief member::member
+ * @param tempName
+ * @param tempNum
+ * @param tempType
+ * @param tempDay
+ * @param tempMonth
+ * @param tempYear
+ * @param tempTotal
+ * @param tempDues
+ * @param tempReceipt
+ */
+member::member(QString        tempName,
+               int            tempNum,
+               bool           tempType,
+               int            tempDay,
+               int            tempMonth,
+               int            tempYear,
+               double         tempTotal,
+               double         tempDues,
                QVector<item*> tempReceipt)   {
     name = tempName;
-    num = tempNum;
+    num  = tempNum;
     type = tempType;
     expiry.setDay(tempDay);
     expiry.setMonth(tempMonth);
     expiry.setYear(tempYear);
-    total = tempTotal;
+    total       = tempTotal;
     annual_dues = tempDues;
-    receipt = tempReceipt;
+    receipt     = tempReceipt;
 }
 
 // Destructor if needed???

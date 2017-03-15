@@ -8,17 +8,29 @@
 #include "salesreport.h"
 using namespace std;
 
+/**
+ * @brief The memberStruct struct
+ */
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
+<<<<<<< HEAD
     QVector<item*> ourStock;
     QVector<int> deletedMemberIds;
     QVector<QString> deletedItemNames;
     QVector<salesReport*> sales;
+=======
+    QVector<item*>      ourStock;
+    QVector<int>        deletedMemberIds;
+    QVector<QString>    deletedItemNames;
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 };
 
 
 /**This struct is a functor which is a struct that has the function call operator*/
+/**
+ * @brief The checkExperation struct
+ */
 struct checkExperation
 {
     int theMonth;
@@ -36,10 +48,16 @@ struct checkExperation
     }
 };
 
+/**
+ *
+ */
 namespace Ui {
 class MainWindow;
 }
 
+/**
+ * @brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -51,8 +69,6 @@ public:
     bool deleteItemOrName(QString);
 
     double memberRebate(int);
-
-    void upgrade(int);
 
     bool UpdateDataFromFile(QString);
 
@@ -140,11 +156,33 @@ private slots:
 
     void on_backButton_reports_2_clicked();
 
-    void on_create_report_button_clicked();
+//    void on_create_report_button_clicked();
+
+//    void on_pushButton_clicked();
+
+    void on_id_enter_button_clicked();
+
+    void on_upgrade_downgrade_button_clicked();
+
+//    void on_upgrade_checkBox_2_clicked();
 
     void on_backButtonForAddItem_clicked();
 
+<<<<<<< HEAD
     void on_pushButton_2_clicked();
+=======
+//<<<<<<< HEAD
+//    void on_create_product_report_clicked();
+
+//    void on_backButton_reports_4_clicked();
+
+//    void on_backButton_reports_5_clicked();
+//=======
+    void on_enterButtonForAddMember_clicked();
+
+    void on_enterButtonAddItem_clicked();
+    void on_backButton_reports_4_clicked();
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 private:
     Ui::MainWindow *ui;

@@ -3,11 +3,22 @@
 #include <QDebug>
 #include <algorithm>
 #include <QFile>
+#include <QList>
+#include <QSortFilterProxyModel>
 #include <QStringList>
+<<<<<<< HEAD
 #include <QStandardItemModel>
 #include "Headers/salesreport.h"
+=======
+#include <QtGlobal>
+#include <time.h>
+#include <QDate>
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 using namespace std;
 
+/**
+ * @brief The PAGES enum
+ */
 enum PAGES{
     LOGIN_PAGE,         //0
     MAIN_MENU,          //1
@@ -21,16 +32,25 @@ enum PAGES{
     MEMBER_INFO,        //9
     ENTER_DELETE_INFO,  //10
     SEARCH_EXPIRED,     //11
-    ADD_MEMBER          //12
+    ADD_MEMBER,          //12
+    ADD_ITEM            //13
 
 };
+/**
+ * @brief The REPORT_PAGES enum
+ */
 enum REPORT_PAGES{
-    MAIN_REPORT_PAGE,   //0
-    FILTER_PAGE,        //1
-    REPORT_DISPLAY_PAGE //2
+    MAIN_REPORT_PAGE,  //0
+    PRODUCT_REPORT,    //1
+    SALES_REPORT,      //2
+    QUANTITY_REPORT     //3
 };
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::MainWindow
+ * @param parent
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -62,6 +82,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::~MainWindow
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -72,6 +95,9 @@ MainWindow::~MainWindow()
 
 //----------------------------------------------------------------------
 //Function to add a new user
+/**
+ * @brief MainWindow::on_Adduser_clicked
+ */
 void MainWindow::on_Adduser_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -83,6 +109,9 @@ void MainWindow::on_Adduser_clicked()
 
 //----------------------------------------------------------------------
 //Function to delete a user or item
+/**
+ * @brief MainWindow::on_deleteRec_clicked
+ */
 void MainWindow::on_deleteRec_clicked()
 {
     ui->pages->setCurrentIndex(DELETE);
@@ -94,6 +123,9 @@ void MainWindow::on_deleteRec_clicked()
 
 //----------------------------------------------------------------------
 //Function to upgrade a user
+/**
+ * @brief MainWindow::on_upgrade_clicked
+ */
 void MainWindow::on_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);
@@ -104,6 +136,9 @@ void MainWindow::on_upgrade_clicked()
 
 //----------------------------------------------------------------------
 //Function to search different types of reports
+/**
+ * @brief MainWindow::on_reportsSearch_clicked
+ */
 void MainWindow::on_reportsSearch_clicked()
 {
     ui->pages->setCurrentIndex(REPORTS);
@@ -116,6 +151,9 @@ void MainWindow::on_reportsSearch_clicked()
 
 //----------------------------------------------------------------------
 //Function to read in a file that has the 5 files of purchases for members
+/**
+ * @brief MainWindow::on_readInFile_clicked
+ */
 void MainWindow::on_readInFile_clicked()
 {
     ui->pages->setCurrentIndex(READ_FILE);
@@ -127,6 +165,9 @@ void MainWindow::on_readInFile_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_search_line_edit_returnPressed
+ */
 void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
@@ -183,6 +224,11 @@ void MainWindow::on_search_line_edit_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::UpdateDataFromFile
+ * @param fileName
+ * @return
+ */
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
 
     // Creates an object of QFile type
@@ -292,12 +338,12 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         // it returns true because the function is called in an if-statement
         // Pretty much saying, it returns true if the function worked
         if(fileName != "Texts\\warehouse shoppers.txt" &&
-           fileName != "Texts\\day1.txt" &&
-           fileName != "Texts\\day2.txt" &&
-           fileName != "Texts\\day3.txt" &&
-           fileName != "Texts\\day4.txt" &&
-           fileName != "Texts\\day5.txt")
-        QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
+                fileName != "Texts\\day1.txt" &&
+                fileName != "Texts\\day2.txt" &&
+                fileName != "Texts\\day3.txt" &&
+                fileName != "Texts\\day4.txt" &&
+                fileName != "Texts\\day5.txt")
+            QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
         return true;
     }
     // Returns false if the function did not work, meaning the file didnt exist
@@ -307,6 +353,11 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::UpdateMembersFromFile
+ * @param fileName
+ * @return
+ */
 bool MainWindow::UpdateMembersFromFile(QString fileName)    {
     // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
@@ -329,7 +380,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
             // Reads in the 4 lines that belong to 1 member
             tempName = fin.readLine();
-            tempId = fin.readLine().toInt();
+            tempId   = fin.readLine().toInt();
             tempRank = fin.readLine();
             tempDate = fin.readLine();
 
@@ -365,6 +416,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
                 myMembers.memberVec[index]->setType(false);
             }
         }
+        std::sort(memberIds.begin(), memberIds.end());
         return true;
     }
     return false;
@@ -372,6 +424,10 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::SaveToFile
+ * @param fileName
+ */
 void MainWindow::SaveToFile(QString fileName)   {
     // Creates our QFile variable
     QFile outputFile(fileName);
@@ -403,121 +459,152 @@ void MainWindow::SaveToFile(QString fileName)   {
 
 
 //----------------------------------------------------------------------
-//void MainWindow::on_readInButton_clicked()
-//{
-//    //This is for the first way of reading in file
-//}
-//----------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+/**
+ * @brief MainWindow::on_purchases_rep_clicked
+ */
 void MainWindow::on_purchases_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE); //takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT); //takes you to page to input the string
+    ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
+
+    bool exec;
+    bool found = false;
+    int index =0;
+    int tempIndexAr[myMembers.memberVec.size()];
+
+    std::sort(memberIds.begin(),memberIds.end());
+
+        for(int i = 0; i<myMembers.memberVec.size();i++){
+
+            index = 0;
+
+            ui->productReportDisplay->append("\n\n");
+
+            while(!found && i < myMembers.memberVec.size()){
+
+                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+                    found = true;
+                    index = i;
+                    exec = false;
+
+                }
+                else if(memberIds[i] == myMembers.execVec[i]->getNum()){
+                    found = true;
+                    index = i;
+                    exec = true;
+             }
+            }
+
+
+                if(exec){
+                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.execVec[index]->getName());
+
+                    for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+
+                        ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
+                                                  + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                  + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+
+                    }
+                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.execVec[index]->getTotal()));
+                }
+                else{
+
+                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.memberVec[index]->getName());
+
+                    for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
+
+                        ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
+                                                  + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                  + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+
+                    }
+                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
+                }
+                }
 }
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_sales_rep_clicked
+ */
 void MainWindow::on_sales_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
+    ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
+
 }
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_quantity_rep_clicked
+ */
 void MainWindow::on_quantity_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
+
+    //3.	A report that prints out the quantity of each item sold sorted by item name and the total revenue for each item.
+
+
+    ui->REPORTS_PAGES->setCurrentIndex(QUANTITY_REPORT);//takes you to page to input the string
+
+    bool found;
+    int index;
+    int totalSold;
+    double price;
+    int tempIndexAr[myMembers.memberVec.size()];
+    QVector<std::string> sortedItems;
+
+
+//    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
+
+    for(int i =0; i<myMembers.ourStock.size();i++){
+        sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
+}
+
+    std::sort(sortedItems.begin(), sortedItems.end());
+
+    ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY ITEM NAME\n\n");
+
+    for(int i =0; i< sortedItems.size();i++){
+        totalSold = 0;
+        for(int j = 0; j < myMembers.ourStock.size(); ++j)  {
+            if(QString::fromStdString(sortedItems[i]) == myMembers.ourStock[j]->getItemName())  {
+                totalSold += myMembers.ourStock[j]->getAmtBought();
+                price = myMembers.ourStock[j]->getItemPrice();
+            }
+        }
+        ui->quantityReportDisplay->append(QString::fromStdString(sortedItems[i]) + " X " + QString::number(totalSold)
+                                          + " @ " +  QString::number(price) + " ea.  Total of $" + QString::number(price * double(totalSold)) );
+    }
 }
 //----------------------------------------------------------------------
 
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_rebate_rep_clicked
+ */
 void MainWindow::on_rebate_rep_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);//takes you to page to input the string
 }
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-
 //----------------------------------------------------------------------
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_expiring_rep_clicked
+ */
 void MainWindow::on_expiring_rep_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH_EXPIRED);//takes you to page to input the string
 }
 //----------------------------------------------------------------------
 
-
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-void MainWindow::on_create_report_button_clicked()
-{
-
-
-//    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
-
-//    bool id_search       = ui->ID_CB->isChecked();
-//    bool userName_search = ui->USERNAME_CB->isChecked();
-//    bool date_search     = ui->DATE_CB->isChecked();
-//    bool itemName_search = ui->PRODUCT_CB->isChecked();
-//    int index;
-
-
-
-//    QString search_string = ui->SEARCH_INPUT_LINE->text();
-
-//    if(id_search ){
-
-//        int tempId = search_string.toInt();
-//        int index;
-
-//        //searching by id
-//        while(index < myMembers.execVec.size()){
-//            for(int i = 0; i < memberIds[index];i++){
-
-//                ui->reportDisplay->setText(memberId[index]);
-
-//            }
-//        }
-
-//        name  = myMembers.execVec[index]->getName();
-//        num   = myMembers.execVec[index]->getNum();
-//        total = myMembers.execVec[index]->getTotal();
-//        date  = myMembers.execVec[index]->getExpiry().printDate();
-
-
-//        name  = myMembers.memberVec[index]->getName();
-//        num   = myMembers.memberVec[index]->getNum();
-//        total = myMembers.memberVec[index]->getTotal();
-//        date  = myMembers.memberVec[index]->getExpiry().printDate();
-
-//    }else if(userName_search == true){
-
-//        //searching by userName
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-
-//    }else if(date_search == true){
-
-//        //searching by date
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-
-//    }else {
-
-
-//        //searching by itemName
-//        ui->reportDisplay->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
-
-//    }
-
-
-
-
-}
-//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
-
-
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_delete_user_clicked
+ */
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -525,15 +612,23 @@ void MainWindow::on_delete_user_clicked()
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
+//----------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_delete_item_clicked
+ */
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
-//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+//----------------------------------------------------------------------
 
-
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAAVCARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
+//----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_add_user_clicked
+ */
 void MainWindow::on_add_user_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MEMBER);
@@ -542,14 +637,19 @@ void MainWindow::on_add_user_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_add_purchase_clicked
+ */
 void MainWindow::on_add_purchase_clicked()
 {
-    ui->pages->setCurrentIndex(SEARCH);
+    ui->pages->setCurrentIndex(ADD_ITEM);
 }
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
-
+//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_enterPassword_returnPressed
+ */
 void MainWindow::on_enterPassword_returnPressed()
 {
     // Stores the info that the user passed into the user Id line
@@ -569,6 +669,9 @@ void MainWindow::on_enterPassword_returnPressed()
     int num;
     double total;
 
+
+
+    // Clears the display browsers on the member info page
     ui->Member_Info_Receipt->clear();
     ui->Member_Info_Name->clear();
     ui->Member_Info_Id->clear();
@@ -576,36 +679,31 @@ void MainWindow::on_enterPassword_returnPressed()
     ui->Member_Info_Expiration->clear();
     ui->Member_Info_Type->clear();
 
-    while(!exec && index < myMembers.execVec.size())    {
+    // Searches for the member id and sees if its an executive or not
+    while(!found && index < myMembers.execVec.size())    {
         if(tempId == myMembers.execVec[index]->getNum())  {
             exec = true;
+            found = true;
         }
         else
         {
             ++index;
         }
     }
-    if(!exec)   {
+    if(!found)  {
         index = 0;
-        for(int i = 0; i < myMembers.memberVec.size(); ++i) {
-            if(tempId == myMembers.memberVec[i]->getNum())  {
-                index = i;
-            }
-        }
     }
-
-
-    // checks to see if the user was found
-    for(int i = 0; i < memberIds.size(); ++i)   {
-        if(tempId == memberIds[i])  {
+    while(!found && index < myMembers.memberVec.size())    {
+        if(tempId == myMembers.memberVec[index]->getNum())  {
+            exec = false;
             found = true;
-            index = i;
+        }
+        else
+        {
+            ++index;
         }
     }
 
-    if(!exec)   {
-        index -= myMembers.execVec.size();
-    }
     // checks to see if the user has been deleted
     for(int i = 0; i < myMembers.deletedMemberIds.size(); ++i)   {
         if(tempId == myMembers.deletedMemberIds[i]) {
@@ -613,15 +711,10 @@ void MainWindow::on_enterPassword_returnPressed()
         }
     }
 
+
     // if user is NOT deleted, and FOUND, and password is "member, change the displays
     // and change page to member info page
     if(!deleted && found && password == "member")  {
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         // Jump to member info page if password and id are correct
         if(exec)    {
             // Sets predefined variables
@@ -632,7 +725,7 @@ void MainWindow::on_enterPassword_returnPressed()
             typeString = "Executive Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
-   if(myMembers.execVec[index]->getReceipt().size() > 0){
+            if(myMembers.execVec[index]->getReceipt().size() > 0){
                 ui->Member_Info_Receipt->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
                 for(int i = 0; i < myMembers.execVec[index]->getReceipt().size(); ++i)  {
                     ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i]->getItemName());
@@ -692,24 +785,12 @@ void MainWindow::on_enterPassword_returnPressed()
     // And then displays error
     else if(deleted)
     {
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         QMessageBox::critical(this, "User Deleted", "That user has been deleted.");
     }
     else
     {
         // If the password is incorrect, clear the member info browsers to not receive a runtime error
         // And then displays error
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         QMessageBox::critical(this, "Login Error", "Incorrect Password");
     }
 }
@@ -717,6 +798,9 @@ void MainWindow::on_enterPassword_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Admin_Login_Button_clicked
+ */
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
@@ -728,6 +812,9 @@ void MainWindow::on_Admin_Login_Button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_admin_login_clicked
+ */
 void MainWindow::on_backButton_admin_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
@@ -736,6 +823,9 @@ void MainWindow::on_backButton_admin_login_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Admin_Password_line_edit_returnPressed
+ */
 void MainWindow::on_Admin_Password_line_edit_returnPressed()
 {
     QString username = ui->Admin_Username_line_edit->text();
@@ -745,7 +835,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     password = password.toLower();
 
     if(username == "admin"  &&
-            password == "password")  {
+       password == "password")  {
         ui->pages->setCurrentIndex(MAIN_MENU);
         ui->Admin_Username_line_edit->clear();
         ui->Admin_Password_line_edit->clear();
@@ -759,6 +849,9 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_read_file_line_edit_returnPressed
+ */
 void MainWindow::on_read_file_line_edit_returnPressed()
 {
     ui->File_error_message_label->setHidden(true);
@@ -779,6 +872,11 @@ void MainWindow::on_read_file_line_edit_returnPressed()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::deleteItemOrName
+ * @param searchItem
+ * @return
+ */
 bool MainWindow::deleteItemOrName(QString searchItem)  {
     bool found = false;
     int i = 0;
@@ -828,6 +926,9 @@ bool MainWindow::deleteItemOrName(QString searchItem)  {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_searchByMonth_clicked
+ */
 void MainWindow::on_searchByMonth_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH_EXPIRED);
@@ -836,6 +937,9 @@ void MainWindow::on_searchByMonth_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_lineEdit_2_returnPressed
+ */
 void MainWindow::on_lineEdit_2_returnPressed()
 {
 
@@ -844,6 +948,9 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Delete_line_edit_returnPressed
+ */
 void MainWindow::on_Delete_line_edit_returnPressed()
 {
     QString searchItem = ui->Delete_line_edit->text();
@@ -859,6 +966,9 @@ void MainWindow::on_Delete_line_edit_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Member_info_back_button_clicked
+ */
 void MainWindow::on_Member_info_back_button_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
@@ -867,6 +977,9 @@ void MainWindow::on_Member_info_back_button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_searchButtonBrians_clicked
+ */
 void MainWindow::on_searchButtonBrians_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
@@ -875,6 +988,9 @@ void MainWindow::on_searchButtonBrians_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Search_back_button_clicked
+ */
 void MainWindow::on_Search_back_button_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -883,6 +999,9 @@ void MainWindow::on_Search_back_button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_expiredMembers_clicked
+ */
 void MainWindow::on_backButton_expiredMembers_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -891,7 +1010,9 @@ void MainWindow::on_backButton_expiredMembers_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_addMember_clicked
+ */
 void MainWindow::on_backButton_addMember_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -900,7 +1021,9 @@ void MainWindow::on_backButton_addMember_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_add_member_button_clicked
+ */
 void MainWindow::on_add_member_button_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MEMBER);
@@ -909,7 +1032,9 @@ void MainWindow::on_add_member_button_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_deleteInput_clicked
+ */
 void MainWindow::on_backButton_deleteInput_clicked()
 {
     ui->pages->setCurrentIndex(DELETE);
@@ -918,6 +1043,9 @@ void MainWindow::on_backButton_deleteInput_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_reports_3_clicked
+ */
 void MainWindow::on_backButton_reports_3_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
@@ -926,7 +1054,9 @@ void MainWindow::on_backButton_reports_3_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_reports_2_clicked
+ */
 void MainWindow::on_backButton_reports_2_clicked()
 {
 
@@ -936,6 +1066,9 @@ void MainWindow::on_backButton_reports_2_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_addmen_clicked
+ */
 void MainWindow::on_backButton_addmen_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -944,6 +1077,9 @@ void MainWindow::on_backButton_addmen_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_delete_clicked
+ */
 void MainWindow::on_backButton_delete_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -952,6 +1088,9 @@ void MainWindow::on_backButton_delete_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_reports_clicked
+ */
 void MainWindow::on_backButton_reports_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -960,6 +1099,9 @@ void MainWindow::on_backButton_reports_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_readfile_clicked
+ */
 void MainWindow::on_backButton_readfile_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -968,6 +1110,9 @@ void MainWindow::on_backButton_readfile_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_upgrade_clicked
+ */
 void MainWindow::on_backButton_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -976,6 +1121,9 @@ void MainWindow::on_backButton_upgrade_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_search_clicked
+ */
 void MainWindow::on_backButton_search_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -984,13 +1132,176 @@ void MainWindow::on_backButton_search_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_back_to_login_clicked
+ */
 void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
 //----------------------------------------------------------------------
 
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+void MainWindow::on_id_enter_button_clicked()
+{
+    /******************************************************************
+     * This portion of code will determine if it is more money savy to
+     * either upgrade or downgrade their membership. It will also
+     * show their total amount due for the year. This includes
+     * the annual membership fee (based on member status i.e.
+     * regular/executive) and the rebate if they are an executive
+     * member (based off of their total spending for the year)
+     *****************************************************************/
+    QString idTempString = ui->id_enter_box->text();
+    bool executive = false;
+    bool reg_found = false;
+    bool exec_found = false;
+    double rebate = 0;
+    double total = 0;
+    double annualTotal = 0;
+    int exec_index = 0;
+    int reg_index = 0;
+
+    const int EXEC_ANNUAL_FEE = 95;
+    const int REG_ANNUAL_FEE = 85;
+    const int PRICE_DIFFERENCE = 10; //the difference in price between
+                                     //a regular member and an executive
+    const float REBATE_RATE = .0325;
+
+    int idTemp = idTempString.toInt();
+
+    while(!reg_found && reg_index < myMembers.memberVec.size()){
+        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+            reg_found = true;
+            executive = false;
+            total = myMembers.memberVec[reg_index]->getTotal();
+        }
+        else{
+            reg_index++;
+        }
+    }
+
+    while(!exec_found && exec_index < myMembers.execVec.size()){
+        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+            exec_found = true;
+            executive = true;
+            total = myMembers.execVec[exec_index]->getTotal();
+        }
+        else{
+            exec_index++;
+        }
+    }
+
+
+    rebate = memberRebate(idTemp);
+
+    if(executive){
+        annualTotal = (EXEC_ANNUAL_FEE - rebate);
+
+        //output to the member their total for the year
+        QString memberTotal = "The rebate you received was ";
+        ui->total_rebate_display->setText("Your annual total dues is ");
+        ui->total_rebate_display->append(QString::number(annualTotal));
+        ui->total_rebate_display->append("\n");
+        ui->total_rebate_display->append(memberTotal);
+        ui->total_rebate_display->append(QString::number(rebate));
+
+        if(rebate < PRICE_DIFFERENCE){
+            //  the member should downgrade to save money
+            ui->total_rebate_display->append("\nTo save money, you should downgrade");
+        }
+        else{
+            //  the member should remain an executive
+            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+        }
+    }
+    else{   //this would be for regular members
+        annualTotal = REG_ANNUAL_FEE;
+        //output to the member their total for the year
+        ui->total_rebate_display->setText("Your annual total dues is ");
+        ui->total_rebate_display->append(QString::number(annualTotal));
+        ui->total_rebate_display->append("\n");
+
+        if(total > (PRICE_DIFFERENCE/REBATE_RATE)){
+            //  the member should upgrade to executive to
+            //  save money
+            ui->total_rebate_display->append("\nTo save money, you should upgrade");
+        }
+        else{
+            //  the member should remain a regular member
+            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+        }
+    }
+}
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+
+
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+void MainWindow::on_upgrade_downgrade_button_clicked()
+{
+
+    /******************************************************************
+     * This portion of code will determine if it is more money savy to
+     * either upgrade or downgrade their membership. It will also
+     * show their total amount due for the year. This includes
+     * the annual membership fee (based on member status i.e.
+     * regular/executive) and the rebate if they are an executive
+     * member (based off of their total spending for the year)
+     *****************************************************************/
+    bool upgrade = ui->upgrade_checkBox_2->isChecked();
+    bool downgrade = ui->downgrade_checkBox_3->isChecked();
+    bool executive = false;
+    bool exec_found = false;
+    bool reg_found = false;
+    int exec_index = 0;
+    int reg_index = 0;
+
+    QString idTempString = ui->id_enter_box->text();
+
+    int idTemp = idTempString.toInt();
+
+
+    while(!reg_found && reg_index < myMembers.memberVec.size()){
+        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+            reg_found = true;
+            executive = false;
+        }
+        else{
+            reg_index++;
+        }
+    }
+
+    while(!exec_found && exec_index < myMembers.execVec.size()){
+        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+            exec_found = true;
+            executive = true;
+        }
+        else{
+            exec_index++;
+        }
+    }
+
+    if(upgrade && !executive){
+        myMembers.memberVec[reg_index]->setType(true);
+
+//      myMembers.memberVec.remove(reg_index);
+    }
+
+    if(downgrade && executive){
+        myMembers.execVec[exec_index]->setType(false);
+
+//      myMembers.execVec.remove(exec_index);
+    }
+
+
+}
+//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+
+
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButtonForAddItem_clicked
+ */
 void MainWindow::on_backButtonForAddItem_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -998,8 +1309,10 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 //----------------------------------------------------------------------
 
+
 //----------------------------------------------------------------------
 
+<<<<<<< HEAD
 void MainWindow::on_pushButton_2_clicked()
 {
     /*ints that are gathering information from the calender widget
@@ -1052,5 +1365,196 @@ void MainWindow::on_pushButton_2_clicked()
     }
 
 
+=======
+/**
+ * @brief MainWindow::on_enterButtonForAddMember_clicked
+ */
+void MainWindow::on_enterButtonForAddMember_clicked()
+{
+    /***   Declarations   ***/
+    QString    strQ;
+    bool       check;  // check checkbox, check R#G
+    int        rando;  // R#
+
+    QDate      today;  // to retrieve today's date
+    int        year;   // to translate QDate to date
+    int        month;  // ditto ^
+    int        day;    // ditto ^^
+
+    executive *tempE;
+    int        ind0;
+
+    member    *tempM;
+    int        ind1;
+
+    /***************************************************************/
+    // Initialize
+    srand(time(NULL));
+
+    // Receive Input
+    strQ  = ui->nameInputLine->text();
+    check = ui->executive_checkBox->isChecked();
+
+    if(check)
+    {
+    /***   Handle Vector   ****/
+        // Create New Exec
+        tempE = new executive;
+
+        // Push it to the Back
+        myMembers.execVec.push_back(tempE);
+
+        // Initialize ind0 to Working Index
+        ind0 = myMembers.execVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.execVec[ind0]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.execVec[ind0]->setNum(rando);
+        memberIds.push_back(rando);
+
+        // Set type
+        myMembers.execVec[ind0]->setType(true);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.execVec[ind0]->setExpiry(day, month, year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind0]->setAnnual(95.00);
+
+        // Inform User of New ID #
+        ui->informUserID->setText(QString::number(myMembers.execVec[ind0]->getNum()));
+
+    }
+    else
+    {
+    /***   Handle Vector   ****/
+        // Create New Member
+        tempM = new member;
+
+        // Push it to the Back
+        myMembers.memberVec.push_back(tempM);
+
+        // Initialize ind0 to Working Index
+        ind1 = myMembers.memberVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.memberVec[ind1]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.memberVec[ind1]->setNum(rando);
+        memberIds.push_back(rando);
+
+        // Set type
+        myMembers.memberVec[ind1]->setType(false);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today = today.addYears(1);
+        day   = today.day();
+        month = today.month();
+        year  = today.year();
+
+        myMembers.memberVec[ind1]->setExpiry(day, month, year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind1]->setAnnual(95.00);
+
+        // Inform User of New ID #
+         ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
+
+
+
+    }
+//    for(int i = 0; i < memberIds.size(); ++i)   {
+//    }
+    ui->nameInputLine->clear();
+    ui->executive_checkBox->setChecked(false);
+}
+
+
+/**
+ * @brief MainWindow::on_enterButtonAddItem_clicked
+ */
+void MainWindow::on_enterButtonAddItem_clicked()
+{
+    QString newItemName = ui->ItemNameInputLine->text();
+    QString newItemPrice = ui->itemPriceInputLine->text();
+    item* tempItem = new item;
+
+    tempItem->setItemName(newItemName);
+    tempItem->setItemPrice(newItemPrice.toDouble());
+
+    myMembers.ourStock.push_back(tempItem);
+
+    QMessageBox::information(this, "Item Added", "Congratulations, your item has been added.");
+    ui->ItemNameInputLine->clear();
+    ui->itemPriceInputLine->clear();
+}
+
+void MainWindow::on_backButton_reports_4_clicked()
+{
+
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 }

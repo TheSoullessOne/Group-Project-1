@@ -11,3 +11,7 @@ object*
 ui_*
 *.xg*
 *.zy*
+*.zw*
+html*
+latex*
+
