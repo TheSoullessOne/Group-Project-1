@@ -6,9 +6,14 @@
 #include <QList>
 #include <QSortFilterProxyModel>
 #include <QStringList>
+<<<<<<< HEAD
+#include <QStandardItemModel>
+#include "Headers/salesreport.h"
+=======
 #include <QtGlobal>
 #include <time.h>
 #include <QDate>
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 using namespace std;
 
 /**
@@ -325,6 +330,9 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             // Then it will create the item and push it to the back fo the vector
             if(!otherFound)  {
                 myMembers.ourStock.push_back(tempItem);
+                myMembers.sales.push_back(new salesReport(tempItem, myMembers.memberVec[i],
+                                                          tempItem->getItemPrice(),
+                                                          tempItem->getShopDate()));
             }
         }
         // it returns true because the function is called in an if-statement
@@ -1303,6 +1311,60 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 //----------------------------------------------------------------------
 
+<<<<<<< HEAD
+void MainWindow::on_pushButton_2_clicked()
+{
+    /*ints that are gathering information from the calender widget
+     * acting as a user input*/
+    int day = ui->dateEdit->date().day();
+    int month = ui->dateEdit->date().month();
+    int year = ui->dateEdit->date().year();
+
+    /*this is the master vector behold and tremble
+       its the vector that holds the sales report*/
+    vector<salesReport*> report (myMembers.sales.size());
+    /*degub testing*/
+    qDebug() << "There are " << myMembers.sales.size() << " sales records";
+   /* auto in order to copy the vector into a new vector and the resize to slim it down
+      because its chuby, but really in order to make the vector the size its suppose to be*/
+    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+                       report.begin(), salesCheck(day,month,year));
+    report.resize(distance(report.begin(),it));
+
+    qDebug() << "On " << month << "/" << day << "/" << year
+             << " there were " << report.size() << " sales";
+
+    /* magical code used to creat the table*/
+    QStandardItemModel *m = new QStandardItemModel();
+    ui->SalesReportTable->setModel(m);
+    /* this is how to use a QT table I honestly really disliked it because
+     * it took me a stupid amount of time to learn, and even thought I spent
+     * time trying to learn I am still uterly confused.*/
+    m->setColumnCount(4);
+    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+
+    m->setRowCount(report.size());
+    /*for loop in order to print out the table*/
+      for (unsigned int i = 0; i < report.size(); i++)
+    {
+          salesReport* x = report[i];
+        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+        m->setItem(i, 1, new QStandardItem(
+                       QString("%1/%2/%3")
+                       .arg(x->getDate().getMonth())
+                       .arg(x->getDate().getDay())
+                       .arg( x->getDate().getYear())));
+        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
+
+
+    }
+
+
+=======
 /**
  * @brief MainWindow::on_enterButtonForAddMember_clicked
  */
@@ -1492,5 +1554,6 @@ void MainWindow::on_backButton_reports_4_clicked()
 {
 
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 }
