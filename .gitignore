@@ -11,4 +11,9 @@ object*
 ui_*
 *.xg*
 *.zy*
+<<<<<<< HEAD
 *.zw
+=======
+html*
+latex*
+>>>>>>> f648e4eaadccae5a98a7e535c9fea309128c76f0

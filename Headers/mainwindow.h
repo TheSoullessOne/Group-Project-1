@@ -7,6 +7,9 @@
 #include <QMessageBox>
 using namespace std;
 
+/**
+ * @brief The memberStruct struct
+ */
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
@@ -17,6 +20,9 @@ struct memberStruct {
 
 
 /**This struct is a functor which is a struct that has the function call operator*/
+/**
+ * @brief The checkExperation struct
+ */
 struct checkExperation
 {
     int theMonth;
@@ -34,10 +40,16 @@ struct checkExperation
     }
 };
 
+/**
+ *
+ */
 namespace Ui {
 class MainWindow;
 }
 
+/**
+ * @brief The MainWindow class
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -136,7 +148,7 @@ private slots:
 
     void on_backButton_reports_2_clicked();
 
-    void on_create_report_button_clicked();
+//    void on_create_report_button_clicked();
 
     void on_pushButton_clicked();
 
@@ -147,6 +159,18 @@ private slots:
     void on_upgrade_checkBox_2_clicked();
 
     void on_backButtonForAddItem_clicked();
+
+//<<<<<<< HEAD
+//    void on_create_product_report_clicked();
+
+//    void on_backButton_reports_4_clicked();
+
+//    void on_backButton_reports_5_clicked();
+//=======
+    void on_enterButtonForAddMember_clicked();
+
+    void on_enterButtonAddItem_clicked();
+    void on_backButton_reports_4_clicked();
 
 private:
     Ui::MainWindow *ui;
