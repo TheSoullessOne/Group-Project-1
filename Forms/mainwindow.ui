@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -439,7 +439,7 @@
           <height>16</height>
          </rect>
         </property>
-        <property name="text">
+        <property name="text" stdset="0">
          <string>OK</string>
         </property>
        </widget>
@@ -706,7 +706,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; text-decoration: underline; color:#aa00ff;&quot;&gt;Upgrade / Downgrade&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="id_enter_box">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -729,7 +729,7 @@
        <string>ENTER ID:</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser_12">
+     <widget class="QTextBrowser" name="total_rebate_display">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -752,7 +752,7 @@
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff34c9;&quot;&gt;Should you upgrade or downgrade? and how much money?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="upgrade_checkBox_2">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -765,7 +765,7 @@
        <string>UPGRADE</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="downgrade_checkBox_3">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -778,7 +778,7 @@
        <string>DOWNGRADE</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="id_enter_button">
       <property name="geometry">
        <rect>
         <x>380</x>
