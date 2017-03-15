@@ -605,6 +605,9 @@ void MainWindow::on_enterPassword_returnPressed()
     int num;
     double total;
 
+
+
+    // Clears the display browsers on the member info page
     ui->Member_Info_Receipt->clear();
     ui->Member_Info_Name->clear();
     ui->Member_Info_Id->clear();
@@ -612,36 +615,31 @@ void MainWindow::on_enterPassword_returnPressed()
     ui->Member_Info_Expiration->clear();
     ui->Member_Info_Type->clear();
 
-    while(!exec && index < myMembers.execVec.size())    {
+    // Searches for the member id and sees if its an executive or not
+    while(!found && index < myMembers.execVec.size())    {
         if(tempId == myMembers.execVec[index]->getNum())  {
             exec = true;
+            found = true;
         }
         else
         {
             ++index;
         }
     }
-    if(!exec)   {
+    if(!found)  {
         index = 0;
-        for(int i = 0; i < myMembers.memberVec.size(); ++i) {
-            if(tempId == myMembers.memberVec[i]->getNum())  {
-                index = i;
-            }
-        }
     }
-
-
-    // checks to see if the user was found
-    for(int i = 0; i < memberIds.size(); ++i)   {
-        if(tempId == memberIds[i])  {
+    while(!found && index < myMembers.memberVec.size())    {
+        if(tempId == myMembers.memberVec[index]->getNum())  {
+            exec = false;
             found = true;
-            index = i;
+        }
+        else
+        {
+            ++index;
         }
     }
 
-    if(!exec)   {
-        index -= myMembers.execVec.size();
-    }
     // checks to see if the user has been deleted
     for(int i = 0; i < myMembers.deletedMemberIds.size(); ++i)   {
         if(tempId == myMembers.deletedMemberIds[i]) {
@@ -649,15 +647,10 @@ void MainWindow::on_enterPassword_returnPressed()
         }
     }
 
+
     // if user is NOT deleted, and FOUND, and password is "member, change the displays
     // and change page to member info page
     if(!deleted && found && password == "member")  {
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         // Jump to member info page if password and id are correct
         if(exec)    {
             // Sets predefined variables
@@ -728,24 +721,12 @@ void MainWindow::on_enterPassword_returnPressed()
     // And then displays error
     else if(deleted)
     {
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         QMessageBox::critical(this, "User Deleted", "That user has been deleted.");
     }
     else
     {
         // If the password is incorrect, clear the member info browsers to not receive a runtime error
         // And then displays error
-        ui->Member_Info_Receipt->clear();
-        ui->Member_Info_Name->clear();
-        ui->Member_Info_Id->clear();
-        ui->Member_Info_Spent->clear();
-        ui->Member_Info_Expiration->clear();
-        ui->Member_Info_Type->clear();
         QMessageBox::critical(this, "Login Error", "Incorrect Password");
     }
 }
@@ -790,7 +771,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     password = password.toLower();
 
     if(username == "admin"  &&
-            password == "password")  {
+       password == "password")  {
         ui->pages->setCurrentIndex(MAIN_MENU);
         ui->Admin_Username_line_edit->clear();
         ui->Admin_Password_line_edit->clear();
@@ -1269,7 +1250,6 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
     }
     for(int i = 0; i < memberIds.size(); ++i)   {
-        qDebug() << memberIds[i];
     }
     ui->nameInputLine->clear();
     ui->executive_checkBox->setChecked(false);
