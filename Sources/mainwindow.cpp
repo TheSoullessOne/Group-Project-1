@@ -547,61 +547,61 @@ void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
 
-//    int execCounter = 0;
-//    int memCounter = 0;
-//    double totalRevenue = 0;
-//    bool found;
+    int execCounter = 0;
+    int memCounter = 0;
+    double totalRevenue = 0;
+    bool found;
 
-//    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
+    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
 
-    //    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
+        ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
 
-    //    for(int i = 0; i < sortedItems.size(); ++i) {
-    //        totalRevenue = 0;
-    //        execCounter = 0;
-    //        memCounter = 0;
-    //        ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
-    //        for(int j = 0; j < myMembers.execVec.size(); ++j)   {
-    //            found  =false;
-    //            for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
-    //                if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
-    //                    found = true;
-    //                    totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
-    //                                     myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
-    //                    ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
-    //                                                    " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
-    //                }
+        for(int i = 0; i < sortedItems.size(); ++i) {
+            totalRevenue = 0;
+            execCounter = 0;
+            memCounter = 0;
+            ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
+            for(int j = 0; j < myMembers.execVec.size(); ++j)   {
+                found  =false;
+                for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
+                    if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+                        found = true;
+                        totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
+                                         myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
+                        ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
+                                                        " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
+                    }
 
-    //            }
-    //            if(found)   {
-    //                ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
-    //                ++execCounter;
-    //            }
-    //        }
-    //        for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
-    //            for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
-    //                found = false;
-    //                if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
-    //                    found  =true;
-    //                    totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
-    //                                     myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
-    //                    ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
-    //                                                    " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
-    //                }
+                }
+                if(found)   {
+                    ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
+                    ++execCounter;
+                }
+            }
+            for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
+                for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
+                    found = false;
+                    if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+                        found  =true;
+                        totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
+                                         myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
+                        ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
+                                                        " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
+                    }
 
-    //            }
-    //            if(found)   {
-    //                ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
-    //                ++memCounter;
-    //            }
-    //        }
-    //        ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
-    //        ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
-    //        ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
+                }
+                if(found)   {
+                    ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
+                    ++memCounter;
+                }
+            }
+            ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
+            ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
+            ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
 
 
 
-    //    }
+        }
 
 
 }
@@ -1271,98 +1271,98 @@ void MainWindow::on_back_to_login_clicked()
 //        annualTotal = (EXEC_ANNUAL_FEE - rebate);
 
 
-    /******************************************************************
-     * This portion of code will determine if it is more money savy to
-     * either upgrade or downgrade their membership. It will also
-     * show their total amount due for the year. This includes
-     * the annual membership fee (based on member status i.e.
-     * regular/executive) and the rebate if they are an executive
-     * member (based off of their total spending for the year)
-     *****************************************************************/
-    bool upgrade = ui->upgrade_checkBox_2->isChecked();
-    bool downgrade = ui->downgrade_checkBox_3->isChecked();
-    bool executive_yes = false;
-    bool exec_found = false;
-    bool reg_found = false;
-    int exec_index = 0;
-    int reg_index = 0;
+//    /******************************************************************
+//     * This portion of code will determine if it is more money savy to
+//     * either upgrade or downgrade their membership. It will also
+//     * show their total amount due for the year. This includes
+//     * the annual membership fee (based on member status i.e.
+//     * regular/executive) and the rebate if they are an executive
+//     * member (based off of their total spending for the year)
+//     *****************************************************************/
+//    bool upgrade = ui->upgrade_checkBox_2->isChecked();
+//    bool downgrade = ui->downgrade_checkBox_3->isChecked();
+//    bool executive_yes = false;
+//    bool exec_found = false;
+//    bool reg_found = false;
+//    int exec_index = 0;
+//    int reg_index = 0;
 
-    QString idTempString = ui->id_enter_box->text();
+//    QString idTempString = ui->id_enter_box->text();
 
-    int idTemp = idTempString.toInt();
+//    int idTemp = idTempString.toInt();
 
 
-    while(!reg_found && reg_index < myMembers.memberVec.size()){
-        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
-            reg_found = true;
-            executive_yes = false;
-        }
-        else{
-            reg_index++;
-        }
-    }
+//    while(!reg_found && reg_index < myMembers.memberVec.size()){
+//        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+//            reg_found = true;
+//            executive_yes = false;
+//        }
+//        else{
+//            reg_index++;
+//        }
+//    }
 
-    while(!exec_found && exec_index < myMembers.execVec.size()){
-        if(idTemp == myMembers.execVec[exec_index]->getNum()){
-            exec_found = true;
-            executive_yes = true;
-        }
-        else{
-            exec_index++;
-        }
-    }
+//    while(!exec_found && exec_index < myMembers.execVec.size()){
+//        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+//            exec_found = true;
+//            executive_yes = true;
+//        }
+//        else{
+//            exec_index++;
+//        }
+//    }
 
-    if(upgrade && !executive_yes){
-        executive *tempExec;
-        QString tempName = myMembers.memberVec[reg_index]->getName();
-        int tempId = myMembers.memberVec[reg_index]->getNum();
-        int index0;
-        //        date tempExpiry = myMembers.memberVec[reg_index]->getExpiry();
-        double tempTotal = myMembers.memberVec[reg_index]->getTotal();
-        double tempAnnualDues = myMembers.memberVec[reg_index]->getAnnual();
+//    if(upgrade && !executive_yes){
+//        executive *tempExec;
+//        QString tempName = myMembers.memberVec[reg_index]->getName();
+//        int tempId = myMembers.memberVec[reg_index]->getNum();
+//        int index0;
+//        //        date tempExpiry = myMembers.memberVec[reg_index]->getExpiry();
+//        double tempTotal = myMembers.memberVec[reg_index]->getTotal();
+//        double tempAnnualDues = myMembers.memberVec[reg_index]->getAnnual();
 
-        tempExec = new executive;
+//        tempExec = new executive;
 
-        // Push it to the Back
-        myMembers.execVec.push_back(tempExec);
+//        // Push it to the Back
+//        myMembers.execVec.push_back(tempExec);
 
-        // Initialize ind0 to Working Index
-        index0 = myMembers.execVec.size() - 1;
+//        // Initialize ind0 to Working Index
+//        index0 = myMembers.execVec.size() - 1;
 
-        myMembers.execVec[index0]->setName(tempName);
-        myMembers.execVec[index0]->setNum(tempId);
-        myMembers.execVec[index0]->setType(true);
-        //        myMembers.execVec[index0]->setExpiry(tempExpiry);
-        myMembers.execVec[index0]->setTotal(tempTotal);
-        myMembers.execVec[index0]->setAnnual(tempAnnualDues);
+//        myMembers.execVec[index0]->setName(tempName);
+//        myMembers.execVec[index0]->setNum(tempId);
+//        myMembers.execVec[index0]->setType(true);
+//        //        myMembers.execVec[index0]->setExpiry(tempExpiry);
+//        myMembers.execVec[index0]->setTotal(tempTotal);
+//        myMembers.execVec[index0]->setAnnual(tempAnnualDues);
 
-        //      myMembers.memberVec.remove(reg_index);
+//        //      myMembers.memberVec.remove(reg_index);
 
-    }
+//    }
 
-    if(downgrade && executive_yes){
-        member *tempMember;
-        QString tempName = myMembers.execVec[reg_index]->getName();
-        int tempId = myMembers.execVec[reg_index]->getNum();
-        int index0;
-        //        date tempExpiry = myMembers.execVec[reg_index]->getExpiry();
-        double tempTotal = myMembers.execVec[reg_index]->getTotal();
-        double tempAnnualDues = myMembers.execVec[reg_index]->getAnnual();
+//    if(downgrade && executive_yes){
+//        member *tempMember;
+//        QString tempName = myMembers.execVec[reg_index]->getName();
+//        int tempId = myMembers.execVec[reg_index]->getNum();
+//        int index0;
+//        //        date tempExpiry = myMembers.execVec[reg_index]->getExpiry();
+//        double tempTotal = myMembers.execVec[reg_index]->getTotal();
+//        double tempAnnualDues = myMembers.execVec[reg_index]->getAnnual();
 
-        tempMember = new member;
+//        tempMember = new member;
 
-        // Push it to the Back
-        myMembers.memberVec.push_back(tempMember);
+//        // Push it to the Back
+//        myMembers.memberVec.push_back(tempMember);
 
-        // Initialize ind0 to Working Index
-        index0 = myMembers.memberVec.size() - 1;
+//        // Initialize ind0 to Working Index
+//        index0 = myMembers.memberVec.size() - 1;
 
-        myMembers.memberVec[index0]->setName(tempName);
-        myMembers.memberVec[index0]->setNum(tempId);
-        myMembers.memberVec[index0]->setType(true);
-        //        myMembers.memberVec[index0]->setExpiry(tempExpiry);
-        myMembers.memberVec[index0]->setTotal(tempTotal);
-        myMembers.memberVec[index0]->setAnnual(tempAnnualDues);
+//        myMembers.memberVec[index0]->setName(tempName);
+//        myMembers.memberVec[index0]->setNum(tempId);
+//        myMembers.memberVec[index0]->setType(true);
+//        //        myMembers.memberVec[index0]->setExpiry(tempExpiry);
+//        myMembers.memberVec[index0]->setTotal(tempTotal);
+//        myMembers.memberVec[index0]->setAnnual(tempAnnualDues);
 
 //    if(downgrade && executive){
 //        myMembers.execVec[exec_index]->setType(false);
