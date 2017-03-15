@@ -1105,10 +1105,13 @@ void MainWindow::on_enterButtonForAddMember_clicked()
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void MainWindow::on_enterButtonAddItem_clicked()
 {
     std::sort(memberIds.begin(), memberIds.end());
 }
+=======
+>>>>>>> 1a49717a19f0782001861aae82cdb80aea4c0ea8
 =======
 >>>>>>> 1a49717a19f0782001861aae82cdb80aea4c0ea8
