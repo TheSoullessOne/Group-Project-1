@@ -10,9 +10,9 @@ using namespace std;
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
-    QVector<item*> ourStock;
-    QVector<int> deletedMemberIds;
-    QVector<QString> deletedItemNames;
+    QVector<item*>      ourStock;
+    QVector<int>        deletedMemberIds;
+    QVector<QString>    deletedItemNames;
 };
 
 
@@ -141,6 +141,10 @@ private slots:
     void on_create_report_button_clicked();
 
     void on_backButtonForAddItem_clicked();
+
+    void on_enterButtonForAddMember_clicked();
+
+    void on_enterButtonAddItem_clicked();
 
 private:
     Ui::MainWindow *ui;
