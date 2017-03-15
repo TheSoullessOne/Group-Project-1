@@ -30,7 +30,6 @@ SOURCES += Sources\main.cpp\
     Sources\date.cpp \
     Sources\item.cpp
 
-
 HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
     Headers\executive.h \
