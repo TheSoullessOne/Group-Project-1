@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <QFile>
 #include <QStringList>
+#include <QtGlobal>
+#include <time.h>
+#include <QDate>
 using namespace std;
 
 enum PAGES{
@@ -287,12 +290,12 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
         // it returns true because the function is called in an if-statement
         // Pretty much saying, it returns true if the function worked
         if(fileName != "Texts\\warehouse shoppers.txt" &&
-           fileName != "Texts\\day1.txt" &&
-           fileName != "Texts\\day2.txt" &&
-           fileName != "Texts\\day3.txt" &&
-           fileName != "Texts\\day4.txt" &&
-           fileName != "Texts\\day5.txt")
-        QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
+                fileName != "Texts\\day1.txt" &&
+                fileName != "Texts\\day2.txt" &&
+                fileName != "Texts\\day3.txt" &&
+                fileName != "Texts\\day4.txt" &&
+                fileName != "Texts\\day5.txt")
+            QMessageBox::information(this, "It Worked!", "The file has successfully loaded!");
         return true;
     }
     // Returns false if the function did not work, meaning the file didnt exist
@@ -324,7 +327,7 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
             // Reads in the 4 lines that belong to 1 member
             tempName = fin.readLine();
-            tempId = fin.readLine().toInt();
+            tempId   = fin.readLine().toInt();
             tempRank = fin.readLine();
             tempDate = fin.readLine();
 
@@ -443,74 +446,23 @@ void MainWindow::on_expiring_rep_clicked()
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------****************************************************************************************DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 void MainWindow::on_create_report_button_clicked()
 {
 
 
-//    ui->REPORTS_PAGES->setCurrentIndex(REPORT_DISPLAY_PAGE);
-
-//    QCheckBox id_search       = ui->ID_CB->isChecked();
-//    QCheckBox userName_search = ui->USERNAME_CB->isChecked();
-//    QCheckBox date_search     = ui->DATE_CB->isChecked();
-//    QCheckBox itemName_search = ui->PRODUCT_CB->isChecked();
 
 
-
-//    QString search_string = ui->SEARCH_INPUT_LINE->text();
-
-//    if(id_search ){
-//        //searching by id
-
-//    }else if(userName_search == true){
-//        //searching by userName
-
-//    }else if(date_search == true){
-//        //searching by date
-
-//    }else {
-//        //searching by itemName
-//    }
-
-
-
-
-    //this vector will contain all of the members
-    vector<member*> memberSearch;//add infor for members. This vector holds all the members
-    for(int i = 0; i < myMembers.memberVec.size(); i++)
-    {
-        memberSearch.push_back(myMembers.memberVec[i]);
-    }
-    for(int j = 0; j < myMembers.execVec.size(); j++)
-    {
-        memberSearch.push_back(myMembers.execVec[j]);
-    }
-    //this vector will contain all of the expired members it is set to be the same size as the member search vector
-    vector<member*> expiringMember (memberSearch.size());
-
-    //this is the expiring month that we will be getting from the user
-    QString tempMonth= ui->search_line_edit->text();
-    int expiringMonth = tempMonth.toInt();
-
-    auto it = copy_if (memberSearch.begin(), memberSearch.end(),
-                       expiringMember.begin(), checkExperation(expiringMonth));
-
-    expiringMember.resize(distance(expiringMember.begin(),it));  // shrink container to new members
-
-    ui->Output_ExpiredMembers->setText("Expiring members contains:\n" );   // need to replace cout eventually
-    //for loop is for showing the contains of expiringMember
-    //this for loop looks confusin but all it is doing is looping over the vector.
-    for (member* x: expiringMember)
-    {
-        ui->Output_ExpiredMembers->append(x->getName() +"\n");
-
-    }
 
 }
-//----------------------------------------------------------------------*******************************************************************************************DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+//----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 
 
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
+
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -518,18 +470,168 @@ void MainWindow::on_delete_user_clicked()
 //----------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
+
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
 }
+//----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
+
+
 //----------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------CARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAAVCARISSAAAAAACARISSSAAACARISSAAAAAACARISSSAAA
 void MainWindow::on_add_user_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
+
+    /***   Declarations   ***/
+    QString    strQ;
+    bool       check;  // check checkbox, check R#G
+    int        rando;  // R#
+
+    QDate      today;  // to retrieve today's date
+    int       *year;   // to translate QDate to date
+    int       *month;  // ditto ^
+    int       *day;    // ditto ^^
+
+    executive *tempE;
+    int        ind0;
+
+    member    *tempM;
+    int        ind1;
+
+    /***************************************************************/
+    // Initialize
+    srand(time(NULL));
+    year  = NULL;
+    month = NULL;
+    day   = NULL;
+
+    // Receive Input
+    strQ  = ui->nameInputLine->text();
+    check = ui->executive_checkBox->isChecked();
+
+    if(check)
+    {
+    /***   Handle Vector   ****/
+        // Create New Exec
+        tempE = new executive;
+
+        // Push it to the Back
+        myMembers.execVec.push_back(tempE);
+
+        // Initialize ind0 to Working Index
+        ind0 = myMembers.execVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.execVec[ind0]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.execVec[ind0]->setNum(rando);
+
+        // Set type
+        myMembers.execVec[ind0]->setType(true);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today.addYears(1);
+        today.getDate(year, month, day);
+
+        myMembers.execVec[ind0]->setExpiry(*day, *month, *year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind0]->setAnnual(95.00);
+
+    }
+    else
+    {
+    /***   Handle Vector   ****/
+        // Create New Member
+        tempM = new member;
+
+        // Push it to the Back
+        myMembers.memberVec.push_back(tempM);
+
+        // Initialize ind0 to Working Index
+        ind1 = myMembers.memberVec.size() - 1;
+
+    /***   Handle Information   ***/
+        // Set Member Name
+        myMembers.memberVec[ind1]->setName(strQ);
+
+        // Set ID Number
+        do
+        {
+            rando = rand() % 99999 + 10000;
+
+            check = false;
+
+            // Use Range-Based For-Loop to Ensure Unique ID #
+            for(executive *eTemp : myMembers.execVec)
+            {
+                if(eTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+            for(member *mTemp : myMembers.memberVec)
+            {
+                if(mTemp->getNum() == rando)
+                {
+                    check = true;
+                }
+            }
+
+        }while(check);
+
+        myMembers.memberVec[ind1]->setNum(rando);
+
+        // Set type
+        myMembers.memberVec[ind1]->setType(false);
+
+        // Set Expiry
+        today = QDate::currentDate();
+        today.addYears(1);
+        today.getDate(year, month, day);
+
+        myMembers.memberVec[ind1]->setExpiry(*day, *month, *year);
+
+        // Set Annual Dues
+        myMembers.memberVec[ind1]->setAnnual(95.00);
+    }
+
+    ui->pages->setCurrentIndex(ADD_MEMBER);
+
 }
 //----------------------------------------------------------------------
 
@@ -625,7 +727,7 @@ void MainWindow::on_enterPassword_returnPressed()
             typeString = "Executive Member";
 
             // This sets the receipt display browser, i first hardcode the first line, then append all the others
-   if(myMembers.execVec[index]->getReceipt().size() > 0){
+            if(myMembers.execVec[index]->getReceipt().size() > 0){
                 ui->Member_Info_Receipt->setText(myMembers.execVec[index]->getReceipt()[0]->getShopDate().printDate());
                 for(int i = 0; i < myMembers.execVec[index]->getReceipt().size(); ++i)  {
                     ui->Member_Info_Receipt->append(myMembers.execVec[index]->getReceipt()[i]->getItemName());
@@ -981,7 +1083,7 @@ void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
 }
-
+//----------------------------------------------------------------------
 
 //------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
 void MainWindow::on_id_enter_button_clicked()
@@ -1138,3 +1240,15 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
 
 }
 //------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+
+
+//----------------------------------------------------------------------
+void MainWindow::on_backButtonForAddItem_clicked()
+{
+    ui->pages->setCurrentIndex(ADD_MENU);
+}
+
+//----------------------------------------------------------------------
+
+
+

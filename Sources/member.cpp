@@ -13,24 +13,24 @@ member::member()    {
 }
 
 // Specific constructor
-member::member(QString tempName,
-               int tempNum,
-               bool tempType,
-               int tempDay,
-               int tempMonth,
-               int tempYear,
-               double tempTotal,
-               double tempDues,
+member::member(QString        tempName,
+               int            tempNum,
+               bool           tempType,
+               int            tempDay,
+               int            tempMonth,
+               int            tempYear,
+               double         tempTotal,
+               double         tempDues,
                QVector<item*> tempReceipt)   {
     name = tempName;
-    num = tempNum;
+    num  = tempNum;
     type = tempType;
     expiry.setDay(tempDay);
     expiry.setMonth(tempMonth);
     expiry.setYear(tempYear);
-    total = tempTotal;
+    total       = tempTotal;
     annual_dues = tempDues;
-    receipt = tempReceipt;
+    receipt     = tempReceipt;
 }
 
 // Destructor if needed???
