@@ -547,12 +547,12 @@ void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
 
-    int execCounter = 0;
-    int memCounter = 0;
-    double totalRevenue = 0;
-    bool found;
+//    int execCounter = 0;
+//    int memCounter = 0;
+//    double totalRevenue = 0;
+//    bool found;
 
-    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
+//    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
 
     //    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
 
@@ -620,11 +620,11 @@ void MainWindow::on_quantity_rep_clicked()
 
     ui->REPORTS_PAGES->setCurrentIndex(QUANTITY_REPORT);//takes you to page to input the string
 
-    bool found;
-    int index;
+//    bool found;
+//    int index;
     int totalSold;
     double price;
-    int tempIndexAr[myMembers.memberVec.size()];
+//    int tempIndexAr[myMembers.memberVec.size()];
     QVector<std::string> sortedItems;
 
 
