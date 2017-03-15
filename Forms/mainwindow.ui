@@ -284,8 +284,8 @@
      <widget class="QLabel" name="Reports_label">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>-10</y>
+        <x>320</x>
+        <y>0</y>
         <width>111</width>
         <height>61</height>
        </rect>
@@ -304,7 +304,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -420,7 +420,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ff5500;&quot;&gt;Sales report&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
-       <widget class="QTextBrowser" name="salesReport_display">
+       <widget class="QDateEdit" name="dateEdit">
         <property name="geometry">
          <rect>
           <x>60</x>
