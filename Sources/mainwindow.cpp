@@ -457,15 +457,14 @@ void MainWindow::SaveToFile(QString fileName)   {
 void MainWindow::on_purchases_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT); //takes you to page to input the string
+    ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
+    bool exec;
     bool found = false;
-    int index;
+    int index =0;
     int tempIndexAr[myMembers.memberVec.size()];
 
     std::sort(memberIds.begin(),memberIds.end());
-
-
-        ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
         for(int i = 0; i<myMembers.memberVec.size();i++){
 
@@ -478,23 +477,43 @@ void MainWindow::on_purchases_rep_clicked()
                 if(memberIds[i] == myMembers.memberVec[i]->getNum()){
                     found = true;
                     index = i;
+                    exec = false;
+
+                }
+                else if(memberIds[i] == myMembers.execVec[i]->getNum()){
+                    found = true;
+                    index = i;
+                    exec = true;
+             }
+            }
+
+
+                if(exec){
+                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.execVec[index]->getName());
+
+                    for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+
+                        ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
+                                                  + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                  + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+
+                    }
+                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.execVec[index]->getTotal()));
                 }
                 else{
-                     ++i;
+
+                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.memberVec[index]->getName());
+
+                    for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
+
+                        ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
+                                                  + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                  + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+
+                    }
+                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
                 }
-            }
-
-            ui->productReportDisplay->append(QString::number(memberIds[i]) + " " + myMembers.memberVec[index]->getName());
-
-            for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size();i++){
-
-                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[i]->getItemName() + " "
-                                          + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[i]->getItemPrice())+ " "
-                                          + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[i]->getAmtBought())+ " ");
-
-            }
-            ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
-        }
+                }
 }
 //----------------------------------------------------------------------
 
@@ -534,7 +553,7 @@ void MainWindow::on_quantity_rep_clicked()
     for(int i =0; i<myMembers.ourStock.size();i++){
         sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
 }
-    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+    ui->quantityReportDisplay->setText(myMembers.ourStock[index]->getItemName());
 
 
     std::sort(sortedItems.begin(), sortedItems.end());
