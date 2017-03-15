@@ -472,7 +472,6 @@ void MainWindow::on_purchases_rep_clicked()
             index = 0;
 
             ui->productReportDisplay->append("\n\n");
-            ui->productReportDisplay->append(QString::number(memberIds[i]));
 
             while(!found && i < myMembers.memberVec.size()){
 
@@ -484,6 +483,8 @@ void MainWindow::on_purchases_rep_clicked()
                      ++i;
                 }
             }
+
+            ui->productReportDisplay->append(QString::number(memberIds[i]) + " " + myMembers.memberVec[index]->getName());
 
             for(int i = 0; i < myMembers.memberVec[index]->getReceipt().size();i++){
 
@@ -525,11 +526,21 @@ void MainWindow::on_quantity_rep_clicked()
     bool found;
     int index;
     int tempIndexAr[myMembers.memberVec.size()];
+    QVector<std::string> sortedItems;
 
-    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
-    for(int i =0; i<myMembers.memberVec.size();i++){
-    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+
+//    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
+
+    for(int i =0; i<myMembers.ourStock.size();i++){
+        sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
 }
+    ui->quantityReportDisplay->setText(myMembers.ourStock[i]->getItemName());
+
+
+    std::sort(sortedItems.begin(), sortedItems.end());
+    for(int i =0; i< sortedItems.size();i++){
+        qDebug() << QString::fromStdString(sortedItems[i]);
+    }
 //        ui->quantityReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
 //        for(int i = 0; i<myMembers.memberVec.size();i++){
