@@ -5,6 +5,7 @@
 #include "executive.h"
 #include <QVector>
 #include <QMessageBox>
+#include "salesreport.h"
 using namespace std;
 
 /**
@@ -13,9 +14,16 @@ using namespace std;
 struct memberStruct {
     QVector<member*>    memberVec;
     QVector<executive*> execVec;
+<<<<<<< HEAD
+    QVector<item*> ourStock;
+    QVector<int> deletedMemberIds;
+    QVector<QString> deletedItemNames;
+    QVector<salesReport*> sales;
+=======
     QVector<item*>      ourStock;
     QVector<int>        deletedMemberIds;
     QVector<QString>    deletedItemNames;
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 };
 
 
@@ -160,6 +168,9 @@ private slots:
 
     void on_backButtonForAddItem_clicked();
 
+<<<<<<< HEAD
+    void on_pushButton_2_clicked();
+=======
 //<<<<<<< HEAD
 //    void on_create_product_report_clicked();
 
@@ -171,6 +182,7 @@ private slots:
 
     void on_enterButtonAddItem_clicked();
     void on_backButton_reports_4_clicked();
+>>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 private:
     Ui::MainWindow *ui;

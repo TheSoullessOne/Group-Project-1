@@ -34,6 +34,7 @@ HEADERS  += Headers\mainwindow.h \
     Headers\date.h \
     Headers\executive.h \
     Headers\item.h \
-    Headers\member.h
+    Headers\member.h \
+    Headers/salesreport.h
 
 FORMS    += Forms\mainwindow.ui
