@@ -163,16 +163,17 @@ private slots:
     void on_backButtonForAddItem_clicked();
 
     void on_pushButton_2_clicked();
-//<<<<<<< HEAD
+
 //    void on_create_product_report_clicked();
 
 //    void on_backButton_reports_4_clicked();
 
 //    void on_backButton_reports_5_clicked();
-//=======
+
     void on_enterButtonForAddMember_clicked();
 
     void on_enterButtonAddItem_clicked();
+
     void on_backButton_reports_4_clicked();
 
 private:
