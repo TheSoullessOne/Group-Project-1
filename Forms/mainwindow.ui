@@ -284,8 +284,8 @@
      <widget class="QLabel" name="Reports_label">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>-10</y>
+        <x>320</x>
+        <y>0</y>
         <width>111</width>
         <height>61</height>
        </rect>
@@ -420,13 +420,36 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ff5500;&quot;&gt;Sales report&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
+       <widget class="QDateEdit" name="dateEdit">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>110</y>
+          <width>141</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
        <widget class="QTextBrowser" name="salesReport_display">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>60</y>
-          <width>621</width>
-          <height>271</height>
+          <x>370</x>
+          <y>120</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>OK</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="SalesReportTable">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>140</y>
+          <width>611</width>
+          <height>191</height>
          </rect>
         </property>
        </widget>

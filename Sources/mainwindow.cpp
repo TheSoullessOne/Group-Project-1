@@ -6,14 +6,11 @@
 #include <QList>
 #include <QSortFilterProxyModel>
 #include <QStringList>
-<<<<<<< HEAD
 #include <QStandardItemModel>
 #include "Headers/salesreport.h"
-=======
 #include <QtGlobal>
 #include <time.h>
 #include <QDate>
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 using namespace std;
 
 /**
@@ -474,53 +471,68 @@ void MainWindow::on_purchases_rep_clicked()
 
     std::sort(memberIds.begin(),memberIds.end());
 
+    for(int i = 0; i<myMembers.memberVec.size();i++){
 
-            ui->productReportDisplay->append("\n\n");
+        index = 0;
+        ui->productReportDisplay->append("\n\n");
 
-            while(!found && i < myMembers.memberVec.size()){
+        while(!found && i < myMembers.memberVec.size()){
 
-                for(int i =0; i< myMembers.memberVec.size();i++){
-                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
-                    found = true;
-                    index = i;
-                    exec = false;
+//<<<<<<< HEAD
+//                for(int i =0; i< myMembers.memberVec.size();i++){
+//                if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+//                    found = true;
+//                    index = i;
+//                    exec = false;
 
-                }
-                else if(memberIds[i] == myMembers.execVec[i]->getNum()){
-                    found = true;
-                    index = i;
-                    exec = true;
-             }
+//                }
+//                else if(memberIds[i] == myMembers.execVec[i]->getNum()){
+//                    found = true;
+//                    index = i;
+//                    exec = true;
+//             }
+
+//=======
+            if(memberIds[i] == myMembers.memberVec[i]->getNum()){
+                found = true;
+                index = i;
+                exec = false;
 
             }
+            else if(memberIds[i] == myMembers.execVec[i]->getNum()){
+                found = true;
+                index = i;
+                exec = true;
+            }
+        }
 
 
-                if(exec){
-                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.execVec[index]->getName());
+        if(exec){
+            ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.execVec[index]->getName());
 
-                    for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+            for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
 
-                        ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
-                                                  + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
-                                                  + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+                ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
+                                                 + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                 + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
 
-                    }
-                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.execVec[index]->getTotal()));
-                }
-                else{
+            }
+            ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.execVec[index]->getTotal()));
+        }
+        else{
 
-                    ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.memberVec[index]->getName());
+            ui->productReportDisplay->append(QString::number(memberIds[index]) + " " + myMembers.memberVec[index]->getName());
 
-                    for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
+            for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
 
-                        ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
-                                                  + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
-                                                  + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+                ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
+                                                 + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                                                 + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
 
-                    }
-                    ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
-                }
-                }
+            }
+            ui->productReportDisplay->append(" TOTAL: $ " +  QString::number(myMembers.memberVec[index]->getTotal()));
+        }
+    }
 }
 //----------------------------------------------------------------------
 
@@ -532,6 +544,63 @@ void MainWindow::on_purchases_rep_clicked()
 void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);//takes you to page to input the string
+
+    int execCounter = 0;
+    int memCounter = 0;
+    double totalRevenue = 0;
+    bool found;
+
+    QVector<std::string> sortedItems = {"08/01/2015" , "08/02/2015", "08/03/2015", "08/04/2015","08/06/2015"};
+
+//    ui->salesReport_display->setText("DISPLAYING FULL SALES REPORT\n\n");
+
+//    for(int i = 0; i < sortedItems.size(); ++i) {
+//        totalRevenue = 0;
+//        execCounter = 0;
+//        memCounter = 0;
+//        ui->salesReport_display->append("\n\n" + QString::fromStdString(sortedItems[i]));
+//        for(int j = 0; j < myMembers.execVec.size(); ++j)   {
+//            found  =false;
+//            for(int k = 0; k < myMembers.execVec[j]->getReceipt().size(); ++k)  {
+//                if(myMembers.execVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found = true;
+//                    totalRevenue += (myMembers.execVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.execVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.execVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.execVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
+
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.execVec[j]->getName() + " shopped here this day!");
+//                ++execCounter;
+//            }
+//        }
+//        for(int j = 0; j < myMembers.memberVec.size(); ++j)   {
+//            for(int k = 0; k < myMembers.memberVec[j]->getReceipt().size(); ++k)  {
+//                found = false;
+//                if(myMembers.memberVec[j]->getReceipt()[k]->getShopDate().printDate() == QString::fromStdString(sortedItems[i]))  {
+//                    found  =true;
+//                    totalRevenue += (myMembers.memberVec[j]->getReceipt()[k]->getAmtBought() *
+//                                     myMembers.memberVec[j]->getReceipt()[k]->getItemPrice());
+//                    ui->salesReport_display->append(myMembers.memberVec[j]->getReceipt()[k]->getItemName() +
+//                                                    " X " + QString::number(myMembers.memberVec[j]->getReceipt()[k]->getAmtBought()));
+//                }
+
+//            }
+//            if(found)   {
+//                ui->salesReport_display->append(myMembers.memberVec[j]->getName() + " shopped here this day!");
+//                ++memCounter;
+//            }
+//        }
+//        ui->salesReport_display->append("Total for this day: $" + QString::number(totalRevenue));
+//        ui->salesReport_display->append("We had " + QString::number(execCounter) + " executive members come through.");
+//        ui->salesReport_display->append("We had " + QString::number(memCounter) + " regular members come through.");
+
+
+
+//    }
+
 
 }
 //----------------------------------------------------------------------
@@ -557,11 +626,11 @@ void MainWindow::on_quantity_rep_clicked()
     QVector<std::string> sortedItems;
 
 
-//    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
+    //    std::sort(myMembers.ourStock.begin(),myMembers.ourStock.end());
 
     for(int i =0; i<myMembers.ourStock.size();i++){
         sortedItems.push_back(myMembers.ourStock[i]->getItemName().toStdString());
-}
+    }
 
     std::sort(sortedItems.begin(), sortedItems.end());
 
@@ -834,7 +903,7 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
     password = password.toLower();
 
     if(username == "admin"  &&
-       password == "password")  {
+            password == "password")  {
         ui->pages->setCurrentIndex(MAIN_MENU);
         ui->Admin_Username_line_edit->clear();
         ui->Admin_Password_line_edit->clear();
@@ -1141,159 +1210,158 @@ void MainWindow::on_back_to_login_clicked()
 //----------------------------------------------------------------------
 
 //------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
-void MainWindow::on_id_enter_button_clicked()
-{
-    /******************************************************************
-     * This portion of code will determine if it is more money savy to
-     * either upgrade or downgrade their membership. It will also
-     * show their total amount due for the year. This includes
-     * the annual membership fee (based on member status i.e.
-     * regular/executive) and the rebate if they are an executive
-     * member (based off of their total spending for the year)
-     *****************************************************************/
-    QString idTempString = ui->id_enter_box->text();
-    bool executive = false;
-    bool reg_found = false;
-    bool exec_found = false;
-    double rebate = 0;
-    double total = 0;
-    double annualTotal = 0;
-    int exec_index = 0;
-    int reg_index = 0;
+//void MainWindow::on_id_enter_button_clicked()
+//{
+//    /******************************************************************
+//     * This portion of code will determine if it is more money savy to
+//     * either upgrade or downgrade their membership. It will also
+//     * show their total amount due for the year. This includes
+//     * the annual membership fee (based on member status i.e.
+//     * regular/executive) and the rebate if they are an executive
+//     * member (based off of their total spending for the year)
+//     *****************************************************************/
+//    QString idTempString = ui->id_enter_box->text();
+//    bool executive = false;
+//    bool reg_found = false;
+//    bool exec_found = false;
+//    double rebate = 0;
+//    double total = 0;
+//    double annualTotal = 0;
+//    int exec_index = 0;
+//    int reg_index = 0;
 
-    const int EXEC_ANNUAL_FEE = 95;
-    const int REG_ANNUAL_FEE = 85;
-    const int PRICE_DIFFERENCE = 10; //the difference in price between
-                                     //a regular member and an executive
-    const float REBATE_RATE = .0325;
+//    const int EXEC_ANNUAL_FEE = 95;
+//    const int REG_ANNUAL_FEE = 85;
+//    const int PRICE_DIFFERENCE = 10; //the difference in price between
+//    //a regular member and an executive
+//    const float REBATE_RATE = .0325;
 
-    int idTemp = idTempString.toInt();
+//    int idTemp = idTempString.toInt();
 
-    while(!reg_found && reg_index < myMembers.memberVec.size()){
-        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
-            reg_found = true;
-            executive = false;
-            total = myMembers.memberVec[reg_index]->getTotal();
-        }
-        else{
-            reg_index++;
-        }
-    }
+//    while(!reg_found && reg_index < myMembers.memberVec.size()){
+//        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+//            reg_found = true;
+//            executive = false;
+//            total = myMembers.memberVec[reg_index]->getTotal();
+//        }
+//        else{
+//            reg_index++;
+//        }
+//    }
 
-    while(!exec_found && exec_index < myMembers.execVec.size()){
-        if(idTemp == myMembers.execVec[exec_index]->getNum()){
-            exec_found = true;
-            executive = true;
-            total = myMembers.execVec[exec_index]->getTotal();
-        }
-        else{
-            exec_index++;
-        }
-    }
-
-
-    rebate = memberRebate(idTemp);
-
-    if(executive){
-        annualTotal = (EXEC_ANNUAL_FEE - rebate);
-
-        //output to the member their total for the year
-        QString memberTotal = "The rebate you received was ";
-        ui->total_rebate_display->setText("Your annual total dues is ");
-        ui->total_rebate_display->append(QString::number(annualTotal));
-        ui->total_rebate_display->append("\n");
-        ui->total_rebate_display->append(memberTotal);
-        ui->total_rebate_display->append(QString::number(rebate));
-
-        if(rebate < PRICE_DIFFERENCE){
-            //  the member should downgrade to save money
-            ui->total_rebate_display->append("\nTo save money, you should downgrade");
-        }
-        else{
-            //  the member should remain an executive
-            ui->total_rebate_display->append("\nTo save money, you should remain the same");
-        }
-    }
-    else{   //this would be for regular members
-        annualTotal = REG_ANNUAL_FEE;
-        //output to the member their total for the year
-        ui->total_rebate_display->setText("Your annual total dues is ");
-        ui->total_rebate_display->append(QString::number(annualTotal));
-        ui->total_rebate_display->append("\n");
-
-        if(total > (PRICE_DIFFERENCE/REBATE_RATE)){
-            //  the member should upgrade to executive to
-            //  save money
-            ui->total_rebate_display->append("\nTo save money, you should upgrade");
-        }
-        else{
-            //  the member should remain a regular member
-            ui->total_rebate_display->append("\nTo save money, you should remain the same");
-        }
-    }
-}
-//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+//    while(!exec_found && exec_index < myMembers.execVec.size()){
+//        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+//            exec_found = true;
+//            executive = true;
+//            total = myMembers.execVec[exec_index]->getTotal();
+//        }
+//        else{
+//            exec_index++;
+//        }
+//    }
 
 
-//------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
-void MainWindow::on_upgrade_downgrade_button_clicked()
-{
+//    rebate = memberRebate(idTemp);
 
-    /******************************************************************
-     * This portion of code will determine if it is more money savy to
-     * either upgrade or downgrade their membership. It will also
-     * show their total amount due for the year. This includes
-     * the annual membership fee (based on member status i.e.
-     * regular/executive) and the rebate if they are an executive
-     * member (based off of their total spending for the year)
-     *****************************************************************/
-    bool upgrade = ui->upgrade_checkBox_2->isChecked();
-    bool downgrade = ui->downgrade_checkBox_3->isChecked();
-    bool executive = false;
-    bool exec_found = false;
-    bool reg_found = false;
-    int exec_index = 0;
-    int reg_index = 0;
+//    if(executive){
+//        annualTotal = (EXEC_ANNUAL_FEE - rebate);
 
-    QString idTempString = ui->id_enter_box->text();
+//        //output to the member their total for the year
+//        QString memberTotal = "The rebate you received was ";
+//        ui->total_rebate_display->setText("Your annual total dues is ");
+//        ui->total_rebate_display->append(QString::number(annualTotal));
+//        ui->total_rebate_display->append("\n");
+//        ui->total_rebate_display->append(memberTotal);
+//        ui->total_rebate_display->append(QString::number(rebate));
 
-    int idTemp = idTempString.toInt();
+//        if(rebate < PRICE_DIFFERENCE){
+//            //  the member should downgrade to save money
+//            ui->total_rebate_display->append("\nTo save money, you should downgrade");
+//        }
+//        else{
+//            //  the member should remain an executive
+//            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+//        }
+//    }
+//    else{   //this would be for regular members
+//        annualTotal = REG_ANNUAL_FEE;
+//        //output to the member their total for the year
+//        ui->total_rebate_display->setText("Your annual total dues is ");
+//        ui->total_rebate_display->append(QString::number(annualTotal));
+//        ui->total_rebate_display->append("\n");
 
-
-    while(!reg_found && reg_index < myMembers.memberVec.size()){
-        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
-            reg_found = true;
-            executive = false;
-        }
-        else{
-            reg_index++;
-        }
-    }
-
-    while(!exec_found && exec_index < myMembers.execVec.size()){
-        if(idTemp == myMembers.execVec[exec_index]->getNum()){
-            exec_found = true;
-            executive = true;
-        }
-        else{
-            exec_index++;
-        }
-    }
-
-    if(upgrade && !executive){
-        myMembers.memberVec[reg_index]->setType(true);
-
-//      myMembers.memberVec.remove(reg_index);
-    }
-
-    if(downgrade && executive){
-        myMembers.execVec[exec_index]->setType(false);
-
-//      myMembers.execVec.remove(exec_index);
-    }
+//        if(total > (PRICE_DIFFERENCE/REBATE_RATE)){
+//            //  the member should upgrade to executive to
+//            //  save money
+//            ui->total_rebate_display->append("\nTo save money, you should upgrade");
+//        }
+//        else{
+//            //  the member should remain a regular member
+//            ui->total_rebate_display->append("\nTo save money, you should remain the same");
+//        }
+//    }
+//}
+////------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
 
 
-}
+////------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
+//void MainWindow::on_upgrade_downgrade_button_clicked()
+//{
+
+//    /******************************************************************
+//     * This portion of code will determine if it is more money savy to
+//     * either upgrade or downgrade their membership. It will also
+//     * show their total amount due for the year. This includes
+//     * the annual membership fee (based on member status i.e.
+//     * regular/executive) and the rebate if they are an executive
+//     * member (based off of their total spending for the year)
+//     *****************************************************************/
+//    bool upgrade = ui->upgrade_checkBox_2->isChecked();
+//    bool downgrade = ui->downgrade_checkBox_3->isChecked();
+//    bool executive = false;
+//    bool exec_found = false;
+//    bool reg_found = false;
+//    int exec_index = 0;
+//    int reg_index = 0;
+
+//    QString idTempString = ui->id_enter_box->text();
+
+//    int idTemp = idTempString.toInt();
+
+
+//    while(!reg_found && reg_index < myMembers.memberVec.size()){
+//        if(idTemp == myMembers.memberVec[reg_index]->getNum()){
+//            reg_found = true;
+//            executive = false;
+//        }
+//        else{
+//            reg_index++;
+//        }
+//    }
+
+//    while(!exec_found && exec_index < myMembers.execVec.size()){
+//        if(idTemp == myMembers.execVec[exec_index]->getNum()){
+//            exec_found = true;
+//            executive = true;
+//        }
+//        else{
+//            exec_index++;
+//        }
+//    }
+
+//    if(upgrade && !executive){
+//        myMembers.memberVec[reg_index]->setType(true);
+
+//        //      myMembers.memberVec.remove(reg_index);
+//    }
+
+//    if(downgrade && executive){
+//        myMembers.execVec[exec_index]->setType(false);
+
+//        //      myMembers.execVec.remove(exec_index);
+//    }
+
+//}
 //------------------------------------------------------------------------KAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILAKAILA
 
 
@@ -1311,7 +1379,6 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 //----------------------------------------------------------------------
 
-<<<<<<< HEAD
 void MainWindow::on_pushButton_2_clicked()
 {
     /*ints that are gathering information from the calender widget
@@ -1364,7 +1431,7 @@ void MainWindow::on_pushButton_2_clicked()
     }
 
 
-=======
+}
 /**
  * @brief MainWindow::on_enterButtonForAddMember_clicked
  */
@@ -1396,7 +1463,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
     if(check)
     {
-    /***   Handle Vector   ****/
+        /***   Handle Vector   ****/
         // Create New Exec
         tempE = new executive;
 
@@ -1406,7 +1473,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         // Initialize ind0 to Working Index
         ind0 = myMembers.execVec.size() - 1;
 
-    /***   Handle Information   ***/
+        /***   Handle Information   ***/
         // Set Member Name
         myMembers.execVec[ind0]->setName(strQ);
 
@@ -1460,7 +1527,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
     }
     else
     {
-    /***   Handle Vector   ****/
+        /***   Handle Vector   ****/
         // Create New Member
         tempM = new member;
 
@@ -1470,7 +1537,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         // Initialize ind0 to Working Index
         ind1 = myMembers.memberVec.size() - 1;
 
-    /***   Handle Information   ***/
+        /***   Handle Information   ***/
         // Set Member Name
         myMembers.memberVec[ind1]->setName(strQ);
 
@@ -1519,13 +1586,13 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         myMembers.memberVec[ind1]->setAnnual(95.00);
 
         // Inform User of New ID #
-         ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
+        ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
 
 
 
     }
-//    for(int i = 0; i < memberIds.size(); ++i)   {
-//    }
+    //    for(int i = 0; i < memberIds.size(); ++i)   {
+    //    }
     ui->nameInputLine->clear();
     ui->executive_checkBox->setChecked(false);
 }
@@ -1554,6 +1621,5 @@ void MainWindow::on_backButton_reports_4_clicked()
 {
 
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
->>>>>>> adeadae4f9286eed720c4d5ea2615949445a9247
 
 }
