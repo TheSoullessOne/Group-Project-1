@@ -9,6 +9,9 @@
 #include <QDate>
 using namespace std;
 
+/**
+ * @brief The PAGES enum
+ */
 enum PAGES{
     LOGIN_PAGE,         //0
     MAIN_MENU,          //1
@@ -25,6 +28,9 @@ enum PAGES{
     ADD_MEMBER          //12
 
 };
+/**
+ * @brief The REPORT_PAGES enum
+ */
 enum REPORT_PAGES{
     MAIN_REPORT_PAGE,   //0
     FILTER_PAGE,        //1
@@ -32,6 +38,10 @@ enum REPORT_PAGES{
 };
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::MainWindow
+ * @param parent
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -63,6 +73,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::~MainWindow
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -73,6 +86,9 @@ MainWindow::~MainWindow()
 
 //----------------------------------------------------------------------
 //Function to add a new user
+/**
+ * @brief MainWindow::on_Adduser_clicked
+ */
 void MainWindow::on_Adduser_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -84,6 +100,9 @@ void MainWindow::on_Adduser_clicked()
 
 //----------------------------------------------------------------------
 //Function to delete a user or item
+/**
+ * @brief MainWindow::on_deleteRec_clicked
+ */
 void MainWindow::on_deleteRec_clicked()
 {
     ui->pages->setCurrentIndex(DELETE);
@@ -95,6 +114,9 @@ void MainWindow::on_deleteRec_clicked()
 
 //----------------------------------------------------------------------
 //Function to upgrade a user
+/**
+ * @brief MainWindow::on_upgrade_clicked
+ */
 void MainWindow::on_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);
@@ -105,6 +127,9 @@ void MainWindow::on_upgrade_clicked()
 
 //----------------------------------------------------------------------
 //Function to search different types of reports
+/**
+ * @brief MainWindow::on_reportsSearch_clicked
+ */
 void MainWindow::on_reportsSearch_clicked()
 {
     ui->pages->setCurrentIndex(REPORTS);
@@ -117,6 +142,9 @@ void MainWindow::on_reportsSearch_clicked()
 
 //----------------------------------------------------------------------
 //Function to read in a file that has the 5 files of purchases for members
+/**
+ * @brief MainWindow::on_readInFile_clicked
+ */
 void MainWindow::on_readInFile_clicked()
 {
     ui->pages->setCurrentIndex(READ_FILE);
@@ -128,6 +156,9 @@ void MainWindow::on_readInFile_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_search_line_edit_returnPressed
+ */
 void MainWindow::on_search_line_edit_returnPressed()
 {
     // copy_if example
@@ -184,6 +215,11 @@ void MainWindow::on_search_line_edit_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::UpdateDataFromFile
+ * @param fileName
+ * @return
+ */
 bool MainWindow::UpdateDataFromFile(QString fileName)   {
 
     // Creates an object of QFile type
@@ -305,6 +341,11 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::UpdateMembersFromFile
+ * @param fileName
+ * @return
+ */
 bool MainWindow::UpdateMembersFromFile(QString fileName)    {
     // Creates an object of QFile type
     QFile inputFile(fileName.toStdString().c_str());
@@ -371,6 +412,10 @@ bool MainWindow::UpdateMembersFromFile(QString fileName)    {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::SaveToFile
+ * @param fileName
+ */
 void MainWindow::SaveToFile(QString fileName)   {
     // Creates our QFile variable
     QFile outputFile(fileName);
@@ -410,6 +455,9 @@ void MainWindow::SaveToFile(QString fileName)   {
 
 
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+/**
+ * @brief MainWindow::on_purchases_rep_clicked
+ */
 void MainWindow::on_purchases_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE); //takes you to page to input the string
@@ -418,6 +466,9 @@ void MainWindow::on_purchases_rep_clicked()
 
 
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+/**
+ * @brief MainWindow::on_sales_rep_clicked
+ */
 void MainWindow::on_sales_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
@@ -426,6 +477,9 @@ void MainWindow::on_sales_rep_clicked()
 
 
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+/**
+ * @brief MainWindow::on_quantity_rep_clicked
+ */
 void MainWindow::on_quantity_rep_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(FILTER_PAGE);//takes you to page to input the string
@@ -433,6 +487,9 @@ void MainWindow::on_quantity_rep_clicked()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
+/**
+ * @brief MainWindow::on_rebate_rep_clicked
+ */
 void MainWindow::on_rebate_rep_clicked()
 {
     ui->pages->setCurrentIndex(UPGRADE);//takes you to page to input the string
@@ -440,6 +497,9 @@ void MainWindow::on_rebate_rep_clicked()
 //----------------------------------------------------------------------DESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERYDESSERY
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_expiring_rep_clicked
+ */
 void MainWindow::on_expiring_rep_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH_EXPIRED);//takes you to page to input the string
@@ -463,7 +523,9 @@ void MainWindow::on_create_report_button_clicked()
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
 
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
-
+/**
+ * @brief MainWindow::on_delete_user_clicked
+ */
 void MainWindow::on_delete_user_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -475,7 +537,9 @@ void MainWindow::on_delete_user_clicked()
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
 
 //----------------------------------------------------------------------ERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERICERIC
-
+/**
+ * @brief MainWindow::on_delete_item_clicked
+ */
 void MainWindow::on_delete_item_clicked()
 {
     ui->pages->setCurrentIndex(MEMBER_INFO);
@@ -484,6 +548,9 @@ void MainWindow::on_delete_item_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_add_user_clicked
+ */
 void MainWindow::on_add_user_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MEMBER);
@@ -492,6 +559,9 @@ void MainWindow::on_add_user_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_add_purchase_clicked
+ */
 void MainWindow::on_add_purchase_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
@@ -500,6 +570,9 @@ void MainWindow::on_add_purchase_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_enterPassword_returnPressed
+ */
 void MainWindow::on_enterPassword_returnPressed()
 {
     // Stores the info that the user passed into the user Id line
@@ -667,6 +740,9 @@ void MainWindow::on_enterPassword_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Admin_Login_Button_clicked
+ */
 void MainWindow::on_Admin_Login_Button_clicked()
 {
     // go to admin login page to get to menu choices
@@ -678,6 +754,9 @@ void MainWindow::on_Admin_Login_Button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_admin_login_clicked
+ */
 void MainWindow::on_backButton_admin_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
@@ -686,6 +765,9 @@ void MainWindow::on_backButton_admin_login_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Admin_Password_line_edit_returnPressed
+ */
 void MainWindow::on_Admin_Password_line_edit_returnPressed()
 {
     QString username = ui->Admin_Username_line_edit->text();
@@ -709,6 +791,9 @@ void MainWindow::on_Admin_Password_line_edit_returnPressed()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_read_file_line_edit_returnPressed
+ */
 void MainWindow::on_read_file_line_edit_returnPressed()
 {
     ui->File_error_message_label->setHidden(true);
@@ -729,6 +814,11 @@ void MainWindow::on_read_file_line_edit_returnPressed()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::deleteItemOrName
+ * @param searchItem
+ * @return
+ */
 bool MainWindow::deleteItemOrName(QString searchItem)  {
     bool found = false;
     int i = 0;
@@ -778,6 +868,9 @@ bool MainWindow::deleteItemOrName(QString searchItem)  {
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_searchByMonth_clicked
+ */
 void MainWindow::on_searchByMonth_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH_EXPIRED);
@@ -786,6 +879,9 @@ void MainWindow::on_searchByMonth_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_lineEdit_2_returnPressed
+ */
 void MainWindow::on_lineEdit_2_returnPressed()
 {
 
@@ -794,6 +890,9 @@ void MainWindow::on_lineEdit_2_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Delete_line_edit_returnPressed
+ */
 void MainWindow::on_Delete_line_edit_returnPressed()
 {
     QString searchItem = ui->Delete_line_edit->text();
@@ -809,6 +908,9 @@ void MainWindow::on_Delete_line_edit_returnPressed()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Member_info_back_button_clicked
+ */
 void MainWindow::on_Member_info_back_button_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
@@ -817,6 +919,9 @@ void MainWindow::on_Member_info_back_button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_searchButtonBrians_clicked
+ */
 void MainWindow::on_searchButtonBrians_clicked()
 {
     ui->pages->setCurrentIndex(SEARCH);
@@ -825,6 +930,9 @@ void MainWindow::on_searchButtonBrians_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_Search_back_button_clicked
+ */
 void MainWindow::on_Search_back_button_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -833,6 +941,9 @@ void MainWindow::on_Search_back_button_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_expiredMembers_clicked
+ */
 void MainWindow::on_backButton_expiredMembers_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -841,7 +952,9 @@ void MainWindow::on_backButton_expiredMembers_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_addMember_clicked
+ */
 void MainWindow::on_backButton_addMember_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -850,7 +963,9 @@ void MainWindow::on_backButton_addMember_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_add_member_button_clicked
+ */
 void MainWindow::on_add_member_button_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MEMBER);
@@ -859,7 +974,9 @@ void MainWindow::on_add_member_button_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_deleteInput_clicked
+ */
 void MainWindow::on_backButton_deleteInput_clicked()
 {
     ui->pages->setCurrentIndex(DELETE);
@@ -868,6 +985,9 @@ void MainWindow::on_backButton_deleteInput_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_reports_3_clicked
+ */
 void MainWindow::on_backButton_reports_3_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
@@ -876,7 +996,9 @@ void MainWindow::on_backButton_reports_3_clicked()
 
 
 //----------------------------------------------------------------------
-
+/**
+ * @brief MainWindow::on_backButton_reports_2_clicked
+ */
 void MainWindow::on_backButton_reports_2_clicked()
 {
 
@@ -886,6 +1008,9 @@ void MainWindow::on_backButton_reports_2_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_addmen_clicked
+ */
 void MainWindow::on_backButton_addmen_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -894,6 +1019,9 @@ void MainWindow::on_backButton_addmen_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_delete_clicked
+ */
 void MainWindow::on_backButton_delete_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -902,6 +1030,9 @@ void MainWindow::on_backButton_delete_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_reports_clicked
+ */
 void MainWindow::on_backButton_reports_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -910,6 +1041,9 @@ void MainWindow::on_backButton_reports_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_readfile_clicked
+ */
 void MainWindow::on_backButton_readfile_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -918,6 +1052,9 @@ void MainWindow::on_backButton_readfile_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_upgrade_clicked
+ */
 void MainWindow::on_backButton_upgrade_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -926,6 +1063,9 @@ void MainWindow::on_backButton_upgrade_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButton_search_clicked
+ */
 void MainWindow::on_backButton_search_clicked()
 {
     ui->pages->setCurrentIndex(MAIN_MENU);
@@ -934,6 +1074,9 @@ void MainWindow::on_backButton_search_clicked()
 
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_back_to_login_clicked
+ */
 void MainWindow::on_back_to_login_clicked()
 {
     ui->pages->setCurrentIndex(LOGIN_PAGE);
@@ -941,6 +1084,9 @@ void MainWindow::on_back_to_login_clicked()
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
+/**
+ * @brief MainWindow::on_backButtonForAddItem_clicked
+ */
 void MainWindow::on_backButtonForAddItem_clicked()
 {
     ui->pages->setCurrentIndex(ADD_MENU);
@@ -950,6 +1096,9 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 //----------------------------------------------------------------------
 
+/**
+ * @brief MainWindow::on_enterButtonForAddMember_clicked
+ */
 void MainWindow::on_enterButtonForAddMember_clicked()
 {
     /***   Declarations   ***/
@@ -1102,10 +1251,32 @@ void MainWindow::on_enterButtonForAddMember_clicked()
 
         // Inform User of New ID #
          ui->informUserID->setText(QString::number(myMembers.memberVec[ind1]->getNum()));
+
+
+
     }
+    for(int i = 0; i < memberIds.size(); ++i)   {
+        qDebug() << memberIds[i];
+    }
+    ui->nameInputLine->clear();
+    ui->executive_checkBox->setChecked(false);
 }
 
+/**
+ * @brief MainWindow::on_enterButtonAddItem_clicked
+ */
 void MainWindow::on_enterButtonAddItem_clicked()
 {
+    QString newItemName = ui->ItemNameInputLine->text();
+    QString newItemPrice = ui->itemPriceInputLine->text();
+    item* tempItem = new item;
 
+    tempItem->setItemName(newItemName);
+    tempItem->setItemPrice(newItemPrice.toDouble());
+
+    myMembers.ourStock.push_back(tempItem);
+
+    QMessageBox::information(this, "Item Added", "Congratulations, your item has been added.");
+    ui->ItemNameInputLine->clear();
+    ui->itemPriceInputLine->clear();
 }
