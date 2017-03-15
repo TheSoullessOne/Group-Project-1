@@ -1240,7 +1240,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
      *****************************************************************/
     bool upgrade = ui->upgrade_checkBox_2->isChecked();
     bool downgrade = ui->downgrade_checkBox_3->isChecked();
-    bool executive = false;
+    bool executive_yes = false;
     bool exec_found = false;
     bool reg_found = false;
     int exec_index = 0;
@@ -1254,7 +1254,7 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
     while(!reg_found && reg_index < myMembers.memberVec.size()){
         if(idTemp == myMembers.memberVec[reg_index]->getNum()){
             reg_found = true;
-            executive = false;
+            executive_yes = false;
         }
         else{
             reg_index++;
@@ -1264,21 +1264,31 @@ void MainWindow::on_upgrade_downgrade_button_clicked()
     while(!exec_found && exec_index < myMembers.execVec.size()){
         if(idTemp == myMembers.execVec[exec_index]->getNum()){
             exec_found = true;
-            executive = true;
+            executive_yes = true;
         }
         else{
             exec_index++;
         }
     }
 
-    if(upgrade && !executive){
-        myMembers.memberVec[reg_index]->setType(true);
+    if(upgrade && !executive_yes){
+        executive *tempExec;
 
-//      myMembers.memberVec.remove(reg_index);
+        tempExec = new executive;
+
+        // Push it to the Back
+        myMembers.execVec.push_back(tempExec);
+
+//        myMembers.memberVec.remove(reg_index);
     }
 
-    if(downgrade && executive){
-        myMembers.execVec[exec_index]->setType(false);
+    if(downgrade && executive_yes){
+        member *tempMember;
+
+        tempMember = new member;
+
+        // Push it to the Back
+        myMembers.memberVec.push_back(tempMember);
 
 //      myMembers.execVec.remove(exec_index);
     }
