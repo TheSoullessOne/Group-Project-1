@@ -96,7 +96,7 @@ private slots:
 
     void on_purchases_rep_clicked();
 
-    void on_sales_rep_clicked();
+//    void on_sales_rep_clicked();
 
     void on_quantity_rep_clicked();
 
@@ -104,11 +104,11 @@ private slots:
 
     void on_expiring_rep_clicked();
 
-    void on_delete_user_clicked();
+//    void on_delete_user_clicked();
 
-    void on_delete_item_clicked();
+//    void on_delete_item_clicked();
 
-    void on_add_user_clicked();
+//    void on_add_user_clicked();
 
     void on_add_purchase_clicked();
 
@@ -124,7 +124,7 @@ private slots:
 
     void on_Member_info_back_button_clicked();
 
-    void on_searchButtonBrians_clicked();
+//    void on_searchButtonBrians_clicked();
 
     void on_Search_back_button_clicked();
 
@@ -132,19 +132,19 @@ private slots:
 
     void on_searchByMonth_clicked();
 
-    void on_lineEdit_2_returnPressed();
+//    void on_lineEdit_2_returnPressed();
 
     void on_search_line_edit_returnPressed();
 
     void on_Delete_line_edit_returnPressed();
 
-    void on_backButton_expiredMembers_clicked();
+//    void on_backButton_expiredMembers_clicked();
 
     void on_backButton_addMember_clicked();
 
     void on_add_member_button_clicked();
 
-    void on_backButton_deleteInput_clicked();
+//    void on_backButton_deleteInput_clicked();
 
     void on_backButton_reports_3_clicked();
 
@@ -185,6 +185,8 @@ private slots:
     void on_SearchItemInfor_button_clicked();
 
     void on_execRebInfoButton_clicked();
+
+    void on_sales_report_button_clicked();
 
 private:
     Ui::MainWindow *ui;
