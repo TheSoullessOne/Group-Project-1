@@ -182,6 +182,8 @@ private slots:
 
     void on_searchItemEnterButton_clicked();
 
+    void on_SearchItemInfor_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
