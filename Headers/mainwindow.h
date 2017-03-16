@@ -184,6 +184,8 @@ private slots:
 
     void on_SearchItemInfor_button_clicked();
 
+    void on_execRebInfoButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
