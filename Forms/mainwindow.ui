@@ -27,11 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-<<<<<<< HEAD
      <number>12</number>
-=======
-     <number>4</number>
->>>>>>> 2d93ccb1ad7d2a5914db9ca338b82ded3ff913ed
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">

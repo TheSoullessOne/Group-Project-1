@@ -490,13 +490,14 @@ void MainWindow::on_purchases_rep_clicked()
     ui->REPORTS_PAGES->setCurrentIndex(PRODUCT_REPORT_PAGE);
     ui->productReportDisplay->setText("DISPLAYING PURCHASE REPORT SORTED BY MEMBER ID");
 
-
+    // Declarations
     bool exec;
     bool found;
-    int index =0;
+    int  index;
+    int  i;
 
     //This will sort the member id vector from greatest to smallest
-    std::sort(memberIds.begin(),memberIds.end());
+    sort(memberIds.begin(),memberIds.end());
 
     // This for loop will keep track of all of the members and make sure we
     //don't go out of searching bounds
@@ -504,79 +505,82 @@ void MainWindow::on_purchases_rep_clicked()
 
         ui->productReportDisplay->append("\n\n"); //Just outputs some empty lines
 
-        int i = 0;     //sets the index counter to 0
+        i     = 0;     //sets the index counter to 0
         found = false; //sets the bool to false
         index = 0;     //sets index that will be used to store the index for
                        //the current member id
 
-<<<<<<< HEAD
+        for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
+            ui->productReportDisplay->append("\n\n");
+            i     = 0;
+            found = false;
+            index = 0;
 
-    for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
-        ui->productReportDisplay->append("\n\n");
-        int i =0;
-        found = false;
-        index = 0;
-=======
-        //This loop will search for an ID match in the regular member vector
->>>>>>> 2d93ccb1ad7d2a5914db9ca338b82ded3ff913ed
-        while(!found && i < myMembers.memberVec.size()){
-            if(memberIds[idIndex] == myMembers.memberVec[i]->getNum()){
-                found = true;
-                index = i;
-                exec = false;
+            //This loop will search for an ID match in the regular member vector
+            while(!found && i < myMembers.memberVec.size()){
+                if(memberIds[idIndex] == myMembers.memberVec[i]->getNum()){
+                    found = true;
+                    index = i;
+                    exec = false;
+                } // end if
+                else {
+                    ++i;
+                }
+            } // end while
+
+            if(!found)  {
+                i = 0;
             }
-            else {
-                ++i;
-            }
-        }
-        if(!found)  {
-            i = 0;
-        }
-        //This loop will search for an ID match in the executive member vector
-        while(!found && i < myMembers.execVec.size())   {
-            if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
-                found = true;
-                index = i;
-                exec = true;
-            }
-            else{
-                ++i;
-            }
-        }
-        // So these if -statments will execute depending on the value of the exec bool
-        // These loops will take care of displaying the data to window
-        if(exec){
-            ui->productReportDisplay->append(QString::number(memberIds[idIndex])
+
+            //This loop will search for an ID match in the executive member vector
+            while(!found && i < myMembers.execVec.size())   {
+                if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
+                    found = true;
+                    index = i;
+                    exec = true;
+                } // end if
+                else{
+                    ++i;
+                }
+            } // end while
+
+            // So these if -statments will execute depending on the value of the exec bool
+            // These loops will take care of displaying the data to window
+            if(exec){
+                ui->productReportDisplay->append(QString::number(memberIds[idIndex])
                                   + " - " + myMembers.execVec[index]->getName());
 
-            for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
-                ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
-                       + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
-                       + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
-            }
-            ui->productReportDisplay->append(" TOTAL: $ " +
+                for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+                    ui->productReportDisplay->append(myMembers.execVec[index]->getReceipt()[k]->getItemName() + " "
+                           + "$ " + QString::number(myMembers.execVec[index]->getReceipt()[k]->getItemPrice())+ " "
+                           + " " +  QString::number(myMembers.execVec[index]->getReceipt()[k]->getAmtBought())+ " ");
+                } // end for
+
+                ui->productReportDisplay->append(" TOTAL: $ " +
                           QString::number(myMembers.execVec[index]->getTotal()));
-        }
-        else if(!exec){
-            ui->productReportDisplay->append(QString::number(memberIds[idIndex])
+            } // end if(exec)
+            else if(!exec){
+                ui->productReportDisplay->append(QString::number(memberIds[idIndex])
                                 + " - " + myMembers.memberVec[index]->getName());
 
-            for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
+                for(int k = 0; k < myMembers.memberVec[index]->getReceipt().size();k++){
 
                 ui->productReportDisplay->append(myMembers.memberVec[index]->getReceipt()[k]->getItemName() + " "
                        + "$ " + QString::number(myMembers.memberVec[index]->getReceipt()[k]->getItemPrice())+ " "
                        + " " +  QString::number(myMembers.memberVec[index]->getReceipt()[k]->getAmtBought())+ " ");
 
-            }
-            ui->productReportDisplay->append(" TOTAL: $ " +
+                } // end for
+
+                ui->productReportDisplay->append(" TOTAL: $ " +
                          QString::number(myMembers.memberVec[index]->getTotal()));
-        }
-        else
-        {
-            ui->productReportDisplay->append("Nothing to display");
-        }
-    }
-}
+            } // end if(!exec)
+            else
+            {
+                ui->productReportDisplay->append("Nothing to display");
+            }
+        } // end for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) inner
+    } // end for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) outter
+} // close function
 //----------------------------------------------------------------------
 
 
