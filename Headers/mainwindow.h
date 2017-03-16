@@ -188,6 +188,8 @@ private slots:
 
     void on_sales_report_button_clicked();
 
+    void on_sales_rep_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;

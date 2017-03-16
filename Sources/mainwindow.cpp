@@ -1325,6 +1325,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
     /***   Declarations   ***/
     QString    strQ;
     bool       check;  // check checkbox, check R#G
+    bool       check2;
     int        rando;  // R#
 
     QDate      today;  // to retrieve today's date
@@ -1368,26 +1369,26 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         {
             rando = rand() % 99999 + 10000;
 
-            check = false;
+            check2 = false;
 
             // Use Range-Based For-Loop to Ensure Unique ID #
-            for(executive *eTemp : myMembers.execVec)
+            for(int i = 0; i < myMembers.execVec.size(); ++i)
             {
-                if(eTemp->getNum() == rando)
+                if(myMembers.execVec[i]->getNum() == rando)
                 {
-                    check = true;
+                    check2 = true;
                 }
             }
 
-            for(member *mTemp : myMembers.memberVec)
+            for(int i = 0; i < myMembers.memberVec.size(); ++i)
             {
-                if(mTemp->getNum() == rando)
+                if(myMembers.memberVec[i]->getNum() == rando)
                 {
-                    check = true;
+                    check2 = true;
                 }
             }
 
-        }while(check);
+        }while(check2);
 
 
         myMembers.execVec[ind0]->setNum(rando);
@@ -1406,7 +1407,7 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         myMembers.execVec[ind0]->setExpiry(day, month, year);
 
         // Set Annual Dues
-        myMembers.memberVec[ind0]->setAnnual(95.00);
+        myMembers.execVec[ind0]->setAnnual(95.00);
 
         // Inform User of New ID #
         ui->informUserID->setText(QString::number(myMembers.execVec[ind0]->getNum()));
@@ -1433,26 +1434,26 @@ void MainWindow::on_enterButtonForAddMember_clicked()
         {
             rando = rand() % 99999 + 10000;
 
-            check = false;
+            check2 = false;
 
             // Use Range-Based For-Loop to Ensure Unique ID #
-            for(executive *eTemp : myMembers.execVec)
+            for(int i = 0; i < myMembers.execVec.size(); ++i)
             {
-                if(eTemp->getNum() == rando)
+                if(myMembers.execVec[i]->getNum() == rando)
                 {
-                    check = true;
+                    check2 = true;
                 }
             }
 
-            for(member *mTemp : myMembers.memberVec)
+            for(int i = 0; i < myMembers.memberVec.size(); ++i)
             {
-                if(mTemp->getNum() == rando)
+                if(myMembers.memberVec[i]->getNum() == rando)
                 {
-                    check = true;
+                    check2 = true;
                 }
             }
 
-        }while(check);
+        }while(check2);
 
         myMembers.memberVec[ind1]->setNum(rando);
         memberIds.push_back(rando);
@@ -1838,19 +1839,15 @@ int i = 0;
     for(int i = 0; i < myMembers.memberVec.size(); ++i) {
         for(int j = 0; j < myMembers.memberVec[i]->getReceipt().size(); ++j)    {
             totalSold += myMembers.memberVec[i]->getReceipt()[j]->getAmtBought();
-            qDebug() << QString::number(totalSold);
             totalRevenue += (myMembers.memberVec[i]->getReceipt()[j]->getAmtBought() *
                              myMembers.memberVec[i]->getReceipt()[j]->getItemPrice());
-            qDebug() << QString::number(totalRevenue);
         }
     }
     for(int i = 0; i < myMembers.execVec.size(); ++i) {
         for(int j = 0; j < myMembers.execVec[i]->getReceipt().size(); ++j)    {
             totalSold += myMembers.execVec[i]->getReceipt()[j]->getAmtBought();
-            qDebug() << QString::number(totalSold);
             totalRevenue += (myMembers.execVec[i]->getReceipt()[j]->getAmtBought() *
                              myMembers.execVec[i]->getReceipt()[j]->getItemPrice());
-            qDebug() << QString::number(totalRevenue);
         }
     }
 
@@ -1987,3 +1984,51 @@ void MainWindow::on_execRebInfoButton_clicked()
 
 //    }
 //}
+
+void MainWindow::on_sales_rep_clicked()
+{
+    /*ints that are gathering information from the calender widget
+     * acting as a user input*/
+    int day = ui->dateEdit->date().day();
+    int month = ui->dateEdit->date().month();
+    int year = ui->dateEdit->date().year();
+
+    /*this is the master vector behold and tremble
+       its the vector that holds the sales report*/
+    vector<salesReport*> report (myMembers.sales.size());
+    /*degub testing*/
+    /* auto in order to copy the vector into a new vector and the resize to slim it down
+      because its chuby, but really in order to make the vector the size its suppose to be*/
+    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+                       report.begin(), salesCheck(day,month,year));
+    report.resize(distance(report.begin(),it));
+
+    /* magical code used to creat the table*/
+    QStandardItemModel *m = new QStandardItemModel();
+    ui->SalesReportTable->setModel(m);
+    /* this is how to use a QT table I honestly really disliked it because
+     * it took me a stupid amount of time to learn, and even thought I spent
+     * time trying to learn I am still uterly confused.*/
+    m->setColumnCount(4);
+    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+
+    m->setRowCount(report.size());
+    /*for loop in order to print out the table*/
+    for (unsigned int i = 0; i < report.size(); i++)
+    {
+        salesReport* x = report[i];
+        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+        m->setItem(i, 1, new QStandardItem(
+                       QString("%1/%2/%3")
+                       .arg(x->getDate().getMonth())
+                       .arg(x->getDate().getDay())
+                       .arg( x->getDate().getYear())));
+        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
+
+
+    }
+}
