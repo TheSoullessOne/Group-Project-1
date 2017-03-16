@@ -1879,9 +1879,10 @@ void MainWindow::on_SearchItemInfor_button_clicked()
 
 void MainWindow::on_execRebInfoButton_clicked()
 {
-    bool found;
-    bool exec;
-    int  index,i;
+    bool found = false;
+    bool exec = false;
+    int  index;
+    int i = 0;
 
     double rebate = 0;
     double subtotal = 0;
