@@ -1813,7 +1813,7 @@ void MainWindow::on_searchItemEnterButton_clicked()
     double totalRevenue = 0;
     int    totalSold = 0;
     int    index;
-    bool   found;
+    bool   found = false;
 
     ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n\n");
 
