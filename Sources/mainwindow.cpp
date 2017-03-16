@@ -498,7 +498,11 @@ void MainWindow::on_purchases_rep_clicked()
     int  i;
 
     //This will sort the member id vector from greatest to smallest
+<<<<<<< HEAD
     sort(memberIds.begin(),memberIds.end());
+=======
+//    std::sort(memberIds.begin(),memberIds.end());
+>>>>>>> efd88d8e4990443a448a3c26241f9bc5371aaea5
 
     // This for loop will keep track of all of the members and make sure we
     //don't go out of searching bounds
@@ -1894,9 +1898,8 @@ void MainWindow::on_execRebInfoButton_clicked()
 {
     bool found = false;
     bool exec = false;
-    int  index;
-    int i = 0;
-
+    int  index = 0;
+    int  i = 0;
     double rebate = 0;
     double subtotal = 0;
     const float REBATE_RATE = .0325;
@@ -1905,11 +1908,15 @@ void MainWindow::on_execRebInfoButton_clicked()
     ui->execRebateDisplay->setText("DISPLAYING ALL EXECS WITH REBATE AMOUNT\n\n");
 
     //This will sort the member id vector from greatest to smallest
-    std::sort(memberIds.begin(),memberIds.end());
+//    std::sort(memberIds.begin(),memberIds.end());
+
 
     for(int idIndex =0; idIndex< memberIds.size();idIndex++){
+        i = 0;
+        found = false;
+        exec = false;
         //This loop will search for an ID match in the executive member vector
-        while(!found && i < myMembers.execVec.size())   {
+        while(!found && idIndex < myMembers.execVec.size()){
             if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
                 found = true;
                 index = i;
@@ -1921,17 +1928,19 @@ void MainWindow::on_execRebInfoButton_clicked()
         }
 
         if(exec){
-            ui->execRebateDisplay->append(QString::number(memberIds[index])
+            ui->execRebateDisplay->append("\n" + QString::number(memberIds[index])
                                   + " - " + myMembers.execVec[index]->getName());
 
+            rebate = 0;
             for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
 
-                subtotal = myMembers.execVec[idIndex]->getTotal();
-                rebate = (REBATE_RATE * subtotal);
+                subtotal = myMembers.execVec[index]->getTotal();
+                rebate += (REBATE_RATE * subtotal);
 
-                ui->execRebateDisplay->append("Rebate Amount: $" + QString::number(rebate));
             }
+            ui->execRebateDisplay->append("Rebate Amount: $" + QString::number(rebate , 'f', 2));
         }
-    }
 
+    }
 }
+
