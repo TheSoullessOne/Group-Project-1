@@ -1817,7 +1817,7 @@ void MainWindow::on_searchItemEnterButton_clicked()
 
     ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n\n");
 
-for(int i = 0; i <myMembers.ourStock.size();i++){
+int i = 0;
     while(!found){
        if(searchString == myMembers.ourStock[i]->getItemName()){
            found = true;
@@ -1848,9 +1848,6 @@ for(int i = 0; i <myMembers.ourStock.size();i++){
     if(found){
 
         ui->itemInfoDisplayBox->append(searchString);
-
-//        totalPrice = myMembers.ourStock[index]->getItemPrice()*myMembers.ourStock[index]->getAmtBought();
-
         ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(totalSold));
         ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
 
@@ -1863,4 +1860,9 @@ for(int i = 0; i <myMembers.ourStock.size();i++){
         QMessageBox::critical(this, "Not Found", "Item not found!");
     }
 }
+
+
+void MainWindow::on_SearchItemInfor_button_clicked()
+{
+    ui->pages->setCurrentIndex(SEARCH);
 }
