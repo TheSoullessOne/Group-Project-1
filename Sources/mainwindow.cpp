@@ -493,14 +493,9 @@ void MainWindow::on_purchases_rep_clicked()
 
     // Declarations
     bool exec;
-<<<<<<< HEAD
     bool found;
     int  index;
     int  i;
-=======
-    bool found = false;
-    int  index =0;
->>>>>>> a8773d1448b540c694b8a26daae5444d434aa3d9
 
     //This will sort the member id vector from greatest to smallest
     sort(memberIds.begin(),memberIds.end());

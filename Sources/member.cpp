@@ -69,8 +69,6 @@ member::member(const member& obj)
     *p = *obj.p;
 }
 
-
-
 // Destructor
 member::~member()
 {

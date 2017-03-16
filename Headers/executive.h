@@ -8,11 +8,39 @@
 class executive: public member
 {
   public:
+    // Constructors
     /**
      * @brief executive
      */
-    executive(): member() {}
+    executive(): member(){
+        rebate = 0;
+    }
 
+    executive(double         tempRebate,
+              QString        tempName,
+              int            tempNum,
+              bool           tempType,
+              int            tempDay,
+              int            tempMonth,
+              int            tempYear,
+              double         tempTotal,
+              double         tempDues,
+              int           *tempP,
+              QVector<item*> tempReceipt): member(tempName,
+                                                  tempNum,
+                                                  tempType,
+                                                  tempDay,
+                                                  tempMonth,
+                                                  tempYear,
+                                                  tempTotal,
+                                                  tempDues,
+                                                  tempP,
+                                                  tempReceipt)
+    {
+        rebate = tempRebate;
+    }
+
+    // Function Members
     /**
      * @brief getRebate
      * @return
