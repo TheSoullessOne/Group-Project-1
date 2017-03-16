@@ -73,7 +73,6 @@ MainWindow::MainWindow(QWidget *parent) :
         QMessageBox::critical(this, "Error with File", "day5.txt did not load properly.\nPlease try again.");
     }
 
-
 }
 //----------------------------------------------------------------------
 
@@ -343,17 +342,18 @@ bool MainWindow::UpdateDataFromFile(QString fileName)   {
             // Then it will create the item and push it to the back fo the vector
             if(!otherFound)  {
                 myMembers.ourStock.push_back(tempItem);
-                if(execBool)    {
-                    myMembers.sales.push_back(new salesReport(tempItem, myMembers.execVec[i],
-                                                              tempItem->getItemPrice(),
-                                                              tempItem->getShopDate()));
-                }
-                else
-                {
-                    myMembers.sales.push_back(new salesReport(tempItem, myMembers.memberVec[i],
-                                                              tempItem->getItemPrice(),
-                                                              tempItem->getShopDate()));
-                }
+            }
+
+            if(execBool)    {
+                myMembers.sales.push_back(new salesReport(tempItem, myMembers.execVec[i],
+                                                          tempItem->getItemPrice(),
+                                                          tempItem->getShopDate()));
+            }
+            else
+            {
+                myMembers.sales.push_back(new salesReport(tempItem, myMembers.memberVec[i],
+                                                          tempItem->getItemPrice(),
+                                                          tempItem->getShopDate()));
             }
         }
         // it returns true because the function is called in an if-statement
