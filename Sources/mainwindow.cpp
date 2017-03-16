@@ -1812,20 +1812,21 @@ void MainWindow::on_searchItemEnterButton_clicked()
 
     double totalPrice = 0;
     int    index;
-    int    i;
     bool   found;
 
     ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n");
 
-    while(!found && i<myMembers.ourStock.size()){
+for(int i = 0; i <myMembers.ourStock.size();i++){
+    while(!found){
        if(searchString == myMembers.ourStock[i]->getItemName()){
            found = true;
-           index =i;
+           index = i;
        }else{
-          ++i;
            found = false;
        }
     }
+}
+
     if(found){
 
         ui->itemInfoDisplayBox->append(searchString);
