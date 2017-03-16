@@ -158,7 +158,7 @@ private slots:
 
     void on_upgrade_downgrade_button_clicked();
 
-//    void on_upgrade_checkBox_2_clicked();
+    void on_upgrade_checkBox_2_clicked();
 
     void on_backButtonForAddItem_clicked();
 
