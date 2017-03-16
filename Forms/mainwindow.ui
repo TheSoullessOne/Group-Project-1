@@ -311,7 +311,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -447,10 +447,10 @@
        <widget class="QTextBrowser" name="salesReport_display">
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>120</y>
-          <width>91</width>
-          <height>16</height>
+          <x>130</x>
+          <y>140</y>
+          <width>531</width>
+          <height>191</height>
          </rect>
         </property>
         <property name="text" stdset="0">
@@ -462,7 +462,7 @@
          <rect>
           <x>0</x>
           <y>140</y>
-          <width>611</width>
+          <width>101</width>
           <height>191</height>
          </rect>
         </property>
@@ -1445,7 +1445,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
