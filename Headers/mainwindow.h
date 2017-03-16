@@ -162,7 +162,7 @@ private slots:
 
     void on_backButtonForAddItem_clicked();
 
-    void on_pushButton_2_clicked();
+//    void on_pushButton_2_clicked();
 
 //    void on_create_product_report_clicked();
 

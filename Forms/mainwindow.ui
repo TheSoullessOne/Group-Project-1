@@ -311,7 +311,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -447,8 +447,8 @@
        <widget class="QTextBrowser" name="salesReport_display">
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>120</y>
+          <x>520</x>
+          <y>40</y>
           <width>91</width>
           <height>16</height>
          </rect>
@@ -478,6 +478,19 @@
         </property>
         <property name="text">
          <string>BACK TO REPORT MENU</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="sales_report_button">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>110</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>OK</string>
         </property>
        </widget>
       </widget>

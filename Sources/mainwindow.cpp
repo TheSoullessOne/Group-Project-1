@@ -1256,7 +1256,7 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 
 //----------------------------------------------------------------------
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_sales_report_button_clicked()
 {
     /*ints that are gathering information from the calender widget
      * acting as a user input*/
