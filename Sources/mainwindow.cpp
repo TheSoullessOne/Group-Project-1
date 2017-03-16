@@ -1893,10 +1893,10 @@ void MainWindow::on_execRebInfoButton_clicked()
     //This will sort the member id vector from greatest to smallest
     std::sort(memberIds.begin(),memberIds.end());
 
-    for(int idIndex =0; idIndex< memberIds.size();idIndex++){
+    for(int idIndex =0; idIndex < memberIds.size();idIndex++){
 
         //This loop will search for an ID match in the executive member vector
-        while(!found && i < myMembers.execVec.size())   {
+        while(!found && idIndex < myMembers.execVec.size()){
             if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
                 found = true;
                 index = i;
