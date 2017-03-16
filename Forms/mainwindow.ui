@@ -17,7 +17,7 @@
    <widget class="QStackedWidget" name="pages">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>0</y>
       <width>731</width>
       <height>441</height>
@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -36,7 +36,7 @@
         <x>270</x>
         <y>90</y>
         <width>160</width>
-        <height>86</height>
+        <height>90</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -100,7 +100,7 @@
         <x>180</x>
         <y>50</y>
         <width>331</width>
-        <height>170</height>
+        <height>185</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -143,6 +143,13 @@
         <widget class="QPushButton" name="searchByMonth">
          <property name="text">
           <string>Search For Expiring Members</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="SearchItemInfor_button">
+         <property name="text">
+          <string>Search For Item Info</string>
          </property>
         </widget>
        </item>
@@ -895,18 +902,77 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="SEARCH">
+    <widget class="QWidget" name="SEARCH_ITEM_PAGE">
      <widget class="QPushButton" name="Search_back_button">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>290</y>
+        <x>620</x>
+        <y>380</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="text">
        <string>Back to menu</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="itemInfoDisplayBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>120</y>
+        <width>721</width>
+        <height>241</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="searchItemLabel">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>10</y>
+        <width>281</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt; font-weight:600; text-decoration: underline; color:#5555ff;&quot;&gt;Search for Item Info&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="enterItemNameLabel_2">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>80</y>
+        <width>201</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Enter Item Name :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="enterItemNameBox">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>80</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="searchItemEnterButton">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>80</y>
+        <width>80</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>SEARCH</string>
       </property>
      </widget>
     </widget>
@@ -1362,7 +1428,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>

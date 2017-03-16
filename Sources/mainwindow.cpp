@@ -29,7 +29,7 @@ enum PAGES{
     MEMBER_INFO,        //9
     ENTER_DELETE_INFO,  //10
     SEARCH_EXPIRED,     //11
-    ADD_MEMBER,          //12
+    ADD_MEMBER,         //12
     ADD_ITEM            //13
 
 };
@@ -37,10 +37,10 @@ enum PAGES{
  * @brief The REPORT_PAGES enum
  */
 enum REPORT_PAGES{
-    MAIN_REPORT_PAGE,  //0
-    PRODUCT_REPORT_PAGE,    //1
-    SALES_REPORT,      //2
-    QUANTITY_REPORT     //3
+    MAIN_REPORT_PAGE,     //0
+    PRODUCT_REPORT_PAGE,  //1
+    SALES_REPORT,         //2
+    QUANTITY_REPORT       //3
 };
 
 //----------------------------------------------------------------------
@@ -1797,4 +1797,46 @@ void MainWindow::on_backButton_reports_4_clicked()
 void MainWindow::on_backButton_reports_5_clicked()
 {
     ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+}
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+
+
+
+void MainWindow::on_searchItemEnterButton_clicked()
+{
+    QString searchString = ui->enterItemNameBox->text();
+    int    totalSold;
+    double totalPrice = 0;
+    int    index;
+    int    i;
+    bool   found;
+
+    ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n");
+
+    while(!found && i<myMembers.ourStock.size()){
+       if(searchString == myMembers.ourStock[i]->getItemName()){
+           found = true;
+           index =i;
+       }else{
+          ++i;
+           found = false;
+       }
+    }
+    if(found){
+
+        ui->itemInfoDisplayBox->append(searchString);
+
+        totalPrice *= myMembers.ourStock[index]->getItemPrice();
+
+        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(myMembers.ourStock[index]->getAmtBought()));
+        ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
+
+        ui->itemInfoDisplayBox->append("TOTAL REVENUE: $ " + QString::number(totalPrice));
+
+
+    }
 }
