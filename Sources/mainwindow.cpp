@@ -1879,10 +1879,9 @@ void MainWindow::on_SearchItemInfor_button_clicked()
 
 void MainWindow::on_execRebInfoButton_clicked()
 {
-    bool found;
-    bool exec;
-    int  index,i;
-
+    bool   found;
+    bool   exec;
+    int    index,i;
     double rebate = 0;
     double subtotal = 0;
     const float REBATE_RATE = .0325;
