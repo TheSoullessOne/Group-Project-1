@@ -1895,9 +1895,6 @@ void MainWindow::on_execRebInfoButton_clicked()
     ui->REPORTS_PAGES->setCurrentIndex(EXEC_REBATE);
     ui->execRebateDisplay->setText("DISPLAYING ALL EXECS WITH REBATE AMOUNT\n\n");
 
-    //This will sort the member id vector from greatest to smallest
-//    std::sort(memberIds.begin(),memberIds.end());
-
 
     for(int idIndex =0; idIndex< memberIds.size();idIndex++){
         i = 0;
@@ -1932,58 +1929,6 @@ void MainWindow::on_execRebInfoButton_clicked()
     }
 }
 
-
-//void MainWindow::on_sales_report_button_clicked()
-//{
-//    /*ints that are gathering information from the calender widget
-//     * acting as a user input*/
-//    int day = ui->dateEdit->date().day();
-//    int month = ui->dateEdit->date().month();
-//    int year = ui->dateEdit->date().year();
-
-//    /*this is the master vector behold and tremble
-//       its the vector that holds the sales report*/
-//    vector<salesReport*> report (myMembers.sales.size());
-//    /*degub testing*/
-//    qDebug() << "There are " << myMembers.sales.size() << " sales records";
-//    /* auto in order to copy the vector into a new vector and the resize to slim it down
-//      because its chuby, but really in order to make the vector the size its suppose to be*/
-//    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
-//                       report.begin(), salesCheck(day,month,year));
-//    report.resize(distance(report.begin(),it));
-
-//    qDebug() << "On " << month << "/" << day << "/" << year
-//             << " there were " << report.size() << " sales";
-
-//    /* magical code used to creat the table*/
-//    QStandardItemModel *m = new QStandardItemModel();
-//    ui->SalesReportTable->setModel(m);
-//    /* this is how to use a QT table I honestly really disliked it because
-//     * it took me a stupid amount of time to learn, and even thought I spent
-//     * time trying to learn I am still uterly confused.*/
-//    m->setColumnCount(4);
-//    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
-//    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
-//    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
-//    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
-
-//    m->setRowCount(report.size());
-//    /*for loop in order to print out the table*/
-//    for (unsigned int i = 0; i < report.size(); i++)
-//    {
-//        salesReport* x = report[i];
-//        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
-//        m->setItem(i, 1, new QStandardItem(
-//                       QString("%1/%2/%3")
-//                       .arg(x->getDate().getMonth())
-//                       .arg(x->getDate().getDay())
-//                       .arg( x->getDate().getYear())));
-//        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
-//        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
-
-
-//    }
-//}
 
 void MainWindow::on_sales_rep_clicked()
 {
