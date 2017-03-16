@@ -178,6 +178,12 @@ private slots:
 
     void on_backButton_reports_5_clicked();
 
+//    void on_pushButton_clicked();
+
+    void on_searchItemEnterButton_clicked();
+
+    void on_SearchItemInfor_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     memberStruct myMembers;
