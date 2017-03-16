@@ -1810,11 +1810,12 @@ void MainWindow::on_searchItemEnterButton_clicked()
 {
     QString searchString = ui->enterItemNameBox->text();
 
-    double totalPrice = 0;
+    double totalRevenue = 0;
+    int    totalSold = 0;
     int    index;
     bool   found;
 
-    ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n");
+    ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n\n");
 
 for(int i = 0; i <myMembers.ourStock.size();i++){
     while(!found){
@@ -1822,22 +1823,44 @@ for(int i = 0; i <myMembers.ourStock.size();i++){
            found = true;
            index = i;
        }else{
-           found = false;
+          ++i;
        }
     }
-}
+    for(int i = 0; i < myMembers.memberVec.size(); ++i) {
+        for(int j = 0; j < myMembers.memberVec[i]->getReceipt().size(); ++j)    {
+            totalSold += myMembers.memberVec[i]->getReceipt()[j]->getAmtBought();
+            qDebug() << QString::number(totalSold);
+            totalRevenue += (myMembers.memberVec[i]->getReceipt()[j]->getAmtBought() *
+                             myMembers.memberVec[i]->getReceipt()[j]->getItemPrice());
+            qDebug() << QString::number(totalRevenue);
+        }
+    }
+    for(int i = 0; i < myMembers.execVec.size(); ++i) {
+        for(int j = 0; j < myMembers.execVec[i]->getReceipt().size(); ++j)    {
+            totalSold += myMembers.execVec[i]->getReceipt()[j]->getAmtBought();
+            qDebug() << QString::number(totalSold);
+            totalRevenue += (myMembers.execVec[i]->getReceipt()[j]->getAmtBought() *
+                             myMembers.execVec[i]->getReceipt()[j]->getItemPrice());
+            qDebug() << QString::number(totalRevenue);
+        }
+    }
 
     if(found){
 
         ui->itemInfoDisplayBox->append(searchString);
 
-        totalPrice = myMembers.ourStock[index]->getItemPrice()*myMembers.ourStock[index]->getAmtBought();
+//        totalPrice = myMembers.ourStock[index]->getItemPrice()*myMembers.ourStock[index]->getAmtBought();
 
-        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(myMembers.ourStock[index]->getAmtBought()));
+        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(totalSold));
         ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
 
-        ui->itemInfoDisplayBox->append("TOTAL REVENUE: $ " + QString::number(totalPrice));
+        ui->itemInfoDisplayBox->append("TOTAL REVENUE: $ " + QString::number(totalRevenue));
 
 
     }
+    else
+    {
+        QMessageBox::critical(this, "Not Found", "Item not found!");
+    }
+}
 }
