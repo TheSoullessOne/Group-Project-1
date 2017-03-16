@@ -1883,8 +1883,8 @@ void MainWindow::on_execRebInfoButton_clicked()
     bool exec = false;
     int  index;
     int i = 0;
-    double rebate = 0;
-    double subtotal = 0;
+    double rebate = 0.0;
+    double subtotal = 0.0;
     const float REBATE_RATE = .0325;
 
     ui->REPORTS_PAGES->setCurrentIndex(EXEC_REBATE);
@@ -1894,6 +1894,7 @@ void MainWindow::on_execRebInfoButton_clicked()
     std::sort(memberIds.begin(),memberIds.end());
 
     for(int idIndex =0; idIndex< memberIds.size();idIndex++){
+
         //This loop will search for an ID match in the executive member vector
         while(!found && i < myMembers.execVec.size())   {
             if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
@@ -1907,17 +1908,15 @@ void MainWindow::on_execRebInfoButton_clicked()
         }
 
         if(exec){
+
             ui->execRebateDisplay->append(QString::number(memberIds[index])
                                   + " - " + myMembers.execVec[index]->getName());
 
-            for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
-
                 subtotal = myMembers.execVec[idIndex]->getTotal();
-                rebate = (REBATE_RATE * subtotal);
+                rebate   = (REBATE_RATE * subtotal);
 
                 ui->execRebateDisplay->append("Rebate Amount: $" + QString::number(rebate));
             }
         }
     }
 
-}
