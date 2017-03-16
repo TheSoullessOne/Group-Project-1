@@ -1829,15 +1829,19 @@ void MainWindow::on_searchItemEnterButton_clicked()
     for(int i = 0; i < myMembers.memberVec.size(); ++i) {
         for(int j = 0; j < myMembers.memberVec[i]->getReceipt().size(); ++j)    {
             totalSold += myMembers.memberVec[i]->getReceipt()[j]->getAmtBought();
+            qDebug() << QString::number(totalSold);
             totalRevenue += (myMembers.memberVec[i]->getReceipt()[j]->getAmtBought() *
                              myMembers.memberVec[i]->getReceipt()[j]->getItemPrice());
+            qDebug() << QString::number(totalRevenue);
         }
     }
     for(int i = 0; i < myMembers.execVec.size(); ++i) {
         for(int j = 0; j < myMembers.execVec[i]->getReceipt().size(); ++j)    {
             totalSold += myMembers.execVec[i]->getReceipt()[j]->getAmtBought();
+            qDebug() << QString::number(totalSold);
             totalRevenue += (myMembers.execVec[i]->getReceipt()[j]->getAmtBought() *
                              myMembers.execVec[i]->getReceipt()[j]->getItemPrice());
+            qDebug() << QString::number(totalRevenue);
         }
     }
 
@@ -1847,7 +1851,7 @@ void MainWindow::on_searchItemEnterButton_clicked()
 
 //        totalPrice = myMembers.ourStock[index]->getItemPrice()*myMembers.ourStock[index]->getAmtBought();
 
-        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(myMembers.ourStock[index]->getAmtBought()));
+        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(totalSold));
         ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
 
         ui->itemInfoDisplayBox->append("TOTAL REVENUE: $ " + QString::number(totalRevenue));
