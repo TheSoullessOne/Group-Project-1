@@ -96,7 +96,7 @@ private slots:
 
     void on_purchases_rep_clicked();
 
-//    void on_sales_rep_clicked();
+    void on_sales_rep_clicked();
 
     void on_quantity_rep_clicked();
 
@@ -163,32 +163,27 @@ private slots:
     void on_backButtonForAddItem_clicked();
 
 //    void on_pushButton_2_clicked();
-
+//<<<<<<< HEAD
 //    void on_create_product_report_clicked();
 
 //    void on_backButton_reports_4_clicked();
 
 //    void on_backButton_reports_5_clicked();
-
+//=======
     void on_enterButtonForAddMember_clicked();
 
     void on_enterButtonAddItem_clicked();
-
     void on_backButton_reports_4_clicked();
-
-    void on_backButton_reports_5_clicked();
-
-//    void on_pushButton_clicked();
-
-    void on_searchItemEnterButton_clicked();
-
-    void on_SearchItemInfor_button_clicked();
-
-    void on_execRebInfoButton_clicked();
 
     void on_sales_report_button_clicked();
 
-    void on_sales_rep_clicked();
+    void on_searchItemEnterButton_clicked();
+
+    void on_execRebInfoButton_clicked();
+
+    void on_SearchItemInfor_button_clicked();
+
+    void on_backButton_reports_5_clicked();
 
 private:
     Ui::MainWindow *ui;

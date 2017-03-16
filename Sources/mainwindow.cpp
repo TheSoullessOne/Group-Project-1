@@ -1262,57 +1262,57 @@ void MainWindow::on_backButtonForAddItem_clicked()
 
 
 //----------------------------------------------------------------------
-void MainWindow::on_sales_report_button_clicked()
-{
-    /*ints that are gathering information from the calender widget
-     * acting as a user input*/
-    int day = ui->dateEdit->date().day();
-    int month = ui->dateEdit->date().month();
-    int year = ui->dateEdit->date().year();
+//void MainWindow::on_sales_report_button_clicked()
+//{
+//    /*ints that are gathering information from the calender widget
+//     * acting as a user input*/
+//    int day = ui->dateEdit->date().day();
+//    int month = ui->dateEdit->date().month();
+//    int year = ui->dateEdit->date().year();
 
-    /*this is the master vector behold and tremble
-       its the vector that holds the sales report*/
-    vector<salesReport*> report (myMembers.sales.size());
-    /*degub testing*/
-//    qDebug() << "There are " << myMembers.sales.size() << " sales records";
-    /* auto in order to copy the vector into a new vector and the resize to slim it down
-      because its chuby, but really in order to make the vector the size its suppose to be*/
-    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
-                       report.begin(), salesCheck(day,month,year));
-    report.resize(distance(report.begin(),it));
+//    /*this is the master vector behold and tremble
+//       its the vector that holds the sales report*/
+//    vector<salesReport*> report (myMembers.sales.size());
+//    /*degub testing*/
+////    qDebug() << "There are " << myMembers.sales.size() << " sales records";
+//    /* auto in order to copy the vector into a new vector and the resize to slim it down
+//      because its chuby, but really in order to make the vector the size its suppose to be*/
+//    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+//                       report.begin(), salesCheck(day,month,year));
+//    report.resize(distance(report.begin(),it));
 
-//    qDebug() << "On " << month << "/" << day << "/" << year
-//             << " there were " << report.size() << " sales";
+////    qDebug() << "On " << month << "/" << day << "/" << year
+////             << " there were " << report.size() << " sales";
 
-    /* magical code used to creat the table*/
-    QStandardItemModel *m = new QStandardItemModel();
-    ui->SalesReportTable->setModel(m);
-    /* this is how to use a QT table I honestly really disliked it because
-     * it took me a stupid amount of time to learn, and even thought I spent
-     * time trying to learn I am still uterly confused.*/
-    m->setColumnCount(4);
-    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
-    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
-    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
-    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+//    /* magical code used to creat the table*/
+//    QStandardItemModel *m = new QStandardItemModel();
+//    ui->SalesReportTable->setModel(m);
+//    /* this is how to use a QT table I honestly really disliked it because
+//     * it took me a stupid amount of time to learn, and even thought I spent
+//     * time trying to learn I am still uterly confused.*/
+//    m->setColumnCount(4);
+//    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+//    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+//    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+//    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
 
-    m->setRowCount(report.size());
-    /*for loop in order to print out the table*/
-    for (unsigned int i = 0; i < report.size(); i++)
-    {
-        salesReport* x = report[i];
-        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
-        m->setItem(i, 1, new QStandardItem(
-                       QString("%1/%2/%3")
-                       .arg(x->getDate().getMonth())
-                       .arg(x->getDate().getDay())
-                       .arg( x->getDate().getYear())));
-        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
-        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
+//    m->setRowCount(report.size());
+//    /*for loop in order to print out the table*/
+//    for (unsigned int i = 0; i < report.size(); i++)
+//    {
+//        salesReport* x = report[i];
+//        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+//        m->setItem(i, 1, new QStandardItem(
+//                       QString("%1/%2/%3")
+//                       .arg(x->getDate().getMonth())
+//                       .arg(x->getDate().getDay())
+//                       .arg( x->getDate().getYear())));
+//        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+//        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
 
 
-    }
-}
+//    }
+//}
 //----------------------------------------------------------------------
 
 
@@ -1804,17 +1804,229 @@ void MainWindow::on_backButton_reports_4_clicked()
 
 //----------------------------------------------------------------------
 
-void MainWindow::on_backButton_reports_5_clicked()
+//void MainWindow::on_backButton_reports_5_clicked()
+//{
+//    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+//}
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+
+
+
+//void MainWindow::on_searchItemEnterButton_clicked()
+//{
+//    QString searchString = ui->enterItemNameBox->text();
+
+//    double totalRevenue = 0;
+//    int    totalSold = 0;
+//    int    index;
+//    bool   found = false;
+
+//    ui->itemInfoDisplayBox->setText("DISPLAYING INFO FOR ENTERED ITEM\n\n");
+
+//int i = 0;
+//    while(!found){
+//       if(searchString == myMembers.ourStock[i]->getItemName()){
+//           found = true;
+//           index = i;
+//       }else{
+//          ++i;
+//       }
+//    }
+//    for(int i = 0; i < myMembers.memberVec.size(); ++i) {
+//        for(int j = 0; j < myMembers.memberVec[i]->getReceipt().size(); ++j)    {
+//            totalSold += myMembers.memberVec[i]->getReceipt()[j]->getAmtBought();
+//            totalRevenue += (myMembers.memberVec[i]->getReceipt()[j]->getAmtBought() *
+//                             myMembers.memberVec[i]->getReceipt()[j]->getItemPrice());
+//        }
+//    }
+//    for(int i = 0; i < myMembers.execVec.size(); ++i) {
+//        for(int j = 0; j < myMembers.execVec[i]->getReceipt().size(); ++j)    {
+//            totalSold += myMembers.execVec[i]->getReceipt()[j]->getAmtBought();
+//            totalRevenue += (myMembers.execVec[i]->getReceipt()[j]->getAmtBought() *
+//                             myMembers.execVec[i]->getReceipt()[j]->getItemPrice());
+//        }
+//    }
+
+//    if(found){
+
+//        ui->itemInfoDisplayBox->append(searchString);
+//        ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(totalSold));
+//        ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
+
+//        ui->itemInfoDisplayBox->append("TOTAL REVENUE: $ " + QString::number(totalRevenue));
+
+
+//    }
+//    else
+//    {
+//        QMessageBox::critical(this, "Not Found", "Item not found!");
+//    }
+//}
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+
+//void MainWindow::on_SearchItemInfor_button_clicked()
+//{
+//    ui->pages->setCurrentIndex(SEARCH);
+//}
+
+//----------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------
+
+//void MainWindow::on_execRebInfoButton_clicked()
+//{
+//    bool found = false;
+//    bool exec = false;
+//    int  index = 0;
+//    int  i = 0;
+//    double rebate = 0;
+//    double subtotal = 0;
+//    const float REBATE_RATE = .0325;
+
+//    ui->REPORTS_PAGES->setCurrentIndex(EXEC_REBATE);
+//    ui->execRebateDisplay->setText("DISPLAYING ALL EXECS WITH REBATE AMOUNT\n\n");
+
+
+//    for(int idIndex =0; idIndex< memberIds.size();idIndex++){
+//        i = 0;
+//        found = false;
+//        exec = false;
+//        //This loop will search for an ID match in the executive member vector
+//        while(!found && i < myMembers.execVec.size()){
+//            if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
+//                found = true;
+//                index = i;
+//                exec = true;
+//            }
+//            else{
+//                ++i;
+//            }
+//        }
+
+//        if(exec){
+//            ui->execRebateDisplay->append("\n" + QString::number(myMembers.execVec[i]->getNum())
+//                                  + " - " + myMembers.execVec[index]->getName());
+
+//            rebate = 0;
+//            for(int k = 0; k < myMembers.execVec[index]->getReceipt().size();k++){
+
+//                subtotal += myMembers.execVec[index]->getTotal();
+//                rebate += (REBATE_RATE * subtotal);
+
+//            }
+//            ui->execRebateDisplay->append("Rebate Amount: $" + QString::number(rebate , 'f', 2));
+//        }
+
+//    }
+//}
+
+
+void MainWindow::on_sales_rep_clicked()
 {
-    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
+    ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);
+    /*ints that are gathering information from the calender widget
+     * acting as a user input*/
+    int day = ui->dateEdit->date().day();
+    int month = ui->dateEdit->date().month();
+    int year = ui->dateEdit->date().year();
+
+    /*this is the master vector behold and tremble
+       its the vector that holds the sales report*/
+    vector<salesReport*> report (myMembers.sales.size());
+    /*degub testing*/
+    /* auto in order to copy the vector into a new vector and the resize to slim it down
+      because its chuby, but really in order to make the vector the size its suppose to be*/
+    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+                       report.begin(), salesCheck(day,month,year));
+    report.resize(distance(report.begin(),it));
+
+    /* magical code used to creat the table*/
+    QStandardItemModel *m = new QStandardItemModel();
+    ui->SalesReportTable->setModel(m);
+    /* this is how to use a QT table I honestly really disliked it because
+     * it took me a stupid amount of time to learn, and even thought I spent
+     * time trying to learn I am still uterly confused.*/
+    m->setColumnCount(4);
+    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+
+    m->setRowCount(report.size());
+    /*for loop in order to print out the table*/
+    for (unsigned int i = 0; i < report.size(); i++)
+    {
+        salesReport* x = report[i];
+        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+        m->setItem(i, 1, new QStandardItem(
+                       QString("%1/%2/%3")
+                       .arg(x->getDate().getMonth())
+                       .arg(x->getDate().getDay())
+                       .arg( x->getDate().getYear())));
+        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
+
+
+    }
 }
 
-//----------------------------------------------------------------------
+void MainWindow::on_sales_report_button_clicked()
+{
+    ui->REPORTS_PAGES->setCurrentIndex(SALES_REPORT);
+    /*ints that are gathering information from the calender widget
+     * acting as a user input*/
+    int day = ui->dateEdit->date().day();
+    int month = ui->dateEdit->date().month();
+    int year = ui->dateEdit->date().year();
+
+    /*this is the master vector behold and tremble
+       its the vector that holds the sales report*/
+    vector<salesReport*> report (myMembers.sales.size());
+    /*degub testing*/
+    /* auto in order to copy the vector into a new vector and the resize to slim it down
+      because its chuby, but really in order to make the vector the size its suppose to be*/
+    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
+                       report.begin(), salesCheck(day,month,year));
+    report.resize(distance(report.begin(),it));
+
+    /* magical code used to creat the table*/
+    QStandardItemModel *m = new QStandardItemModel();
+    ui->SalesReportTable->setModel(m);
+    /* this is how to use a QT table I honestly really disliked it because
+     * it took me a stupid amount of time to learn, and even thought I spent
+     * time trying to learn I am still uterly confused.*/
+    m->setColumnCount(4);
+    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
+    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
+    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
+    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
+
+    m->setRowCount(report.size());
+    /*for loop in order to print out the table*/
+    for (unsigned int i = 0; i < report.size(); i++)
+    {
+        salesReport* x = report[i];
+        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
+        m->setItem(i, 1, new QStandardItem(
+                       QString("%1/%2/%3")
+                       .arg(x->getDate().getMonth())
+                       .arg(x->getDate().getDay())
+                       .arg( x->getDate().getYear())));
+        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
+        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
 
 
-//----------------------------------------------------------------------
-
-
+    }
+}
 
 void MainWindow::on_searchItemEnterButton_clicked()
 {
@@ -1867,20 +2079,6 @@ int i = 0;
     }
 }
 
-//----------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------
-
-void MainWindow::on_SearchItemInfor_button_clicked()
-{
-    ui->pages->setCurrentIndex(SEARCH);
-}
-
-//----------------------------------------------------------------------
-
-
-//----------------------------------------------------------------------
 
 void MainWindow::on_execRebInfoButton_clicked()
 {
@@ -1929,51 +2127,12 @@ void MainWindow::on_execRebInfoButton_clicked()
     }
 }
 
-
-void MainWindow::on_sales_rep_clicked()
+void MainWindow::on_SearchItemInfor_button_clicked()
 {
-    /*ints that are gathering information from the calender widget
-     * acting as a user input*/
-    int day = ui->dateEdit->date().day();
-    int month = ui->dateEdit->date().month();
-    int year = ui->dateEdit->date().year();
+    ui->pages->setCurrentIndex(SEARCH);
+}
 
-    /*this is the master vector behold and tremble
-       its the vector that holds the sales report*/
-    vector<salesReport*> report (myMembers.sales.size());
-    /*degub testing*/
-    /* auto in order to copy the vector into a new vector and the resize to slim it down
-      because its chuby, but really in order to make the vector the size its suppose to be*/
-    auto it = copy_if (myMembers.sales.begin(), myMembers.sales.end(),
-                       report.begin(), salesCheck(day,month,year));
-    report.resize(distance(report.begin(),it));
-
-    /* magical code used to creat the table*/
-    QStandardItemModel *m = new QStandardItemModel();
-    ui->SalesReportTable->setModel(m);
-    /* this is how to use a QT table I honestly really disliked it because
-     * it took me a stupid amount of time to learn, and even thought I spent
-     * time trying to learn I am still uterly confused.*/
-    m->setColumnCount(4);
-    m->setHorizontalHeaderItem(0, new QStandardItem("Member Name"));
-    m->setHorizontalHeaderItem(1, new QStandardItem("Date"));
-    m->setHorizontalHeaderItem(2, new QStandardItem("Item"));
-    m->setHorizontalHeaderItem(3, new QStandardItem("Price"));
-
-    m->setRowCount(report.size());
-    /*for loop in order to print out the table*/
-    for (unsigned int i = 0; i < report.size(); i++)
-    {
-        salesReport* x = report[i];
-        m->setItem(i, 0, new QStandardItem(x->getTheMember()->getName()));
-        m->setItem(i, 1, new QStandardItem(
-                       QString("%1/%2/%3")
-                       .arg(x->getDate().getMonth())
-                       .arg(x->getDate().getDay())
-                       .arg( x->getDate().getYear())));
-        m->setItem(i, 2, new QStandardItem(x->getTheItem()->getItemName()));
-        m->setItem(i, 3, new QStandardItem(QString("%1").arg(x->getThePrice())));
-
-
-    }
+void MainWindow::on_backButton_reports_5_clicked()
+{
+    ui->REPORTS_PAGES->setCurrentIndex(MAIN_REPORT_PAGE);
 }

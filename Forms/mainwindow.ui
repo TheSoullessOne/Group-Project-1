@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -311,7 +311,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
