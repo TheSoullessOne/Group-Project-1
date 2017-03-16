@@ -1809,7 +1809,7 @@ void MainWindow::on_backButton_reports_5_clicked()
 void MainWindow::on_searchItemEnterButton_clicked()
 {
     QString searchString = ui->enterItemNameBox->text();
-    int    totalSold;
+
     double totalPrice = 0;
     int    index;
     int    i;
@@ -1830,7 +1830,7 @@ void MainWindow::on_searchItemEnterButton_clicked()
 
         ui->itemInfoDisplayBox->append(searchString);
 
-        totalPrice *= myMembers.ourStock[index]->getItemPrice();
+        totalPrice = myMembers.ourStock[index]->getItemPrice()*myMembers.ourStock[index]->getAmtBought();
 
         ui->itemInfoDisplayBox->append("Amount Bought: " + QString::number(myMembers.ourStock[index]->getAmtBought()));
         ui->itemInfoDisplayBox->append("Price: $ " + QString::number(myMembers.ourStock[index]->getItemPrice()));
