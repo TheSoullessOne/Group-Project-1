@@ -27,7 +27,7 @@
      <bool>false</bool>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="loginPage">
      <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -100,7 +100,7 @@
         <x>180</x>
         <y>50</y>
         <width>331</width>
-        <height>185</height>
+        <height>199</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -311,7 +311,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="MAIN_REPORT_PAGE">
        <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -399,7 +399,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="Dat_label_tho">
         <property name="geometry">
          <rect>
           <x>240</x>
@@ -1428,7 +1428,7 @@
      <x>0</x>
      <y>0</y>
      <width>763</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
