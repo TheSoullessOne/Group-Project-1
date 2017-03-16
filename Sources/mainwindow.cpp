@@ -498,28 +498,18 @@ void MainWindow::on_purchases_rep_clicked()
     int  i;
 
     //This will sort the member id vector from greatest to smallest
-<<<<<<< HEAD
     sort(memberIds.begin(),memberIds.end());
-=======
-//    std::sort(memberIds.begin(),memberIds.end());
->>>>>>> efd88d8e4990443a448a3c26241f9bc5371aaea5
 
     // This for loop will keep track of all of the members and make sure we
     //don't go out of searching bounds
     for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
 
-        ui->productReportDisplay->append("\n\n"); //Just outputs some empty lines
+        ui->productReportDisplay->append("\n"); //Just outputs some empty lines
 
         i     = 0;     //sets the index counter to 0
         found = false; //sets the bool to false
         index = 0;     //sets index that will be used to store the index for
                        //the current member id
-
-        for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
-            ui->productReportDisplay->append("\n\n");
-            i     = 0;
-            found = false;
-            index = 0;
 
             //This loop will search for an ID match in the regular member vector
             while(!found && i < myMembers.memberVec.size()){
@@ -584,7 +574,6 @@ void MainWindow::on_purchases_rep_clicked()
                 ui->productReportDisplay->append("Nothing to display");
             }
         } // end for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) inner
-    } // end for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) outter
 } // close function
 //----------------------------------------------------------------------
 
