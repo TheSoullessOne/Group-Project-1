@@ -467,7 +467,7 @@ void MainWindow::on_purchases_rep_clicked()
 
 
     bool exec;
-    bool found = false;
+    bool found;
     int index =0;
     //    int tempIndexAr[myMembers.memberVec.size()];
 
@@ -480,7 +480,7 @@ void MainWindow::on_purchases_rep_clicked()
     for(int idIndex = 0; idIndex < memberIds.size(); ++idIndex) {
         ui->productReportDisplay->append("\n\n");
         int i =0;
-        bool found = false;
+        found = false;
         index = 0;
         while(!found && i < myMembers.memberVec.size()){
             if(memberIds[idIndex] == myMembers.memberVec[i]->getNum()){
