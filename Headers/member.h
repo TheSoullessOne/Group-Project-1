@@ -18,7 +18,10 @@ class member
     /**
      * @brief member
      */
-    member(QString, int, bool, int, int, int, double, double, QVector<item*>);
+    member(QString, int, bool, int, int, int, double, double, int*, QVector<item*>);
+
+    // Copy Constructor
+    member(const member&);
 
     // Gets
     /**
@@ -130,22 +133,24 @@ class member
     /*** Satisfy the Overload Requirement ***/
 
 
-
+    // Destructor
+    ~member();
 
 
   private:
     QString name;
-    int    num;          // Membership #
-    bool   type;         // Membership Type:
-                         // False = Regular Member
-                         // True  = Executive Member
-    date   expiry;       // Membership Expiration Date
-                         /*** Satisfies Composition Requirement ***/
-    double total;        // Total Amount Spent
-    double annual_dues;  // Regular   Member: $85.00
-                         // Executive Member: $95.00
-    QVector<item*>  receipt;      // Will attempt to keep track of members' purchases
-                         /*** Satisfies Pointer Requirement ***/
+    int     num;            // Membership #
+    bool    type;           // Membership Type:
+                            // False = Regular Member
+                            // True  = Executive Member
+    date    expiry;         // Membership Expiration Date
+                            /*** Satisfies Composition Requirement ***/
+    double  total;          // Total Amount Spent
+    double  annual_dues;    // Regular   Member: $85.00
+                            // Executive Member: $95.00
+    int     *p;             // Mysterious pointer that does who-knows-what
+                            /*** Satisfies Pointer Requirement ***/
+    QVector<item*> receipt; // Will attempt to keep track of members' purchases
 }; // End class member
 
 #endif
