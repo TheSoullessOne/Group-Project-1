@@ -1883,7 +1883,6 @@ void MainWindow::on_execRebInfoButton_clicked()
     bool exec = false;
     int  index = 0;
     int  i = 0;
-
     double rebate = 0;
     double subtotal = 0;
     const float REBATE_RATE = .0325;
@@ -1898,12 +1897,9 @@ void MainWindow::on_execRebInfoButton_clicked()
         i = 0;
         found = false;
         exec = false;
-        qDebug() << memberIds[idIndex];
         //This loop will search for an ID match in the executive member vector
         while(!found && i < myMembers.execVec.size())   {
-            qDebug() << QString::number(myMembers.execVec[i]->getNum());
             if(memberIds[idIndex] == myMembers.execVec[i]->getNum()){
-                qDebug() << "found";
                 found = true;
                 index = i;
                 exec = true;
@@ -1926,6 +1922,7 @@ void MainWindow::on_execRebInfoButton_clicked()
             }
             ui->execRebateDisplay->append("Rebate Amount: $" + QString::number(rebate , 'f', 2));
         }
-    }
 
+    }
 }
+
